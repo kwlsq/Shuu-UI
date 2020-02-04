@@ -1,0 +1,42 @@
+.carousel-wrapper{
+    grid-column: 5/13;
+    grid-row: 1/5;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f7f7f7, #dadada);
+    box-shadow: 3px 3px 8px #22385c , 
+            -3px -3px 8px #ffffff;
+}
+
+.whole-carousel{ 
+    height: 450px;
+    
+  }
+
+ol.carousel-indicators li{
+  background-color: #ffffff ;
+}
+
+span.carousel-control-prev-icon,span.carousel-control-next-icon {
+  padding: 15px;
+}
+
+span.carousel-control-next-icon{
+  margin-left: auto;
+}
+span.carousel-control-prev-icon{
+  margin-right: auto;
+  
+}
+
+/* Clickable area */
+a.carousel-control-prev,a.carousel-control-next{
+  width: 100px;
+  display: flex;
+}
+
+.carousel-inner{
+  border-radius: 10px;
+  padding: none;
+  background-color: #ffff;
+  height: 450px;
+}

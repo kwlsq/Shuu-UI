@@ -1,20 +1,32 @@
-.navbar-wrapper,.nav-items{
+.navbar-wrapper{
+    margin-bottom: 50px;
+}
+
+.nav-items{
     display: flex;
+    justify-content: space-between;
+    padding: 0 8em;
+}
+
+.button, .searchbar,.button-login,.button-register{
+    padding: 14px 0;
 }
 
 .navbar-wrapper{
-    background-color: #4571b9 ;
-    z-index: -1;
-    position: sticky;
-    top: 0;
+    background-color: #f7f7f7  ;
     font-family: 'Raleway', sans-serif;
     font-size: 22px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.589);
 }
+
+a:visited, a:active,a:hover,.logo{
+    color: #4571b9 ;
+    text-decoration: none !important;
+    
+}
+
 
 .logo{
     font-family: 'Fredoka One', cursive;
-}
-
-.logo{
     font-size: 38px;
 }

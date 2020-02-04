@@ -1,0 +1,21 @@
+.landingpage-grid{
+    margin: 0 11em;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(80px, auto);
+}
+
+.card-promo{
+    border: solid 1px black;
+    margin-top: 10px;
+    grid-row: 5/7;
+    grid-column: 1/13;
+}
+
+.upcoming-events{
+    border: solid 1px black;
+    margin-top: 10px;
+    grid-row: 7/9;
+    grid-column: 1/13;
+}

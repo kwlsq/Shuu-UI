@@ -5,10 +5,10 @@ import '../CSS/navbar.css';
 const NavbarComp = () => {
     return (
         <div className="navbar-wrapper">
+            <div className="nav-items">
             <div className="logo">
                 Shuu
             </div>
-            <div className="nav-items">
                 <div className="button">
                     <Link to='/'>
                         Men
@@ -24,9 +24,19 @@ const NavbarComp = () => {
                         Feed
                     </Link>
                 </div>
-                <div>
+                <div className="searchbar">
                     <input type="text" placeholder="search"></input>
                     <button><i class="fas fa-search"></i></button>
+                </div>
+                <div className="button-login">
+                    <Link to='/login'>
+                        Log in
+                    </Link>
+                </div>
+                <div className="button-register">
+                    <Link to='/register'>
+                        Register
+                    </Link>
                 </div>
             </div>
         </div>

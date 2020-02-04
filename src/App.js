@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavbarComp from './Comps/navbar';
 import LandingPage from './Pages/LandingPage';
 import LoginPage from './Pages/LoginPage';
-import './App.css';
+import RegisterPage from './Pages/RegisterPage';
 
 class App extends React.Component {
   render() {
@@ -14,6 +14,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" component={LandingPage} exact/>
             <Route path="/login" component={LoginPage}/>
+            <Route path="/register" component={RegisterPage}/>
           </Switch>
         </div>
       </BrowserRouter>

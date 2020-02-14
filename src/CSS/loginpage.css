@@ -1,0 +1,20 @@
+.loginpage-wrapper{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(80px, auto);
+}
+
+.login-form-wrapper{
+    grid-row: 1/2;
+    grid-column: 6/8;
+    text-align: center;
+}
+
+.err-wrapper{
+    grid-row: 2/3;
+    grid-column: 6/8;
+    text-align: center;
+}
+
+

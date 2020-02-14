@@ -6,21 +6,23 @@ const NavbarComp = () => {
     return (
         <div className="navbar-wrapper">
             <div className="nav-items">
-            <div className="logo">
-                Shuu
-            </div>
-                <div className="button">
+                <div className="logo">
                     <Link to='/'>
+                        Shuu 
+                </Link>
+                </div>
+                <div className="button">
+                    <Link to='/men'>
                         Men
                     </Link>
                 </div>
                 <div className="button">
-                    <Link to='/'>
+                    <Link to='/women'>
                         Women
                     </Link>
                 </div>
                 <div className="button">
-                    <Link to='/'>
+                    <Link to='/feeds'>
                         Feed
                     </Link>
                 </div>

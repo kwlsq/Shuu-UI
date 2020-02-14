@@ -1,14 +1,14 @@
 import React from 'react';
 
-class MenPage extends React.Component {
+class Feeds extends React.Component {
     state = {  }
     render() { 
         return (  
             <div>
-                ini MenPage
+                ini Feeds
             </div>
         );
     }
 }
  
-export default MenPage;
+export default Feeds;

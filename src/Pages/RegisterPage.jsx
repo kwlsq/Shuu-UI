@@ -33,11 +33,38 @@ class RegisterPage extends React.Component {
         } else {
             this.setState({ spcCharRegex: false })
         }
+        this.setState({password:e.target.value})
 
     }
 
     onBtnClickSignUp = () => {
-        const { } = this.state
+        const { 
+            username,password,
+            confPassword,
+            email,checklength,
+            numberRegex,spcCharRegex
+        } = this.state
+
+        console.log(username,password,confPassword,email)
+        if(username && password && confPassword && email){
+            if(checklength && numberRegex && spcCharRegex){
+                if(password === confPassword){
+                    var obj = { 
+                        username,
+                        password,
+                        email
+                     }
+                    this.props.register(obj)
+                    
+                } else {
+                    alert ('Password is not match')
+                }
+            } else {
+                alert ('Password requirement not fulfilled')
+            }
+        } else {
+            alert ('Please fill all forms!')
+        }
     }
 
     render() {

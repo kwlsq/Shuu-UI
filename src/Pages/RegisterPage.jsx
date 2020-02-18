@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { register } from '../Redux/Actions';
-// import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 class RegisterPage extends React.Component {
     state = {
@@ -33,37 +33,40 @@ class RegisterPage extends React.Component {
         } else {
             this.setState({ spcCharRegex: false })
         }
-        this.setState({password:e.target.value})
-
+        this.setState({ password: e.target.value })
     }
 
     onBtnClickSignUp = () => {
-        const { 
-            username,password,
+        const {
+            username, password,
             confPassword,
-            email,checklength,
-            numberRegex,spcCharRegex
+            email, checklength,
+            numberRegex, spcCharRegex
         } = this.state
 
-        console.log(username,password,confPassword,email)
-        if(username && password && confPassword && email){
-            if(checklength && numberRegex && spcCharRegex){
-                if(password === confPassword){
-                    var obj = { 
+        console.log(username, password, confPassword, email)
+        if (username && password && confPassword && email) {
+            if (checklength && numberRegex && spcCharRegex) {
+                if (password === confPassword) {
+                    var obj = {
                         username,
                         password,
-                        email
-                     }
+                        email,
+                        id_role: 3 //mending taro sini atau di Action?
+                    }
                     this.props.register(obj)
-                    
+                    alert('Register Success!')
+                    return (
+                        <Redirect to='/login' />
+                    )
                 } else {
-                    alert ('Password is not match')
+                    alert('Password is not match')
                 }
             } else {
-                alert ('Password requirement not fulfilled')
+                alert('Password requirement not fulfilled')
             }
         } else {
-            alert ('Please fill all forms!')
+            alert('Please fill all forms!')
         }
     }
 
@@ -128,8 +131,6 @@ class RegisterPage extends React.Component {
                         :
                         <div />
                 }
-
-
             </div>
         );
     }

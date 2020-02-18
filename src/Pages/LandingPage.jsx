@@ -1,10 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { keepLogin } from '../Redux/Actions';
 import '../CSS/landingpage.css';
 import CarouselComp from '../Comps/carousel';
 import FeatureBar from '../Comps/featureBar';
 
 class LandingPage extends React.Component {
     state = {  }
+
+    componentDidMount() {
+        this.props.keepLogin()
+    }
     render() { 
         return (  
             <div className="landingpage-grid">
@@ -21,5 +27,10 @@ class LandingPage extends React.Component {
         );
     }
 }
- 
-export default LandingPage;
+
+const mapStateToProps = (state) => {
+    return {
+        token:state.user.token
+    }
+}
+export default connect(mapStateToProps, { keepLogin})(LandingPage);

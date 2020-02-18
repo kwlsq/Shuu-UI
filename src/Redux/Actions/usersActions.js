@@ -2,26 +2,81 @@ import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
 
 export const register = (obj) => {
-    return(dispatch)=>{
-        axios.get(API_URL_1+`/users/register/${obj.username}`)
-        .then((res)=>{
-            console.log('hasilnya nihhhh:',res.data)
-            if(res.data.length===0){
-                alert('aman')
-            } else {
-                alert('Username has been taken')
-            }
-        }).catch((err)=>{
-            console.log(err.response.data)
-        })
+    return (dispatch) => {
+        axios.get(API_URL_1 + `/users/${obj.username}`)
+            .then((res) => {
+                if (res.data.length === 0) {
+                    axios.post(API_URL_1 + '/users/register', obj)
+                        .then((res) => {
+                            console.log(res.data.id)
+                            console.log(res.data.token)
+                            alert('Register Success!')
+                            dispatch({
+                                type: 'LOGIN',
+                                payload: res.data
+                            })
+                        }).catch((err) => {
+                            console.log(err.response.data)
+                        })
+                } else {
+                    alert('Username has been taken')
+                }
+            }).catch((err) => {
+                console.log(err.response.data)
+            })
+    }
+}
 
-        // console.log('Global State : ',username,password)
-        // dispatch({
-        //     type: 'LOGIN',
-        //     payload: {
-        //         username,
-        //         password
-        //     }
-        // })
+export const login = (username, password) => {
+    return (dispatch) => {
+        axios.post(API_URL_1 + '/users/login', { username, password })
+            .then((res) => {
+                localStorage.setItem('token', res.data.token)
+                dispatch({
+                    type: 'LOGIN',
+                    payload: res.data
+                })
+            }).catch((err) => {
+                alert('login gagal')
+                localStorage.removeItem('token')
+                console.log(err.response)
+                dispatch({
+                    type: 'LOGOUT'
+                })
+            })
+    }
+}
+
+export const keepLogin = () => {
+    return (dispatch) => {
+        const token = localStorage.getItem('token')
+        console.log('masukkeeplogin', token)
+        const headers = {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        axios.get(API_URL_1 + '/users/keeplogin', headers)
+            .then((res) => {
+                dispatch({
+                    type: 'LOGIN',
+                    payload: res.data
+                })
+            }).catch((err) => {
+                console.log(err.response)
+                // localStorage.removeItem('token')
+                dispatch({
+                    type: 'LOGOUT'
+                })
+            })
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        localStorage.removeItem('token')
+        dispatch({
+            type: 'LOGOUT'
+        })
     }
 }

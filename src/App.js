@@ -8,6 +8,8 @@ import MenPage from './Pages/MenPage';
 import WomenPage from './Pages/WomenPage';
 import Feeds from './Pages/Feeds';
 import BrandsPage from './Pages/BrandsPage';
+import AdminPage from './Pages/AdminPage';
+import NotFoundPage from './Pages/NotFoundPage';
 
 class App extends React.Component {
   render() {
@@ -16,13 +18,15 @@ class App extends React.Component {
         <div>
           <NavbarComp />
           <Switch>
-            <Route path="/" component={LandingPage} exact/>
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/register" component={RegisterPage}/>
-            <Route path="/men" component={MenPage}/>
-            <Route path="/women" component={WomenPage}/>
-            <Route path="/feeds" component={Feeds}/>
-            <Route path="/brands" component={BrandsPage}/>
+            <Route path="/" component={LandingPage} exact />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/men" component={MenPage} />
+            <Route path="/women" component={WomenPage} />
+            <Route path="/feeds" component={Feeds} />
+            <Route path="/brands" component={BrandsPage} />
+            <Route path="/admin" component={AdminPage} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
       </BrowserRouter>

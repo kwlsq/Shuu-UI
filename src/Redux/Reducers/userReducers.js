@@ -1,19 +1,25 @@
 const INITIAL_STATE = {
-    username:'',
-    password:'',
-    email:''
+    id: 0,
+    username: '',
+    email: '',
+    verified: 0,
+    id_role: 0,
+    token: ''
 }
 
-export default (state=INITIAL_STATE,action) => {
-    console.log('masuk')
-    console.log(state)
-    console.log(action)
-    switch(action.type){
+export default (state = INITIAL_STATE, action) => {
+    switch (action.type) {
         case 'LOGIN':
-            return{
+            return {
+                id: action.payload.id,
                 username: action.payload.username,
-                password: action.payload.password
+                email: action.payload.email,
+                verified: action.payload.verified,
+                id_role: action.payload.id_role,
+                token: action.payload.token
             }
+        case 'LOGOUT':
+            return INITIAL_STATE
         default:
             return INITIAL_STATE
     }

@@ -39,7 +39,6 @@ export const login = (username, password) => {
             }).catch((err) => {
                 alert('login gagal')
                 localStorage.removeItem('token')
-                console.log(err.response)
                 dispatch({
                     type: 'LOGOUT'
                 })
@@ -64,7 +63,6 @@ export const keepLogin = () => {
                 })
             }).catch((err) => {
                 console.log(err.response)
-                // localStorage.removeItem('token')
                 dispatch({
                     type: 'LOGOUT'
                 })
@@ -78,5 +76,22 @@ export const logout = () => {
         dispatch({
             type: 'LOGOUT'
         })
+    }
+}
+
+export const verify = (username, password) => {
+    return (dispatch) => {
+        axios.post(API_URL_1 + '/users/verify', { username, password })
+            .then((res) => {
+                console.log(res.data)
+                dispatch({
+                    type: 'VERIFY'
+                })
+            }).catch((err) => {
+                console.log(err.response.data)
+                dispatch({
+                    type: 'LOGOUT'
+                })
+            })
     }
 }

@@ -52,10 +52,8 @@ class RegisterPage extends React.Component {
                         username,
                         password,
                         email,
-                        id_role: 3 //mending taro sini atau di Action?
                     }
                     this.props.register(obj)
-                    alert('Register Success!')
                     return (
                         <Redirect to='/login' />
                     )

@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     email: '',
     verified: 0,
     id_role: 0,
-    token: ''
+    token: '',
+    redirectVerify: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -20,6 +21,8 @@ export default (state = INITIAL_STATE, action) => {
             }
         case 'LOGOUT':
             return INITIAL_STATE
+        case 'VERIFY':
+            return { redirectVerify: true }
         default:
             return INITIAL_STATE
     }

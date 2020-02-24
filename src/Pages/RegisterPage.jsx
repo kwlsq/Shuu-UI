@@ -1,53 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { register } from '../Redux/Actions';
+import { register, onRegisterText } from '../Redux/Actions';
 import { Redirect } from 'react-router-dom';
 
 class RegisterPage extends React.Component {
-    state = {
-        username: '',
-        email: '',
-        password: '',
-        confPassword: '',
-        checklength: false,
-        numberRegex: false,
-        spcCharRegex: false,
-        showErr: false
-    }
-
     checkPass = (e) => {
         var value = e.target.value
-        this.setState({ showErr: true })
+        this.props.onRegisterText('showErr', true)
         if (value.length > 9) {
-            this.setState({ checklength: true })
+            this.props.onRegisterText('checkLength', true)
         } else {
-            this.setState({ checklength: false })
+            this.props.onRegisterText('checkLength', false)
         }
         if (/[0-9]/.test(value)) {
-            this.setState({ numberRegex: true })
+            this.props.onRegisterText('numberRegex', true)
         } else {
-            this.setState({ numberRegex: false })
+            this.props.onRegisterText('numberRegex', false)
         }
         if (/[!@#$%^&*]/.test(value)) {
-            this.setState({ spcCharRegex: true })
+            this.props.onRegisterText('spcCharRegex', true)
         } else {
-            this.setState({ spcCharRegex: false })
+            this.props.onRegisterText('spcCharRegex', false)
         }
-        this.setState({ password: e.target.value })
+        this.props.onRegisterText('password', e.target.value)
     }
 
     onBtnClickSignUp = () => {
-        const {
-            username, password,
-            confPassword,
-            email, checklength,
-            numberRegex, spcCharRegex
-        } = this.state
-
-        console.log(username, password, confPassword, email)
-        if (username && password && confPassword && email) {
+        let {
+            username,
+            password,
+            email,
+            confPass,
+            numberRegex,
+            spcCharRegex,
+            checklength
+        } = this.props.registerForm
+        if (username && password && confPass && email) {
             if (checklength && numberRegex && spcCharRegex) {
-                if (password === confPassword) {
+                if (password === confPass) {
                     var obj = {
                         username,
                         password,
@@ -69,69 +59,85 @@ class RegisterPage extends React.Component {
     }
 
     render() {
-        return (
-            <div className="loginpage-wrapper">
-                <div className="login-form-wrapper">
-                    <div className="headline-login">Username</div>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        onChange={(e) => this.setState({ username: e.target.value })}
-                    ></input>
-                    <br />
-                    <div className="headline-login">Email</div>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        onChange={(e) => this.setState({ email: e.target.value })}
-                    ></input>
-                    <br />
-                    <div className="headline-login">Password</div>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        ref='password'
-                        onChange={(e) => this.checkPass(e)}
-                    ></input>
-                    <br />
-                    <div className="headline-login">Confirm Password</div>
-                    <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        onChange={(e) => this.setState({ confPassword: e.target.value })}
-                    ></input>
-                    <br />
-                    <input type="button" onClick={this.onBtnClickSignUp} value="Sign Up"></input>
+        console.log(this.props.user.redirectVerify)
+        if (this.props.user.redirectVerify) {
+            return (
+                <Redirect to='login' />
+            )
+        } else {
+            return (
+                <div className="loginpage-wrapper">
+                    <div className="login-form-wrapper">
+                        <div className="headline-login">Username</div>
+                        <input
+                            className="login-input"
+                            type="text"
+                            placeholder="Username"
+                            onChange={(e) => this.props.onRegisterText('username', e.target.value)}
+                        ></input>
+                        <br />
+                        <div className="headline-login">Email</div>
+                        <input
+                            className="login-input"
+                            type="email"
+                            placeholder="Email"
+                            onChange={(e) => this.props.onRegisterText('email', e.target.value)}
+                        ></input>
+                        <br />
+                        <div className="headline-login">Password</div>
+                        <input
+                            className="login-input"
+                            type="password"
+                            placeholder="Password"
+                            ref='password'
+                            onChange={(e) => this.props.checkPass(e)}
+                        ></input>
+                        <br />
+                        <div className="headline-login">Confirm Password</div>
+                        <input
+                            className="login-input"
+                            type="password"
+                            placeholder="Confirm Password"
+                            onChange={(e) => this.props.onRegisterText('confPass', e.target.value)}
+                        ></input>
+                        <br />
+                        {
+                            this.state.showErr
+                                ?
+                                <div className="err-wrapper">
+                                    {this.state.checklength
+                                        ?
+                                        <p className="text-success">Password length more than 8 characters</p>
+                                        :
+                                        <p className="text-danger">Password length must be more than 8 characters</p>
+                                    }
+                                    {this.state.numberRegex
+                                        ?
+                                        <p className="text-success">Password contains numeric character</p>
+                                        :
+                                        <p className="text-danger">Password must contains numeric character</p>
+                                    }
+                                    {this.state.spcCharRegex
+                                        ?
+                                        <p className="text-success">Password contains special character</p>
+                                        :
+                                        <p className="text-danger">Password must contains special character</p>
+                                    }
+                                </div>
+                                :
+                                <div />
+                        }
+                        <br />
+                        <input type="button" onClick={this.onBtnClickSignUp} value="Register" className="register-button"></input>
+                    </div>
                 </div>
-                {
-                    this.state.showErr
-                        ?
-                        <div className="err-wrapper">
-                            {this.state.checklength
-                                ?
-                                <p class="text-success">Password length more than 8 characters</p>
-                                :
-                                <p class="text-danger">Password length must be more than 8 characters</p>
-                            }
-                            {this.state.numberRegex
-                                ?
-                                <p class="text-success">Password contains numeric character</p>
-                                :
-                                <p class="text-danger">Password must contains numeric character</p>
-                            }
-                            {this.state.spcCharRegex
-                                ?
-                                <p class="text-success">Password contains special character</p>
-                                :
-                                <p class="text-danger">Password must contains special character</p>
-                            }
-                        </div>
-                        :
-                        <div />
-                }
-            </div>
-        );
+            );
+        }
     }
 }
 
-export default connect(null, { register })(RegisterPage);
+const mapStateToProps = ({ user, registerForm }) => {
+    return { user, registerForm }
+}
+
+export default connect(mapStateToProps, { register, onRegisterText })(RegisterPage);

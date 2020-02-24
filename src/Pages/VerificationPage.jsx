@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
-import { verify } from '../Redux/Actions'
+import { verify } from '../Redux/Actions';
 
 class VerificationPage extends React.Component {
     state = {}
@@ -20,8 +21,7 @@ class VerificationPage extends React.Component {
         return (
             <div>
                 <h3>Your email has been verified</h3>
-                <h5 onClick={() => console.log('xx')}>Resend Verification</h5>
-
+                <Link to='/login'>Back to Login Page</Link>
             </div>
         )
     }

@@ -1,26 +1,23 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from '../Redux/Actions';
+import { login, onInputText } from '../Redux/Actions';
 import '../CSS/loginpage.css';
 
 
 class LoginPage extends React.Component {
-    state = {
-        username: '',
-        password: '',
-    }
-
     onBtnClickSignIn = () => {
-        let { username, password } = this.state
-        if (username, password) {
+        let { username, password } = this.props.loginForm
+        if ((username && password)) {
             this.props.login(username, password)
         } else {
             alert('Fill all the forms')
         }
+
     }
     render() {
         if (localStorage.getItem('token')) {
+            console.log(localStorage.getItem('token'))
             return (
                 <Redirect to='/' />
             )
@@ -30,30 +27,40 @@ class LoginPage extends React.Component {
                 <div className="login-form-wrapper">
                     <div className="headline-login">Username</div>
                     <input
+                        className="login-input"
                         type="text"
                         placeholder="Username"
-                        onChange={(e) => this.setState({ username: e.target.value })}
+                        onChange={(e) => this.props.onInputText('username', e.target.value)}
                     ></input>
                     <br />
                     <div className="headline-login">Password</div>
                     <input
+                        className="login-input"
                         type="password"
                         placeholder="Password"
-                        onChange={(e) => this.setState({ password: e.target.value })}
+                        onChange={(e) => this.props.onInputText('password', e.target.value)}
                     ></input>
                     <br />
-                    <input type="button" onClick={this.onBtnClickSignIn} value="Sign in"></input>
-                    <Link to="/register">Sign Up</Link>
+                    <div >
+                        <input
+                            type="button"
+                            onClick={this.onBtnClickSignIn}
+                            value="Login"
+                            className="login-button"
+                        />
+                        <Link to="/register" className="register-button">Register</Link>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-const mapStatetoProps = (state) => {
+const mapStatetoProps = ({ user, loginForm }) => {
     return {
-        token: state.user.token
+        user,
+        loginForm
     }
 }
 
-export default connect(mapStatetoProps, { login })(LoginPage);
+export default connect(mapStatetoProps, { login, onInputText })(LoginPage);

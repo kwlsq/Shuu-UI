@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { keepLogin } from '../src/Redux/Actions';
 import NavbarComp from './Comps/navbar';
 import LandingPage from './Pages/LandingPage';
 import LoginPage from './Pages/LoginPage';
@@ -9,10 +11,13 @@ import WomenPage from './Pages/WomenPage';
 import Feeds from './Pages/Feeds';
 import BrandsPage from './Pages/BrandsPage';
 import AdminPage from './Pages/AdminPage';
-import NotFoundPage from './Pages/NotFoundPage';
+// import NotFoundPage from './Pages/NotFoundPage';
 import VerificationPage from './Pages/VerificationPage';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.keepLogin()
+  }
   render() {
     return (
       <div>
@@ -27,11 +32,12 @@ class App extends React.Component {
           <Route path="/brands" component={BrandsPage} />
           <Route path="/admin" component={AdminPage} />
           <Route path="/verified" component={VerificationPage} />
-          <Route path="*" component={NotFoundPage} />
+          {/* <Route path="*" component={NotFoundPage} /> */}
         </Switch>
       </div>
     )
   }
 }
 
-export default App;
+
+export default connect(null, { keepLogin })(App);

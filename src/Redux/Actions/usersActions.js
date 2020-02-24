@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
-
+import {
+    LOGIN,
+    LOGOUT,
+    REGISTER_FAIL,
+    REGISTER_SUCCESS
+} from '../Actions/types'
 export const register = (obj) => {
     return (dispatch) => {
         axios.get(API_URL_1 + `/users/${obj.username}`)
@@ -12,11 +17,17 @@ export const register = (obj) => {
                             console.log(res.data.token)
                             alert('Register Success!')
                             dispatch({
-                                type: 'LOGIN',
+                                type: LOGIN,
                                 payload: res.data
+                            })
+                            dispatch({
+                                type: REGISTER_SUCCESS
                             })
                         }).catch((err) => {
                             console.log(err.response.data)
+                            dispatch({
+                                type: REGISTER_FAIL
+                            })
                         })
                 } else {
                     alert('Username has been taken')
@@ -33,14 +44,14 @@ export const login = (username, password) => {
             .then((res) => {
                 localStorage.setItem('token', res.data.token)
                 dispatch({
-                    type: 'LOGIN',
+                    type: LOGIN,
                     payload: res.data
                 })
             }).catch((err) => {
-                alert('login gagal')
+                alert('Username or Password Incorrect')
                 localStorage.removeItem('token')
                 dispatch({
-                    type: 'LOGOUT'
+                    type: LOGOUT
                 })
             })
     }
@@ -58,13 +69,13 @@ export const keepLogin = () => {
         axios.get(API_URL_1 + '/users/keeplogin', headers)
             .then((res) => {
                 dispatch({
-                    type: 'LOGIN',
+                    type: LOGIN,
                     payload: res.data
                 })
             }).catch((err) => {
                 console.log(err.response)
                 dispatch({
-                    type: 'LOGOUT'
+                    type: LOGOUT
                 })
             })
     }
@@ -74,7 +85,7 @@ export const logout = () => {
     return (dispatch) => {
         localStorage.removeItem('token')
         dispatch({
-            type: 'LOGOUT'
+            type: LOGOUT
         })
     }
 }
@@ -85,12 +96,12 @@ export const verify = (username, password) => {
             .then((res) => {
                 console.log(res.data)
                 dispatch({
-                    type: 'VERIFY'
+                    type: REGISTER_SUCCESS
                 })
             }).catch((err) => {
                 console.log(err.response.data)
                 dispatch({
-                    type: 'LOGOUT'
+                    type: REGISTER_FAIL
                 })
             })
     }

@@ -1,3 +1,10 @@
+import {
+    LOGIN,
+    LOGOUT,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL
+} from '../Actions/types';
+
 const INITIAL_STATE = {
     id: 0,
     username: '',
@@ -10,7 +17,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'LOGIN':
+        case LOGIN:
             return {
                 id: action.payload.id,
                 username: action.payload.username,
@@ -19,10 +26,12 @@ export default (state = INITIAL_STATE, action) => {
                 id_role: action.payload.id_role,
                 token: action.payload.token
             }
-        case 'LOGOUT':
+        case LOGOUT:
             return INITIAL_STATE
-        case 'VERIFY':
+        case REGISTER_SUCCESS:
             return { redirectVerify: true }
+        case REGISTER_FAIL:
+            return { redirectVerify: false }
         default:
             return INITIAL_STATE
     }

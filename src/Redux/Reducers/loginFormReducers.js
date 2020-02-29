@@ -5,9 +5,6 @@ import {
 const INITIAL_STATE = {
     username: '',
     password: '',
-    hidePass: true,
-    error: '',
-    loading: false
 }
 
 export default (state = INITIAL_STATE, action) => {

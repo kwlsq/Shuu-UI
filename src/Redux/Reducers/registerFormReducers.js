@@ -8,10 +8,7 @@ const INITIAL_STATE = {
     checkLength: false,
     numberRegex: false,
     spcCharRegex: false,
-    showErr: false,
-    error: '',
-    loading: '',
-    hidePass: true
+    showErr: false
 }
 
 export default (state = INITIAL_STATE, action) => {

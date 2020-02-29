@@ -1,0 +1,15 @@
+table, tr, td, th{
+    border: black solid 2px;
+
+}
+
+.table-user{
+    /* border: solid 1px black; */
+    margin-top: 10px;
+    grid-row: 1/auto;
+    grid-column: 4/13;
+}
+
+table td{
+    text-align: center;
+}

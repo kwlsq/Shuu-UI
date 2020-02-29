@@ -33,10 +33,10 @@ class RegisterPage extends React.Component {
             confPass,
             numberRegex,
             spcCharRegex,
-            checklength
+            checkLength
         } = this.props.registerForm
         if (username && password && confPass && email) {
-            if (checklength && numberRegex && spcCharRegex) {
+            if (checkLength && numberRegex && spcCharRegex) {
                 if (password === confPass) {
                     var obj = {
                         username,
@@ -90,7 +90,7 @@ class RegisterPage extends React.Component {
                             type="password"
                             placeholder="Password"
                             ref='password'
-                            onChange={(e) => this.props.checkPass(e)}
+                            onChange={(e) => this.checkPass(e)}
                         ></input>
                         <br />
                         <div className="headline-login">Confirm Password</div>
@@ -102,22 +102,22 @@ class RegisterPage extends React.Component {
                         ></input>
                         <br />
                         {
-                            this.state.showErr
+                            this.props.registerForm.showErr
                                 ?
                                 <div className="err-wrapper">
-                                    {this.state.checklength
+                                    {this.props.registerForm.checkLength
                                         ?
                                         <p className="text-success">Password length more than 8 characters</p>
                                         :
                                         <p className="text-danger">Password length must be more than 8 characters</p>
                                     }
-                                    {this.state.numberRegex
+                                    {this.props.registerForm.numberRegex
                                         ?
                                         <p className="text-success">Password contains numeric character</p>
                                         :
                                         <p className="text-danger">Password must contains numeric character</p>
                                     }
-                                    {this.state.spcCharRegex
+                                    {this.props.registerForm.spcCharRegex
                                         ?
                                         <p className="text-success">Password contains special character</p>
                                         :

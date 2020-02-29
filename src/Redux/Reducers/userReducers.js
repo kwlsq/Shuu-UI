@@ -2,7 +2,8 @@ import {
     LOGIN,
     LOGOUT,
     REGISTER_SUCCESS,
-    REGISTER_FAIL
+    REGISTER_FAIL,
+    SHOW_USER_TABLE
 } from '../Actions/types';
 
 const INITIAL_STATE = {
@@ -12,7 +13,8 @@ const INITIAL_STATE = {
     verified: 0,
     id_role: 0,
     token: '',
-    redirectVerify: false
+    redirectVerify: false,
+    tableUser: []
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -29,9 +31,11 @@ export default (state = INITIAL_STATE, action) => {
         case LOGOUT:
             return INITIAL_STATE
         case REGISTER_SUCCESS:
-            return { redirectVerify: true }
+            return { ...state, redirectVerify: true }
         case REGISTER_FAIL:
-            return { redirectVerify: false }
+            return { ...state, redirectVerify: false }
+        case SHOW_USER_TABLE:
+            return { ...state, tableUser: action.payload }
         default:
             return INITIAL_STATE
     }

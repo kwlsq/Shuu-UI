@@ -4,7 +4,8 @@ import {
     LOGIN,
     LOGOUT,
     REGISTER_FAIL,
-    REGISTER_SUCCESS
+    REGISTER_SUCCESS,
+    SHOW_USER_TABLE
 } from '../Actions/types'
 export const register = (obj) => {
     return (dispatch) => {
@@ -104,5 +105,25 @@ export const verify = (username, password) => {
                     type: REGISTER_FAIL
                 })
             })
+    }
+}
+
+export const getUsersData = () => {
+    return (dispatch) => {
+        var token = localStorage.getItem('token')
+        console.log(token)
+        axios.get(API_URL_1 + '/users', {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }).then((res) => {
+            console.log(res.data)
+            dispatch({
+                type: SHOW_USER_TABLE,
+                payload: res.data
+            })
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 }

@@ -17,7 +17,6 @@ class LoginPage extends React.Component {
     }
     render() {
         if (localStorage.getItem('token')) {
-            console.log(localStorage.getItem('token'))
             return (
                 <Redirect to='/' />
             )

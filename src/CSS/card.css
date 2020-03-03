@@ -1,0 +1,12 @@
+.showcase{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: black;
+}
+
+.showcase-card{
+    width: 23%;
+    margin: 1%;
+}

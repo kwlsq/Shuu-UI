@@ -19,3 +19,10 @@
     grid-row: 7/9;
     grid-column: 1/13;
 }
+
+.showcase-wrapper{
+    border: solid 1px black;
+    margin-top: 10px;
+    grid-row: 9/15;
+    grid-column: 1/13
+}

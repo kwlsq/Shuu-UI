@@ -1,28 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardImg, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import { API_URL_1 } from '../Helpers/apiurl';
+import '../CSS/card.css';
+
 
 const CardComp = (props) => {
+    console.log(props.products)
+    const renderCardShowcase = () => {
+        return props.products.map((item, index) => {
+            return (
+                <Card key={index} className="showcase-card">
+                    <CardImg top width="100%" src={API_URL_1 + item.image} alt="Card image cap" />
+                    <CardBody style={{ textAlign: "center" }}>
+                        <CardTitle>{item.name}</CardTitle>
+                        <CardSubtitle>{new Intl.NumberFormat(['ban', 'id']).format(item.price)}</CardSubtitle>
+                        <Button>Add to Cart</Button>
+                    </CardBody>
+                </Card>
+            )
+
+        })
+    }
+
     return (
-        <div>
-            <Card>
-                <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
-                <CardBody>
-                    <CardTitle>Card title</CardTitle>
-                    <CardSubtitle>Card subtitle</CardSubtitle>
-                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                    <Button>Button</Button>
-                </CardBody>
-            </Card>
+        <div className="showcase">
+            {renderCardShowcase()}
         </div>
     );
 };
 
-const mapStateToProps = ({ brands }) => {
-    return { brands }
+const mapStateToProps = ({ products }) => {
+    return { products }
 }
 
 export default connect(mapStateToProps)(CardComp);

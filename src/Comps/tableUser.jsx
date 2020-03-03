@@ -5,9 +5,6 @@ import '../CSS/table.css'
 
 
 class TableUser extends React.Component {
-    componentDidMount() {
-
-    }
     renderTableUser = () => {
         var x = this.props.tableAdmin
         console.log('ini table', x)

@@ -4,6 +4,7 @@ import '../CSS/landingpage.css';
 import CarouselComp from '../Comps/carousel';
 import FeatureBar from '../Comps/featureBar';
 import CardComp from '../Comps/cards';
+import CarouselBrands from '../Comps/carouselOfficialBrands';
 import { getAllBrands } from '../Redux/Actions'
 
 class LandingPage extends React.Component {
@@ -22,6 +23,7 @@ class LandingPage extends React.Component {
                 </div>
                 <div className="upcoming-events">
                     <div className="card-header">Official Stores</div>
+                    <CarouselBrands />
                 </div>
                 <div className="items-wrapper">
                     <CardComp />

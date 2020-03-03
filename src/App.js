@@ -13,6 +13,7 @@ import AdminPage from './Pages/AdminPage';
 import VerificationPage from './Pages/VerificationPage';
 import { connect } from 'react-redux';
 import { keepLogin } from './Redux/Actions';
+import StorePage from './Pages/storePage';
 
 
 class App extends React.Component {
@@ -33,6 +34,7 @@ class App extends React.Component {
           <Route path="/feeds" component={Feeds} />
           <Route path="/brands" component={BrandsPage} />
           <Route path="/admin" component={AdminPage} />
+          <Route path="/store" component={StorePage} />
           <Route path="/verified" component={VerificationPage} />
           {/* <Route path="*" component={NotFoundPage} /> */}
         </Switch>

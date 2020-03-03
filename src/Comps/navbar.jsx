@@ -77,6 +77,7 @@ const NavbarComp = (props) => {
                         <input type="text" placeholder="search"></input>
                         <button><i className="fas fa-search"></i></button>
                     </div>
+
                     <div className="button-login">
                         <Link to='/store'>
                             {props.username}

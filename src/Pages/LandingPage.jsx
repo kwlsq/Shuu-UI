@@ -11,7 +11,6 @@ import {
     getAllBrands,
     showShowcaseProducts
 } from '../Redux/Actions'
-
 class LandingPage extends React.Component {
     componentDidMount() {
         this.props.getAllBrands()
@@ -40,5 +39,8 @@ class LandingPage extends React.Component {
 }
 
 
+const mapStateToProps = ({ products }) => {
+    return { products }
+}
 
-export default connect(null, { getAllBrands, showShowcaseProducts })(LandingPage);
+export default connect(mapStateToProps, { getAllBrands, showShowcaseProducts })(LandingPage);

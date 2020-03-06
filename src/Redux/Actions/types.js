@@ -13,5 +13,7 @@ export const SHOW_OFFICIAL_STORES = 'SHOW_OFFICIAL_STORES';
 
 //action types productsReducer.js
 export const SHOW_SHOWCASE_PRODUCTS = 'SHOW_SHOWCASE_PRODUCTS';
+export const SHOW_PRODUCT_DETAIL = 'SHOW_PRODUCT_DETAIL';
+
 
 

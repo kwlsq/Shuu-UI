@@ -25,7 +25,7 @@ export const register = (obj) => {
                                 type: REGISTER_SUCCESS
                             })
                         }).catch((err) => {
-                            console.log(err.response.data)
+                            console.log(err)
                             dispatch({
                                 type: REGISTER_FAIL
                             })
@@ -34,7 +34,7 @@ export const register = (obj) => {
                     alert('Username has been taken')
                 }
             }).catch((err) => {
-                console.log(err.response.data)
+                console.log(err)
             })
     }
 }
@@ -74,7 +74,7 @@ export const keepLogin = () => {
                     payload: res.data
                 })
             }).catch((err) => {
-                console.log(err.response.data)
+                console.log(err)
                 dispatch({
                     type: LOGOUT
                 })
@@ -100,7 +100,7 @@ export const verify = (username, password) => {
                     type: REGISTER_SUCCESS
                 })
             }).catch((err) => {
-                console.log(err.response.data)
+                console.log(err)
                 dispatch({
                     type: REGISTER_FAIL
                 })

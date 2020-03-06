@@ -40,6 +40,11 @@ const NavbarComp = (props) => {
                             {props.username}
                         </Link>
                     </div>
+                    <div className="button-login">
+                        <Link to='/cart'>
+                            <i class="fas fa-shopping-bag"></i>
+                        </Link>
+                    </div>
                     <div className="button-register">
                         <Link to='/' onClick={props.logout}>
                             Log Out
@@ -133,7 +138,7 @@ const NavbarComp = (props) => {
                 </div>
             </div>
         )
-    } else if (!localStorage.getItem('token')) {
+    } else {
         console.log('ini belom login')
         return (
             <div className="navbar-wrapper">
@@ -174,10 +179,6 @@ const NavbarComp = (props) => {
                     </div>
                 </div>
             </div>
-        )
-    } else {
-        return (
-            <div>Belum ke load</div>
         )
     }
 }

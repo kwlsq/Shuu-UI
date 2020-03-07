@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { register, onRegisterText } from '../Redux/Actions';
 import { Redirect } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+
 
 class RegisterPage extends React.Component {
     checkPass = (e) => {
@@ -67,69 +69,71 @@ class RegisterPage extends React.Component {
         } else {
             return (
                 <div className="loginpage-wrapper">
-                    <div className="login-form-wrapper">
-                        <div className="headline-login">Username</div>
-                        <input
-                            className="login-input"
-                            type="text"
-                            placeholder="Username"
-                            onChange={(e) => this.props.onRegisterText('username', e.target.value)}
-                        ></input>
-                        <br />
-                        <div className="headline-login">Email</div>
-                        <input
-                            className="login-input"
-                            type="email"
-                            placeholder="Email"
-                            onChange={(e) => this.props.onRegisterText('email', e.target.value)}
-                        ></input>
-                        <br />
-                        <div className="headline-login">Password</div>
-                        <input
-                            className="login-input"
-                            type="password"
-                            placeholder="Password"
-                            ref='password'
-                            onChange={(e) => this.checkPass(e)}
-                        ></input>
-                        <br />
-                        <div className="headline-login">Confirm Password</div>
-                        <input
-                            className="login-input"
-                            type="password"
-                            placeholder="Confirm Password"
-                            onChange={(e) => this.props.onRegisterText('confPass', e.target.value)}
-                        ></input>
-                        <br />
-                        {
-                            this.props.registerForm.showErr
-                                ?
-                                <div className="err-wrapper">
-                                    {this.props.registerForm.checkLength
-                                        ?
-                                        <p className="text-success">Password length more than 8 characters</p>
-                                        :
-                                        <p className="text-danger">Password length must be more than 8 characters</p>
-                                    }
-                                    {this.props.registerForm.numberRegex
-                                        ?
-                                        <p className="text-success">Password contains numeric character</p>
-                                        :
-                                        <p className="text-danger">Password must contains numeric character</p>
-                                    }
-                                    {this.props.registerForm.spcCharRegex
-                                        ?
-                                        <p className="text-success">Password contains special character</p>
-                                        :
-                                        <p className="text-danger">Password must contains special character</p>
-                                    }
-                                </div>
-                                :
-                                <div />
-                        }
-                        <br />
-                        <input type="button" onClick={this.onBtnClickSignUp} value="Register" className="register-button"></input>
-                    </div>
+                    <Fade top duration={1000} distance="50px">
+                        <div className="login-form-wrapper">
+                            <div className="headline-login">Username</div>
+                            <input
+                                className="login-input"
+                                type="text"
+                                placeholder="Username"
+                                onChange={(e) => this.props.onRegisterText('username', e.target.value)}
+                            ></input>
+                            <br />
+                            <div className="headline-login">Email</div>
+                            <input
+                                className="login-input"
+                                type="email"
+                                placeholder="Email"
+                                onChange={(e) => this.props.onRegisterText('email', e.target.value)}
+                            ></input>
+                            <br />
+                            <div className="headline-login">Password</div>
+                            <input
+                                className="login-input"
+                                type="password"
+                                placeholder="Password"
+                                ref='password'
+                                onChange={(e) => this.checkPass(e)}
+                            ></input>
+                            <br />
+                            <div className="headline-login">Confirm Password</div>
+                            <input
+                                className="login-input"
+                                type="password"
+                                placeholder="Confirm Password"
+                                onChange={(e) => this.props.onRegisterText('confPass', e.target.value)}
+                            ></input>
+                            <br />
+                            {
+                                this.props.registerForm.showErr
+                                    ?
+                                    <div className="err-wrapper">
+                                        {this.props.registerForm.checkLength
+                                            ?
+                                            <p className="text-success">Password length more than 8 characters</p>
+                                            :
+                                            <p className="text-danger">Password length must be more than 8 characters</p>
+                                        }
+                                        {this.props.registerForm.numberRegex
+                                            ?
+                                            <p className="text-success">Password contains numeric character</p>
+                                            :
+                                            <p className="text-danger">Password must contains numeric character</p>
+                                        }
+                                        {this.props.registerForm.spcCharRegex
+                                            ?
+                                            <p className="text-success">Password contains special character</p>
+                                            :
+                                            <p className="text-danger">Password must contains special character</p>
+                                        }
+                                    </div>
+                                    :
+                                    <div />
+                            }
+                            <br />
+                            <input type="button" onClick={this.onBtnClickSignUp} value="Register" className="register-button"></input>
+                        </div>
+                    </Fade>
                 </div>
             );
         }

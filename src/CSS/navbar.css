@@ -1,5 +1,31 @@
 .navbar-wrapper{
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+}
+
+.logo a,.button a,.button-login a,.button-register a{
+    transition: 1s;
+    color: #4571b9 ;
+}
+
+.logo{
+    font-family: 'Fredoka One', cursive;
+    font-size: 38px;
+}
+
+.logo,.button:hover,.button-login:hover,.button-register:hover,.button a:hover,.button-login a:hover,.button-register a:hover{
+    color: #22385c;
+}
+
+.logo a:hover,.logo a:active,.button a,.button-login a,.button-register a{
+    text-decoration: none !important;
+}
+
+.button:hover,.button-login:hover,.button-register:hover{
+    transform: scale(1.1);
+}
+
+.button:active,.button-login:active,.button-register:active,.logo{
+    transform: translateY(2px);
 }
 
 .nav-items{
@@ -22,14 +48,15 @@
     z-index: 1;
 }
 
-a:visited, a:active,a:hover,.logo{
-    color: #4571b9 ;
-    text-decoration: none !important;
+.searchbar input, .searchbar button{
+    outline: none !important;
+}
+
+.searchbar input {
+    border-radius: 10px 0 0 10px;
+}
+.searchbar button{
+    border-radius: 0 10px 10px 0;
     
 }
 
-
-.logo{
-    font-family: 'Fredoka One', cursive;
-    font-size: 38px;
-}

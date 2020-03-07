@@ -4,20 +4,20 @@
     align-items: center;
 }
 
- ::placeholder{
+::placeholder{
     padding-left: 5px;
-    color: #4571b9;
+    color: #0e4fb87a;
 }
 
 .login-form-wrapper{
     font-family: 'Raleway', sans-serif;
-
     border-radius: 10px;
     background: linear-gradient(145deg, #f7f7f7, #dadada);
     box-shadow: 3px 3px 8px #22385c , 
             -3px -3px 8px #ffffff;
     padding: 25px;
-    max-width: 300px;
+    min-width: 300px;
+    margin-top: 10px;
 }
 
 .login-input{
@@ -26,6 +26,12 @@
             -2px -2px 5px #ffffff;
     outline: none;
     margin-top: 10px;
+    width: 190px;
+    transition: 1s;
+    text-align: center;
+}
+
+.login-input:hover,.login-input:focus{
     width: 250px;
 }
 
@@ -40,6 +46,10 @@
 .login-button,.register-button{
     box-shadow: 2px 2px 4px #162338 , 
     -2px -2px 4px #ffffff;
+}
+
+.login-button:active,.register-button:active{
+    transform: translateY(2px);
 }
 
 .register-button{

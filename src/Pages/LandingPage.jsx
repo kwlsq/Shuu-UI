@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import '../CSS/landingpage.css';
 import '../CSS/card.css';
-
+import Fade from 'react-reveal/Fade';
 import CarouselComp from '../Comps/carousel';
 import FeatureBar from '../Comps/featureBar';
 import CardComp from '../Comps/cards';
@@ -19,20 +19,27 @@ class LandingPage extends React.Component {
 
     render() {
         return (
+
             <div className="landingpage-grid">
                 <FeatureBar />
-                <div className="carousel-wrapper"><CarouselComp /></div>
-                <div className="card-promo">
-                    <div className="card-header">Promo</div>
-
-                </div>
-                <div className="upcoming-events">
-                    <div className="card-header">Official Stores</div>
-                    <CarouselBrands />
-                </div>
+                <Fade bottom distance="50px" duration={1000}>
+                    <div className="carousel-wrapper"><CarouselComp /></div>
+                </Fade>
+                <Fade bottom distance="50px" duration={1000}>
+                    <div className="card-promo">
+                        <div className="card-header">Promo</div>
+                    </div>
+                </Fade>
+                <Fade bottom distance="50px" duration={1000}>
+                    <div className="upcoming-events">
+                        <div className="card-header">Official Stores</div>
+                        <CarouselBrands />
+                    </div>
+                </Fade>
                 <div className="showcase-wrapper">
                     <CardComp />
                 </div>
+
             </div>
         );
     }

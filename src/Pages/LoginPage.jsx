@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login, onInputText } from '../Redux/Actions';
+import Fade from 'react-reveal/Fade';
 import '../CSS/loginpage.css';
-
 
 class LoginPage extends React.Component {
     onBtnClickSignIn = () => {
@@ -23,33 +23,35 @@ class LoginPage extends React.Component {
         }
         return (
             <div className="loginpage-wrapper">
-                <div className="login-form-wrapper">
-                    <div className="headline-login">Username</div>
-                    <input
-                        className="login-input"
-                        type="text"
-                        placeholder="Username"
-                        onChange={(e) => this.props.onInputText('username', e.target.value)}
-                    ></input>
-                    <br />
-                    <div className="headline-login">Password</div>
-                    <input
-                        className="login-input"
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => this.props.onInputText('password', e.target.value)}
-                    ></input>
-                    <br />
-                    <div >
+                <Fade top duration={1000} distance="50px">
+                    <div className="login-form-wrapper">
+                        <div className="headline-login">Username</div>
                         <input
-                            type="button"
-                            onClick={this.onBtnClickSignIn}
-                            value="Login"
-                            className="login-button"
-                        />
-                        <Link to="/register" className="register-button">Register</Link>
+                            className="login-input"
+                            type="text"
+                            placeholder="Username"
+                            onChange={(e) => this.props.onInputText('username', e.target.value)}
+                        ></input>
+                        <br />
+                        <div className="headline-login">Password</div>
+                        <input
+                            className="login-input"
+                            type="password"
+                            placeholder="Password"
+                            onChange={(e) => this.props.onInputText('password', e.target.value)}
+                        ></input>
+                        <br />
+                        <div >
+                            <input
+                                type="button"
+                                onClick={this.onBtnClickSignIn}
+                                value="Login"
+                                className="login-button"
+                            />
+                            <Link to="/register" className="register-button">Register</Link>
+                        </div>
                     </div>
-                </div>
+                </Fade>
             </div>
         );
     }

@@ -12,7 +12,7 @@ class ProductDetail extends React.Component {
     render() {
         return (
             <div className="product-detail-wrapper">
-                <img src={API_URL_1 + this.props.products.productDetail.image} />
+                <img src={API_URL_1 + this.props.products.productDetail.image} alt="product detail" />
                 <div className="product-detail-texts">
                     <div>{this.props.products.productDetail.name}</div>
                     <div>{this.props.products.productDetail.brands}</div>

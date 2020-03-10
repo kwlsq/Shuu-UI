@@ -18,7 +18,7 @@ class CardComp extends React.Component {
 
                 <Card key={index} className="showcase-card" >
                     <Fade bottom distance="100px" duration={500}>
-                        <Link to={`/detail?id=${item.id}`}>
+                        <Link to={`/detail?id=${item.id}=${item.pn_id}`}>
                             <CardImg top width="100%" src={API_URL_1 + item.image} alt="Card image cap" />
                             <CardBody style={{ textAlign: "center" }}>
                                 <CardTitle>{item.name}</CardTitle>

@@ -43,7 +43,7 @@ class RegisterPage extends React.Component {
                     var obj = {
                         username,
                         password,
-                        email,
+                        email
                     }
                     this.props.register(obj)
                     return (

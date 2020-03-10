@@ -23,7 +23,7 @@ export default (state = INITIAL_STATE, action) => {
         case LOGOUT:
             return INITIAL_STATE
         case REGISTER_SUCCESS:
-            return { ...state, redirectVerify: true }
+            return { INITIAL_STATE, redirectVerify: true }
         case REGISTER_FAIL:
             return { ...state, redirectVerify: false }
         default:

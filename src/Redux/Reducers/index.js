@@ -5,6 +5,7 @@ import registerFormReducers from "./registerFormReducers";
 import brandsReducers from "./brandsReducers";
 import adminTablesReducers from "./adminTablesReducers";
 import productsReducers from "./productsReducers";
+import productDetailInputReducers from "./productDetailInputReducers";
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
     registerForm: registerFormReducers,
     brands: brandsReducers,
     tableAdmin: adminTablesReducers,
-    products: productsReducers
+    products: productsReducers,
+    productDetail: productDetailInputReducers
 })

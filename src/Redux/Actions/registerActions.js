@@ -1,4 +1,4 @@
-import { INPUT_TEXT } from '../Actions/types'
+import { INPUT_TEXT, REGISTER_FAIL } from '../Actions/types'
 
 export const onRegisterText = (prop, value) => {
     return {
@@ -7,5 +7,10 @@ export const onRegisterText = (prop, value) => {
             prop,
             value
         }
+    }
+}
+export const removeRedirect = () => {
+    return {
+        type: REGISTER_FAIL
     }
 }

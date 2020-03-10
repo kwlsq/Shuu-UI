@@ -42,7 +42,7 @@ const NavbarComp = (props) => {
                     </div>
                     <div className="button-login">
                         <Link to='/cart'>
-                            <i class="fas fa-shopping-bag"></i>
+                            <i className="fas fa-shopping-bag"></i>
                         </Link>
                     </div>
                     <div className="button-register">

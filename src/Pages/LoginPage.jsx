@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login, onInputText } from '../Redux/Actions';
+import { login, onInputText, removeRedirect } from '../Redux/Actions';
 import Fade from 'react-reveal/Fade';
 import '../CSS/loginpage.css';
 
 class LoginPage extends React.Component {
+    componentDidMount() {
+        this.props.removeRedirect()
+
+    }
     onBtnClickSignIn = () => {
         let { username, password } = this.props.loginForm
         if ((username && password)) {
@@ -64,4 +68,4 @@ const mapStatetoProps = ({ user, loginForm }) => {
     }
 }
 
-export default connect(mapStatetoProps, { login, onInputText })(LoginPage);
+export default connect(mapStatetoProps, { login, onInputText, removeRedirect })(LoginPage);

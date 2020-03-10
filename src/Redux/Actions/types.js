@@ -14,6 +14,14 @@ export const SHOW_OFFICIAL_STORES = 'SHOW_OFFICIAL_STORES';
 //action types productsReducer.js
 export const SHOW_SHOWCASE_PRODUCTS = 'SHOW_SHOWCASE_PRODUCTS';
 export const SHOW_PRODUCT_DETAIL = 'SHOW_PRODUCT_DETAIL';
+export const SHOW_PRODUCT_COLOR = 'SHOW_PRODUCT_COLOR';
+export const SHOW_PRODUCT_SIZE = 'SHOW_PRODUCT_SIZE';
+
+//acton types productDetailInputReducer.js
+export const ONCHANGE_SIZE = 'ONCHANGE_SIZE';
+export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
+export const ONCHANGE_QTY = 'ONCHANGE_QTY';
+
 
 
 

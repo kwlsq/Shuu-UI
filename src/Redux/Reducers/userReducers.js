@@ -3,6 +3,7 @@ import {
     LOGOUT,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
+    SHOW_USER_DETAIL,
 
 } from '../Actions/types';
 
@@ -14,6 +15,7 @@ const INITIAL_STATE = {
     role_id: 0,
     token: '',
     redirectVerify: false,
+    userDetail: []
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -26,6 +28,9 @@ export default (state = INITIAL_STATE, action) => {
             return { INITIAL_STATE, redirectVerify: true }
         case REGISTER_FAIL:
             return { ...state, redirectVerify: false }
+        case SHOW_USER_DETAIL:
+            console.log('masuk reducernya juga')
+            return { ...state, userDetail: action.payload }
         default:
             return state
     }

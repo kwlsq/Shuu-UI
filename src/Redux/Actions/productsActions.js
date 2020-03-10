@@ -3,7 +3,6 @@ import {
     SHOW_PRODUCT_DETAIL,
     SHOW_PRODUCT_COLOR,
     SHOW_PRODUCT_SIZE,
-    ONCHANGE_COLOR,
     ONCHANGE_SIZE,
     ONCHANGE_QTY
 } from '../Actions/types';

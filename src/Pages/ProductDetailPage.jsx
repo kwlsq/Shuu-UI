@@ -53,9 +53,12 @@ class ProductDetail extends React.Component {
                         value={this.props.productDetail.qty}
                         InputProps={{ inputProps: { min: 0, max: `${this.props.products.productDetail.stock}` } }}
                         onChange={(e) => this.props.onChangeQty(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                        style={{ minWidth: 100 }}
                     />
                     {
-                        this.props.productDetail.qty <= 1
+                        this.props.productDetail.qty < 1
                             ?
                             <InputLabel id="demo-simple-select-label">Minimum quantity: 1</InputLabel>
                             :

@@ -8,14 +8,14 @@ class NotFound extends Component {
     render() {
         return (
             <div id="notfound">
-                <div class="notfound-bg">
+                <div className="notfound-bg">
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-                <div class="notfound">
-                    <div class="notfound-404">
+                <div className="notfound">
+                    <div className="notfound-404">
                         <h1>404</h1>
                     </div>
                     <h2>Page Not Found</h2>

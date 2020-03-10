@@ -1,0 +1,38 @@
+.user-profile-page-wrapper{
+    margin: 0 11em;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(40px, auto);
+    font-family: 'Raleway',sans-serif;
+    /* background-color: white; */
+}
+.edit-profile-header{
+    grid-row: 1/3;
+    grid-column: 3/13;
+    padding: 10px;
+    width: 100%;
+    background-color: white;
+}
+
+.left-nav-wrapper{
+    grid-row: 1/auto;
+    grid-column: 1/3;
+    width: 100%;
+    background-color: white;
+}
+
+.edit-profile-wrapper{
+    grid-row: 2/auto;
+    grid-column: 3/13;
+    width: 100%;
+    background-color: white;
+    display: flex;
+}
+
+.profile-detail-wrapper,.edit-image-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding-bottom: 40px;
+}

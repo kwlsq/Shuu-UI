@@ -26,7 +26,7 @@ class App extends React.Component {
   }
   render() {
     //SuperAdmmin
-    if (this.props.user.id == 1) {
+    if (this.props.user.role_id === 1) {
       return (
         <div>
           <NavbarComp />
@@ -39,7 +39,6 @@ class App extends React.Component {
             <Route path="/feeds" component={Feeds} />
             <Route path="/brands" component={BrandsPage} />
             <Route path="/admin" component={AdminPage} />
-            <Route path="/store" component={StorePage} />
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/cart" component={CartPage} />
@@ -47,7 +46,7 @@ class App extends React.Component {
           </Switch>
         </div>
       )
-    } else if (this.props.user.id == 2) {
+    } else if (this.props.user.role_id === 2) {
       //Store
       return (
         <div>
@@ -68,7 +67,7 @@ class App extends React.Component {
           </Switch>
         </div>
       )
-    } else if (this.props.user.id == 3) {
+    } else if (this.props.user.role_id === 3) {
       return (
         <div>
           <NavbarComp />
@@ -80,9 +79,9 @@ class App extends React.Component {
             <Route path="/women" component={WomenPage} />
             <Route path="/feeds" component={Feeds} />
             <Route path="/brands" component={BrandsPage} />
-            <Route path="/profile" component={UserProfilePage} />
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
+            <Route path="/profile" component={UserProfilePage} />
             <Route path="/cart" component={CartPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
@@ -100,7 +99,6 @@ class App extends React.Component {
             <Route path="/women" component={WomenPage} />
             <Route path="/feeds" component={Feeds} />
             <Route path="/brands" component={BrandsPage} />
-            <Route path="/store" component={StorePage} />
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="*" component={NotFoundPage} />

@@ -5,7 +5,8 @@ import {
     LOGOUT,
     REGISTER_FAIL,
     REGISTER_SUCCESS,
-    SHOW_USER_TABLE
+    SHOW_USER_TABLE,
+    SHOW_USER_DETAIL
 } from '../Actions/types'
 export const register = (obj) => {
     return (dispatch) => {
@@ -127,3 +128,27 @@ export const getUsersData = () => {
         })
     }
 }
+
+export const getUserDetail = () => {
+    return async (dispatch) => {
+        try {
+            console.log('masukgetuserdetail')
+            var token = await localStorage.getItem('token')
+            const options = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+            const res = await axios.put(API_URL_1 + '/users/profile', {}, options)
+            console.log(res.data)
+            dispatch({
+                type: SHOW_USER_DETAIL,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+}
+

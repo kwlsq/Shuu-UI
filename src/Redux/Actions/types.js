@@ -26,6 +26,21 @@ export const ONCHANGE_QTY = 'ONCHANGE_QTY';
 //action types editProfileReducers.js
 export const ADD_PROFILE_PICTURE = 'ADD_PROFILE_PICTURE';
 export const UPLOAD_PROFPIC_SUCCESS = 'UPLOAD_PROFPIC_SUCCESS';
+export const OPEN_EDIT_PROFILE = 'OPEN_EDIT_PROFILE';
+export const EDIT_PROFILE_SAVED = 'EDIT_PROFILE_SAVED';
+export const EDIT_FIRST_NAME = 'EDIT_FIRST_NAME';
+export const EDIT_LAST_NAME = 'EDIT_LAST_NAME';
+export const EDIT_BIRTH_DATE = 'EDIT_BIRTH_DATE';
+export const EDIT_GENDER = 'EDIT_GENDER';
+export const GET_PROVINCE = 'GET_PROVINCE';
+export const GET_CITY = 'GET_CITY';
+export const EDIT_PROVINCE = 'EDIT_PROVINCE';
+// export const EDIT_EMAIL = 'EDIT_EMAIL';
+export const EDIT_CITY = 'EDIT_CITY';
+export const EDIT_ADDRESS_DETAIL = 'EDIT_ADDRESS_DETAIL';
+export const CLOSE_EDIT_PROFILE = 'CLOSE_EDIT_PROFILE';
+export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
+
 
 
 

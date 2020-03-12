@@ -4,7 +4,8 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     SHOW_USER_DETAIL,
-    UPLOAD_PROFPIC_SUCCESS
+    UPLOAD_PROFPIC_SUCCESS,
+    EDIT_PROFILE_SUCCESS
 } from '../Actions/types';
 
 const INITIAL_STATE = {
@@ -33,6 +34,9 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, userDetail: action.payload }
         case UPLOAD_PROFPIC_SUCCESS:
             console.log(action.payload, 'UPLOAD SUKSES REDUCER')
+            return { ...state, userDetail: action.payload }
+        case EDIT_PROFILE_SUCCESS:
+            console.log(action.payload, 'masuk edit prof reducer')
             return { ...state, userDetail: action.payload }
         default:
             return state

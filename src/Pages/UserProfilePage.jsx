@@ -17,7 +17,7 @@ class UserProfilePage extends React.Component {
 
     onClickUploadImage = () => {
         if (this.props.editProfileInputs.image) {
-            this.props.uploadImage(this.props.editProfileInputs)
+            this.props.uploadImage(this.props.editProfileInputs, this.props.userDetail.ud_id)
             console.log(this.props.editProfileInputs.image)
         } else {
             alert('Please Choose a File')

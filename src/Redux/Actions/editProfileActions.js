@@ -12,7 +12,7 @@ export const storeImage = (image) => {
     }
 }
 
-export const uploadImage = ({ image }) => {
+export const uploadImage = ({ image }, ud_id) => {
     return async (dispatch) => {
         try {
             console.log('masuk action upload image', image.name)
@@ -26,14 +26,15 @@ export const uploadImage = ({ image }) => {
 
             const formData = await new FormData();
             formData.append('image', image)
-            formData.append('tulisan', 'tulisan')
+            formData.append('ud_id', ud_id)
 
 
             const res = await axios.post(API_URL_1 + '/editprofile/addprofpic', formData, options)
-            // console.log(res.data)
+            console.log(res.data)
 
             dispatch({
-                type: UPLOAD_PROFPIC_SUCCESS
+                type: UPLOAD_PROFPIC_SUCCESS,
+                payload: res.data
             })
         } catch (err) {
             console.log(err)

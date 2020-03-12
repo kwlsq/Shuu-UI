@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, image: action.payload }
         case UPLOAD_PROFPIC_SUCCESS:
             console.log(action.payload, 'UPLOAD SUKSES REDUCER')
-            return {}
+            return { INITIAL_STATE }
         default:
             return state
     }

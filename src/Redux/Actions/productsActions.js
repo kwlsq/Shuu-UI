@@ -4,7 +4,11 @@ import {
     SHOW_PRODUCT_COLOR,
     SHOW_PRODUCT_SIZE,
     ONCHANGE_SIZE,
-    ONCHANGE_QTY
+    ONCHANGE_QTY,
+    PRODUCT_BY_SIZE,
+    CLOSE_DIALOG,
+    REDIRECT_TO_CART,
+    OPEN_DIALOG
 } from '../Actions/types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -28,7 +32,7 @@ export const showProductDetail = (id) => {
         try {
             console.log(id)
             const res = await axios.post(API_URL_1 + `/products/detailproduct`, { id })
-            console.log(res.data)
+            console.log(res.data, 'showproductdetail')
             dispatch({
                 type: SHOW_PRODUCT_DETAIL,
                 payload: res.data
@@ -67,12 +71,26 @@ export const showAvailableSize = (id) => {
     }
 }
 
-export const onChangeSize = (size) => {
-    console.log('masuk 2')
-    return {
-        type: ONCHANGE_SIZE,
-        payload: size
+export const onChangeSize = (size, id) => {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type: ONCHANGE_SIZE,
+                payload: size
+            })
+            console.log(size, id, 'actionnyaaaaaa')
+            const res = await axios.post(API_URL_1 + `/products/detailproductbysize`, { size, id })
+            console.log(res.data, 'isinya')
+            dispatch({
+                type: PRODUCT_BY_SIZE,
+                payload: res.data
+            })
+
+        } catch (err) {
+            console.log(err)
+        }
     }
+
 }
 
 export const onChangeQty = (qty) => {
@@ -81,4 +99,15 @@ export const onChangeQty = (qty) => {
         type: ONCHANGE_QTY,
         payload: qty
     }
+}
+
+export const closeDialog = () => {
+    return { type: CLOSE_DIALOG }
+}
+
+export const redirectToCart = () => {
+    return { type: REDIRECT_TO_CART }
+}
+export const openDialog = () => {
+    return { type: OPEN_DIALOG }
 }

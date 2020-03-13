@@ -7,6 +7,7 @@ import adminTablesReducers from "./adminTablesReducers";
 import productsReducers from "./productsReducers";
 import productDetailInputReducers from "./productDetailInputReducers";
 import editProfileReducers from "./editProfileReducers";
+import transactionReducers from "./transactionReducers";
 
 
 export default combineReducers({
@@ -17,5 +18,6 @@ export default combineReducers({
     tableAdmin: adminTablesReducers,
     products: productsReducers,
     productDetail: productDetailInputReducers,
-    editProfileInputs: editProfileReducers
+    editProfileInputs: editProfileReducers,
+    transaction: transactionReducers
 })

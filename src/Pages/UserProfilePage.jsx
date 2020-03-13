@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import FormControl from '@material-ui/core/FormControl';
 import moment from 'moment';
@@ -86,7 +84,7 @@ class UserProfilePage extends React.Component {
         // if (!birthDateEdit.isValid) {
         //     birthDateEdit = moment(birth_date).format("YYYY-MM-DD")
         // }
-        //ada bug, harus isi date, kalau ga diisi, nanti saat dikosongin dan disave, akan keisi tanggal hari ini, lalu percobaan kedua bakal error
+        //ada bug, harus isi date, kalau ga diisi, nanti saat dikosongin dan disave, akan keisi tanggal hari ini
         if (genderEdit === '' || genderEdit === undefined) {
             genderEdit = gender
         }
@@ -157,15 +155,14 @@ class UserProfilePage extends React.Component {
                             style={{ maxWidth: 400, marginBottom: 10 }}
                         />
                         <FormControl style={{ maxWidth: 400, marginBottom: 10 }}>
-                            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
-                            <Select
+                            <select
                                 defaultValue={'DEFAULT'}
                                 onChange={(e) => this.props.onChangeGender(e.target.value)}
                             >
                                 <option value="DEFAULT" disabled>Gender </option>
                                 <option value="M">Male </option>
                                 <option value="F">Female </option>
-                            </Select>
+                            </select>
                         </FormControl>
                         <h5 style={{ borderBottom: 'solid 3px black' }}>Contact</h5>
                         <p >

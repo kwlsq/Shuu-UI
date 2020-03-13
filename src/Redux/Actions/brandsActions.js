@@ -21,3 +21,14 @@ export const getAllBrands = () => {
     }
 
 }
+
+export const getBrandsDetail = (id) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(API_URL_1 + `brads/detail/${id}`)
+            console.log(res.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}

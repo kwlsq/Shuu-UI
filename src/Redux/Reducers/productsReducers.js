@@ -2,7 +2,8 @@ import {
     SHOW_SHOWCASE_PRODUCTS,
     SHOW_PRODUCT_DETAIL,
     SHOW_PRODUCT_COLOR,
-    SHOW_PRODUCT_SIZE
+    SHOW_PRODUCT_SIZE,
+    PRODUCT_BY_SIZE
 } from '../Actions/types'
 const INITIAL_STATE = {
     showcase: [],
@@ -21,6 +22,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, availColor: action.payload }
         case SHOW_PRODUCT_SIZE:
             return { ...state, availSize: action.payload }
+        case PRODUCT_BY_SIZE:
+            return { ...state, productDetail: action.payload }
         default:
             return state
     }

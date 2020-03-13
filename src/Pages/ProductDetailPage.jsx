@@ -4,14 +4,17 @@ import {
     showProductDetail,
     showAvailableSize,
     onChangeSize,
-    onChangeQty
+    onChangeQty,
+    addToCart,
+    closeDialog,
+    redirectToCart,
+    openDialog
 } from '../Redux/Actions';
 import { API_URL_1 } from '../Helpers/apiurl';
 import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
 import '../CSS/productdetail.css';
+import DialogAddTocart from '../Comps/dialogAddToCart';
 
 class ProductDetail extends React.Component {
     componentDidMount() {
@@ -29,9 +32,24 @@ class ProductDetail extends React.Component {
         })
     }
 
-    // onClickAddToCart = () => {
-    //     if (this.props.products.productDetail.stock)
-    // }
+    onChooseSize = (size) => {
+        this.props.onChangeSize(size, this.props.products.productDetail.pn_id)
+    }
+    onClickAddToCart = () => {
+        if (this.props.productDetail.qty !== 0 && this.props.productDetail.qty <= this.props.products.productDetail.stock && this.props.productDetail.size) {
+            this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
+            return this.props.openDialog()
+        }
+        alert('Please check your quantity and size forms')
+    }
+
+    onClickBuy = () => {
+        if (this.props.productDetail.qty !== 0 && this.props.productDetail.qty <= this.props.products.productDetail.stock && this.props.productDetail.size) {
+            return this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
+            // return this.props.redirectToCart()
+        }
+        alert('Please check your quantity and size forms')
+    }
 
     render() {
         return (
@@ -40,23 +58,18 @@ class ProductDetail extends React.Component {
                 <div className="product-detail-texts">
                     <div>{this.props.products.productDetail.name}</div>
                     <div>{this.props.products.productDetail.brands}</div>
-                    <div>Rating</div>
-                    <div>Terjual Berapa</div>
-                    <div>Views {this.props.products.productDetail.views}</div>
-                    <div>Rp {new Intl.NumberFormat(['ban', 'id']).format(this.props.products.productDetail.price)}</div>
+                    {/* <div>Rating</div> */}
+                    {/* <div>Terjual Berapa</div> */}
+                    {/* <div>Views {this.props.products.productDetail.views}</div> */}
+                </div>
+                <div className="product-detail-price">
+                    <div>
+                        Price
+                    </div>
+                    Rp {new Intl.NumberFormat(['ban', 'id']).format(this.props.products.productDetail.price)}
                 </div>
                 <div className="product-detail-count">
                     <div>Stock :{this.props.products.productDetail.stock}</div>
-                    <TextField
-                        label="Quantity"
-                        type='number'
-                        value={this.props.productDetail.qty}
-                        InputProps={{ inputProps: { min: 0, max: `${this.props.products.productDetail.stock}` } }}
-                        onChange={(e) => this.props.onChangeQty(e.target.value)}
-                        variant="outlined"
-                        size="small"
-                        style={{ minWidth: 100 }}
-                    />
                     {
                         this.props.productDetail.qty < 1
                             ?
@@ -65,30 +78,53 @@ class ProductDetail extends React.Component {
                             <div />
                     }
                     {
-                        this.props.productDetail.qty >= this.props.products.productDetail.stock
+                        this.props.productDetail.qty > this.props.products.productDetail.stock
                             ?
                             <InputLabel id="demo-simple-select-label">Maximum quantity: {this.props.products.productDetail.stock}</InputLabel>
                             :
                             <div />
                     }
+                    <input
+                        label="Quantity"
+                        type='number'
+                        value={this.props.productDetail.qty}
+                        min={0}
+                        max={this.props.products.productDetail.stock}
+                        onChange={(e) => this.props.onChangeQty(e.target.value)}
+                        // variant="outlined"
+                        // size="small"
+                        style={{ minWidth: 100 }}
+                    />
                 </div>
                 <div className="product-detail-size">
                     <FormControl style={{ minWidth: 120 }}>
-                        <InputLabel id="demo-simple-select-label">Choose Size</InputLabel>
-                        <Select
-                            defaultValue={'DEFAULT'}
-                            onChange={(e) => this.props.onChangeSize(e.target.value)}
+                        <select
+                            value={this.props.productDetail.size}
+                            onChange={(e) => this.onChooseSize(e.target.value)}
                         >
-                            <option value="DEFAULT" disabled>Size </option>
+                            <option disabled value=''>Choose Size</option>
+
                             {this.renderListSize()}
-                        </Select>
+                        </select>
                     </FormControl>
                 </div>
-                <div className="product-detail-ongkir">Ongkos Kirim</div>
                 <div className="product-detail-button-wrapper">
-                    <button>Buy</button>
-                    <button onClick={this.onClickAddToCart}>Add to Cart</button>
+                    <a href='/cart'>
+                        <button className="button-buy" onClick={this.onClickBuy}>Buy</button>
+                    </a>
+                    <button className="button-add-to-cart" onClick={this.onClickAddToCart}>Add to Cart</button>
                 </div>
+                {
+                    this.props.productDetail.popDialog
+                        ?
+                        <DialogAddTocart
+                            open={this.props.productDetail.popDialog}
+                            close={this.props.closeDialog}
+                            redirect={this.props.redirectToCart}
+                        />
+                        :
+                        <div />
+                }
             </div >
         )
     }
@@ -102,5 +138,9 @@ export default connect(mapStateToProps, {
     showProductDetail,
     showAvailableSize,
     onChangeSize,
-    onChangeQty
+    onChangeQty,
+    addToCart,
+    closeDialog,
+    redirectToCart,
+    openDialog
 })(ProductDetail);

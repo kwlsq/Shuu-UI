@@ -20,8 +20,11 @@ export const SHOW_PRODUCT_SIZE = 'SHOW_PRODUCT_SIZE';
 
 //acton types productDetailInputReducers.js
 export const ONCHANGE_SIZE = 'ONCHANGE_SIZE';
-export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
 export const ONCHANGE_QTY = 'ONCHANGE_QTY';
+export const PRODUCT_BY_SIZE = 'PRODUCT_BY_SIZE';
+export const OPEN_DIALOG = 'OPEN_DIALOG';
+export const CLOSE_DIALOG = 'CLOSE_DIALOG';
+export const REDIRECT_TO_CART = 'REDIRECT_TO_CART';
 
 //action types editProfileReducers.js
 export const ADD_PROFILE_PICTURE = 'ADD_PROFILE_PICTURE';
@@ -40,6 +43,11 @@ export const EDIT_CITY = 'EDIT_CITY';
 export const EDIT_ADDRESS_DETAIL = 'EDIT_ADDRESS_DETAIL';
 export const CLOSE_EDIT_PROFILE = 'CLOSE_EDIT_PROFILE';
 export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
+
+//action types transactionReducers.js 
+export const ADD_TO_CART_SUCCESS = 'EDIT_PROFILE_SUCCESS';
+
+
 
 
 

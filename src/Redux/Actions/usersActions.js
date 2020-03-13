@@ -140,7 +140,7 @@ export const getUserDetail = () => {
                 }
             }
             const res = await axios.put(API_URL_1 + '/users/profile', {}, options)
-            console.log(res.data)
+            console.log(res.data, 'getuserdetail')
             dispatch({
                 type: SHOW_USER_DETAIL,
                 payload: res.data

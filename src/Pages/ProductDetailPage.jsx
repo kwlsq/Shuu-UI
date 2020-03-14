@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import {
     showProductDetail,
     showAvailableSize,
@@ -38,20 +39,26 @@ class ProductDetail extends React.Component {
     onClickAddToCart = () => {
         if (this.props.productDetail.qty !== 0 && this.props.productDetail.qty <= this.props.products.productDetail.stock && this.props.productDetail.size) {
             this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
-            return this.props.openDialog()
+
+        } else {
+            alert('Please check your quantity and size forms')
         }
-        alert('Please check your quantity and size forms')
     }
 
     onClickBuy = () => {
         if (this.props.productDetail.qty !== 0 && this.props.productDetail.qty <= this.props.products.productDetail.stock && this.props.productDetail.size) {
-            return this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
-            // return this.props.redirectToCart()
+            this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
+            return this.props.redirectToCart()
         }
         alert('Please check your quantity and size forms')
     }
 
     render() {
+        if (this.props.productDetail.redirectToCart) {
+            return (
+                <Redirect to='/cart' />
+            )
+        }
         return (
             <div className="product-detail-wrapper">
                 <img src={API_URL_1 + this.props.products.productDetail.image} alt="product detail" />
@@ -70,6 +77,15 @@ class ProductDetail extends React.Component {
                 </div>
                 <div className="product-detail-count">
                     <div>Stock :{this.props.products.productDetail.stock}</div>
+                    <input
+                        label="Quantity"
+                        type='number'
+                        value={this.props.productDetail.qty}
+                        min={0}
+                        max={this.props.products.productDetail.stock}
+                        onChange={(e) => this.props.onChangeQty(e.target.value)}
+                        style={{ minWidth: 100 }}
+                    />
                     {
                         this.props.productDetail.qty < 1
                             ?
@@ -84,34 +100,23 @@ class ProductDetail extends React.Component {
                             :
                             <div />
                     }
-                    <input
-                        label="Quantity"
-                        type='number'
-                        value={this.props.productDetail.qty}
-                        min={0}
-                        max={this.props.products.productDetail.stock}
-                        onChange={(e) => this.props.onChangeQty(e.target.value)}
-                        // variant="outlined"
-                        // size="small"
-                        style={{ minWidth: 100 }}
-                    />
                 </div>
                 <div className="product-detail-size">
+                    <InputLabel id="demo-simple-select-label">Choose Size</InputLabel>
                     <FormControl style={{ minWidth: 120 }}>
                         <select
+
                             value={this.props.productDetail.size}
                             onChange={(e) => this.onChooseSize(e.target.value)}
                         >
-                            <option disabled value=''>Choose Size</option>
+                            <option disabled value=''>Size List</option>
 
                             {this.renderListSize()}
                         </select>
                     </FormControl>
                 </div>
                 <div className="product-detail-button-wrapper">
-                    <a href='/cart'>
-                        <button className="button-buy" onClick={this.onClickBuy}>Buy</button>
-                    </a>
+                    <button className="button-buy" onClick={this.onClickBuy}>Buy</button>
                     <button className="button-add-to-cart" onClick={this.onClickAddToCart}>Add to Cart</button>
                 </div>
                 {
@@ -131,8 +136,8 @@ class ProductDetail extends React.Component {
 }
 
 
-const mapStateToProps = ({ products, productDetail }) => {
-    return { products, productDetail }
+const mapStateToProps = ({ products, productDetail, transaction }) => {
+    return { products, productDetail, transaction }
 }
 export default connect(mapStateToProps, {
     showProductDetail,

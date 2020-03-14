@@ -8,7 +8,8 @@ import {
     PRODUCT_BY_SIZE,
     CLOSE_DIALOG,
     REDIRECT_TO_CART,
-    OPEN_DIALOG
+    OPEN_DIALOG,
+    STOP_REDIRECT_TO_CART
 } from '../Actions/types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -110,4 +111,7 @@ export const redirectToCart = () => {
 }
 export const openDialog = () => {
     return { type: OPEN_DIALOG }
+}
+export const stopRedirectToCart = () => {
+    return { type: STOP_REDIRECT_TO_CART }
 }

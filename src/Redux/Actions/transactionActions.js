@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 import {
-    ADD_TO_CART_SUCCESS
+    ADD_TO_CART_SUCCESS,
+    ADD_TO_CART_FAIL
+
 } from './types'
 import { API_URL_1 } from '../../Helpers/apiurl';
 
@@ -16,13 +18,18 @@ export const addToCart = (qty, id) => {
             }
 
             const res = await axios.post(API_URL_1 + `/transaction/addtocart`, { qty, id }, config)
-            console.log(res.data)
+            console.log(res.data, 'action transact2')
             dispatch({
                 type: ADD_TO_CART_SUCCESS,
                 payload: res.data
             })
         } catch (err) {
-            console.log(err.response.data)
+
+            dispatch({
+                type: ADD_TO_CART_FAIL,
+                payload: err.response.data.error
+            })
+            // return alert(err.response.data.error)
         }
     }
 }

@@ -25,6 +25,7 @@ export const PRODUCT_BY_SIZE = 'PRODUCT_BY_SIZE';
 export const OPEN_DIALOG = 'OPEN_DIALOG';
 export const CLOSE_DIALOG = 'CLOSE_DIALOG';
 export const REDIRECT_TO_CART = 'REDIRECT_TO_CART';
+export const STOP_REDIRECT_TO_CART = 'STOP_REDIRECT_TO_CART';
 
 //action types editProfileReducers.js
 export const ADD_PROFILE_PICTURE = 'ADD_PROFILE_PICTURE';
@@ -46,6 +47,8 @@ export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 
 //action types transactionReducers.js 
 export const ADD_TO_CART_SUCCESS = 'EDIT_PROFILE_SUCCESS';
+export const ADD_TO_CART_FAIL = 'ADD_TO_CART_FAIL';
+
 
 
 

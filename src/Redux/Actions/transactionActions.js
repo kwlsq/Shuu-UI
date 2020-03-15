@@ -81,5 +81,33 @@ export const getCart = () => {
     }
 }
 
+export const getAddresses = () => {
+    return async (dispatch) => {
+        try {
+            const token = await localStorage.getItem('token')
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        } catch (err) {
 
+        }
+    }
+}
+
+export const getOngkir = () => {
+    return async (dispatch) => {
+        try {
+            const token = await localStorage.getItem('token')
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        } catch (err) {
+            console.log(err, 'gagal cek ongkir')
+        }
+    }
+}
 

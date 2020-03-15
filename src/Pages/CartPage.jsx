@@ -66,7 +66,6 @@ class CartPage extends React.Component {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={this.props.deleteAll}
                         >
                             Buy
                         </Button>

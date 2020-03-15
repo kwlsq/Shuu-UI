@@ -48,6 +48,16 @@ export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 //action types transactionReducers.js 
 export const ADD_TO_CART_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 export const ADD_TO_CART_FAIL = 'ADD_TO_CART_FAIL';
+export const GET_CART = 'GET_CART';
+export const CHANGE_QTY_CART = 'CHANGE_QTY_CART';
+
+//action types cartPageInputReducer.js 
+export const CHANGE_QTY = 'CHANGE_QTY';
+export const GET_TOTAL_PAYMENT = 'GET_TOTAL_PAYMENT';
+export const DELETE_ALL_SUCCESS = 'DELETE_ALL_SUCCESS';
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const UPDATE_TOTAL_PAYMENT = 'UPDATE_TOTAL_PAYMENT';
+
 
 
 

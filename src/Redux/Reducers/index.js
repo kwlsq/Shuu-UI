@@ -8,6 +8,7 @@ import productsReducers from "./productsReducers";
 import productDetailInputReducers from "./productDetailInputReducers";
 import editProfileReducers from "./editProfileReducers";
 import transactionReducers from "./transactionReducers";
+import cartPageInputReducers from "./cartPageInputReducers";
 
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
     products: productsReducers,
     productDetail: productDetailInputReducers,
     editProfileInputs: editProfileReducers,
-    transaction: transactionReducers
+    transaction: transactionReducers,
+    cartPage: cartPageInputReducers
 })

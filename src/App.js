@@ -17,6 +17,7 @@ import StorePage from './Pages/storePage';
 import ProductDetailPage from './Pages/ProductDetailPage';
 import CartPage from './Pages/CartPage';
 import UserProfilePage from './Pages/UserProfilePage';
+import CheckOutPage from './Pages/CheckOutPage';
 
 
 class App extends React.Component {
@@ -83,6 +84,7 @@ class App extends React.Component {
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/profile" component={UserProfilePage} />
             <Route path="/cart" component={CartPage} />
+            <Route path="/checkout" component={CheckOutPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>

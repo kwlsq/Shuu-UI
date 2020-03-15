@@ -9,7 +9,8 @@ import {
     addToCart,
     closeDialog,
     redirectToCart,
-    openDialog
+    openDialog,
+    addToCartViaBuy
 } from '../Redux/Actions';
 import { API_URL_1 } from '../Helpers/apiurl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -38,16 +39,15 @@ class ProductDetail extends React.Component {
     }
     onClickAddToCart = () => {
         if (this.props.productDetail.qty !== 0 && this.props.productDetail.qty <= this.props.products.productDetail.stock && this.props.productDetail.size) {
-            this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
-
-        } else {
-            alert('Please check your quantity and size forms')
+            return this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
         }
+        alert('Please check your quantity and size forms')
+
     }
 
     onClickBuy = () => {
         if (this.props.productDetail.qty !== 0 && this.props.productDetail.qty <= this.props.products.productDetail.stock && this.props.productDetail.size) {
-            this.props.addToCart(this.props.productDetail.qty, this.props.products.productDetail.id)
+            this.props.addToCartViaBuy(this.props.productDetail.qty, this.props.products.productDetail.id)
             return this.props.redirectToCart()
         }
         alert('Please check your quantity and size forms')
@@ -147,5 +147,6 @@ export default connect(mapStateToProps, {
     addToCart,
     closeDialog,
     redirectToCart,
-    openDialog
+    openDialog,
+    addToCartViaBuy
 })(ProductDetail);

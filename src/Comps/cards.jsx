@@ -10,12 +10,10 @@ import { showProductDetail } from '../Redux/Actions'
 import Fade from 'react-reveal/Fade';
 import '../CSS/card.css';
 
-
 class CardComp extends React.Component {
     renderCardShowcase = () => {
         return this.props.products.map((item, index) => {
             return (
-
                 <Card key={index} className="showcase-card" >
                     <Fade bottom distance="100px" duration={500}>
                         <Link to={`/detail?id=${item.id}=${item.pn_id}`}>

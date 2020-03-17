@@ -4,11 +4,15 @@ import {
     GET_CART,
     CHANGE_QTY_CART,
     DELETE_ALL_SUCCESS,
-    DELETE_ITEM_SUCCESS
+    DELETE_ITEM_SUCCESS,
+    GET_USER_ADDRESS,
+    GET_ONGKIR
 } from '../Actions/types'
 
 const INITIAL_STATE = {
     cart: [],
+    address: {},
+    total_ongkir: 0,
     error: ''
 }
 
@@ -26,6 +30,11 @@ export default (state = INITIAL_STATE, action) => {
             return INITIAL_STATE
         case DELETE_ITEM_SUCCESS:
             return { ...state, cart: action.payload }
+        case GET_USER_ADDRESS:
+            return { ...state, address: action.payload }
+        case GET_ONGKIR:
+            console.log(action.payload, 'aweawew')
+            return { ...state, total_ongkir: action.payload }
         default:
             return state
     }

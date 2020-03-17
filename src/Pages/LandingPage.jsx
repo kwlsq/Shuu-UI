@@ -31,9 +31,11 @@ class LandingPage extends React.Component {
                     </div>
                 </Fade>
                 <Fade bottom distance="50px" duration={1000}>
-                    <div className="upcoming-events">
+                    <div className="official-brands">
                         <div className="card-header">Official Stores</div>
-                        <CarouselBrands />
+                        <div >
+                            <CarouselBrands />
+                        </div>
                     </div>
                 </Fade>
                 <div className="showcase-wrapper">

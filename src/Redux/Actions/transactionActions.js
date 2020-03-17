@@ -4,7 +4,9 @@ import {
     ADD_TO_CART_SUCCESS,
     ADD_TO_CART_FAIL,
     OPEN_DIALOG,
-    GET_CART
+    GET_CART,
+    GET_USER_ADDRESS,
+    GET_ONGKIR
 } from './types'
 import { API_URL_1 } from '../../Helpers/apiurl';
 
@@ -90,21 +92,33 @@ export const getAddresses = () => {
                     "Authorization": `Bearer ${token}`
                 }
             }
+            const res = await axios.post(API_URL_1 + `/users/address`, {}, config)
+            console.log(res.data)
+            dispatch({
+                type: GET_USER_ADDRESS,
+                payload: res.data
+            })
         } catch (err) {
-
+            console.log(err)
         }
     }
 }
 
-export const getOngkir = () => {
+export const getOngkir = (origin, destination, weight, courier, id) => {
     return async (dispatch) => {
         try {
-            const token = await localStorage.getItem('token')
-            const config = {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            }
+            const res = await axios.post(API_URL_1 + `/rajaongkir/ongkir`, {
+                origin,
+                destination,
+                weight,
+                courier,
+                id
+            })
+            console.log(res.data)
+            dispatch({
+                type: GET_ONGKIR,
+                payload: res.data.total_ongkir
+            })
         } catch (err) {
             console.log(err, 'gagal cek ongkir')
         }

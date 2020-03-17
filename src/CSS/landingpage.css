@@ -13,15 +13,20 @@
     grid-column: 1/13;
 }
 
-.upcoming-events{
+.official-brands{
     border: solid 1px black;
     margin-top: 10px;
-    grid-row: 7/9;
+    grid-row: 7/auto;
     grid-column: 1/13;
+    justify-content: centers;
+    background-color: white;
+    vertical-align: middle;
+    /* align-items: center; */
 }
+
 
 .showcase-wrapper{
     margin-top: 10px;
     grid-row: 9/15;
-    grid-column: 1/13
+    grid-column: 1/13;
 }

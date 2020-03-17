@@ -10,17 +10,18 @@ export const CarouselBrands = (props) => {
     const renderCardCarousel = () => {
         return props.brands.map((item, index) => {
             return (
-                <div
-                    key={index}
-                    style={{
-                        height: 160,
-                        backgroundImage: `url(${API_URL_1 + item.profilepic})`,
-                        backgroundSize: 'cover'
-                    }}
+                <div>
 
-                >
-                    {item.name}
+                    <img
+                        key={index}
+                        alt='brand image'
+                        src={API_URL_1 + item.profilepic}
+                        width='auto'
+                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '20px' }}
+                        height='200px'
+                    />
                 </div>
+
             )
         })
     }
@@ -30,10 +31,10 @@ export const CarouselBrands = (props) => {
                 infiniteLoop
                 requestToChangeActive={setActiveItemIndex}
                 activeItemIndex={activeItemIndex}
-                numberOfCards={6}
-                gutter={10}
-                leftChevron={<button>{'<'}</button>}
-                rightChevron={<button>{'>'}</button>}
+                numberOfCards={5}
+                gutter={20}
+                leftChevron={<button style={{ borderRadius: '30%', backgroundColor: '#22385c', color: 'white', textShadow: 'black', outline: 'none' }}>{'<'}</button>}
+                rightChevron={<button style={{ borderRadius: '30%', backgroundColor: '#22385c', color: 'white', textShadow: 'black', outline: 'none' }}>{'>'}</button>}
                 insideChevron
                 chevronWidth={chevronWidth}
             >

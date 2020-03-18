@@ -119,6 +119,7 @@ export const getOngkir = (origin, destination, weight, courier, id) => {
                 type: GET_ONGKIR,
                 payload: res.data.total_ongkir
             })
+
         } catch (err) {
             console.log(err, 'gagal cek ongkir')
         }

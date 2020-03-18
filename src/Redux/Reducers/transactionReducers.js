@@ -13,6 +13,7 @@ const INITIAL_STATE = {
     cart: [],
     address: {},
     total_ongkir: 0,
+    courier: '',
     error: ''
 }
 

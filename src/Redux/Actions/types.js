@@ -60,6 +60,12 @@ export const UPDATE_TOTAL_PAYMENT = 'UPDATE_TOTAL_PAYMENT';
 export const GET_USER_ADDRESS = 'GET_USER_ADDRESS';
 export const GET_ONGKIR = 'GET_ONGKIR';
 
+//action types checkoutPageReducer.js
+export const OPEN_PAYMENT_DIALOG = 'OPEN_PAYMENT_DIALOG';
+export const CLOSE_PAYMENT_DIALOG = 'CLOSE_PAYMENT_DIALOG';
+export const STORE_PAYMENT_RECEIPT = 'STORE_PAYMENT_RECEIPT';
+
+
 
 
 

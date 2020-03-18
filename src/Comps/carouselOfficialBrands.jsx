@@ -11,10 +11,9 @@ export const CarouselBrands = (props) => {
         return props.brands.map((item, index) => {
             return (
                 <div>
-
                     <img
                         key={index}
-                        alt='brand image'
+                        alt='brands'
                         src={API_URL_1 + item.profilepic}
                         width='auto'
                         style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '20px' }}

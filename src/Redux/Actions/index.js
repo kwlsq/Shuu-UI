@@ -6,3 +6,4 @@ export * from './productsActions';
 export * from './editProfileActions';
 export * from './transactionActions';
 export * from './cartPageActions';
+export * from './checkoutPageActions';

@@ -50,6 +50,7 @@ export const ADD_TO_CART_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 export const ADD_TO_CART_FAIL = 'ADD_TO_CART_FAIL';
 export const GET_CART = 'GET_CART';
 export const CHANGE_QTY_CART = 'CHANGE_QTY_CART';
+export const GET_TRANSACTION = 'GET_TRANSACTION';
 
 //action types cartPageInputReducer.js 
 export const CHANGE_QTY = 'CHANGE_QTY';

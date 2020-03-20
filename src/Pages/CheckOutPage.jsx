@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import {
     getCart,
@@ -31,6 +30,7 @@ class CheckOutPage extends React.Component {
                     id={val.id}
                     index={index}
                     name={val.name}
+                    size={val.size}
                     price={val.price}
                     city={val.city}
                     image={val.image}
@@ -75,7 +75,6 @@ class CheckOutPage extends React.Component {
                         Total Delivery Price :Rp  {new Intl.NumberFormat(['ban', 'id']).format(this.props.ongkir)}
                     </div>
                     <div>Total Payment :Rp  {new Intl.NumberFormat(['ban', 'id']).format(this.props.ongkir + this.props.cartPage.totalPayment)}</div>
-                    {/* <Link to='/payment'> */}
 
                     <Button
                         variant="contained"
@@ -84,7 +83,6 @@ class CheckOutPage extends React.Component {
                     >
                         Payment
                         </Button>
-                    {/* </Link> */}
                 </div>
                 {
                     this.props.checkoutPage.openDialog

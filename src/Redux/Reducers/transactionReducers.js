@@ -6,7 +6,8 @@ import {
     DELETE_ALL_SUCCESS,
     DELETE_ITEM_SUCCESS,
     GET_USER_ADDRESS,
-    GET_ONGKIR
+    GET_ONGKIR,
+    GET_TRANSACTION
 } from '../Actions/types'
 
 const INITIAL_STATE = {
@@ -14,6 +15,7 @@ const INITIAL_STATE = {
     address: {},
     total_ongkir: 0,
     courier: '',
+    transactionHistory: null,
     error: ''
 }
 
@@ -36,6 +38,9 @@ export default (state = INITIAL_STATE, action) => {
         case GET_ONGKIR:
             console.log(action.payload, 'aweawew')
             return { ...state, total_ongkir: action.payload }
+        case GET_TRANSACTION:
+            console.log(action.payload, 'HISTORY')
+            return { ...state, transactionHistory: action.payload }
         default:
             return state
     }

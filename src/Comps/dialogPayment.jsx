@@ -6,6 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import { Link } from 'react-router-dom';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -30,7 +32,6 @@ export default function AlertDialogSlide(props) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogContent>
-
                     <form action="/profile" method="post" encType="multipart/form-data" style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
                         <input type="file" name="avatar" onChange={(e) => props.storeReceipt(e.target.files[0])} />
                     </form>
@@ -39,9 +40,22 @@ export default function AlertDialogSlide(props) {
                     <Button onClick={props.close} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={() => props.uploadReceipt(props.receipt, props.payment)} color="primary">
-                        Confirm
-                     </Button>
+
+                    {
+                        props.receipt
+                            ?
+                            <Link to='/payment'>
+                                <Button onClick={() => props.uploadReceipt(props.receipt, props.payment)} color="primary">
+                                    Confirm
+                                </Button>
+                            </Link>
+                            :
+                            <Button disabled >
+                                Confirm
+                            </Button>
+
+                    }
+
                 </DialogActions>
             </Dialog>
         </div>

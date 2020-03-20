@@ -17,17 +17,25 @@ import {
     getCityLists,
     onChangeEditProvince,
     onChangeEditCity,
-    // onChangeEditEmail,
     onChangeEditAddressDetail,
     onBtnSaveEdit,
-    onBtnCancelEdit
+    onBtnCancelEdit,
+    getTransaction
 } from '../Redux/Actions';
 import { API_URL_1 } from '../Helpers/apiurl';
+import TransactionTable from '../Comps/tableForTransactionHistory';
 import '../CSS/userprofilepage.css';
+import { getNodeText } from '@testing-library/react';
 
 class UserProfilePage extends React.Component {
+    state = {
+        openEditProfile: true,
+        openEditAccount: false,
+        openTransaction: false,
+    }
     componentDidMount() {
         this.props.getUserDetail()
+        this.props.getTransaction()
     }
 
     onClickUploadImage = () => {
@@ -58,7 +66,6 @@ class UserProfilePage extends React.Component {
             lastNameEdit,
             birthDateEdit,
             genderEdit,
-            // emailEdit,
             provinceEdit,
             cityEdit,
             addressDetailEdit
@@ -67,10 +74,7 @@ class UserProfilePage extends React.Component {
         let {
             first_name,
             last_name,
-            // birth_date,
             gender,
-            // email,
-            // verified,
             province,
             city,
             address_detail
@@ -81,18 +85,9 @@ class UserProfilePage extends React.Component {
         if (lastNameEdit === '' || lastNameEdit === undefined) {
             lastNameEdit = last_name
         }
-        // if (!birthDateEdit.isValid) {
-        //     birthDateEdit = moment(birth_date).format("YYYY-MM-DD")
-        // }
-        //ada bug, harus isi date, kalau ga diisi, nanti saat dikosongin dan disave, akan keisi tanggal hari ini
         if (genderEdit === '' || genderEdit === undefined) {
             genderEdit = gender
         }
-        // if (emailEdit === '') {
-        //     emailEdit = email
-        // } else if (emailEdit !== '' && emailEdit !== email) {
-        //     verified = 0
-        // } butuh button dan action baru untuk insert email dan verified ke table users
 
         if (provinceEdit === '' || cityEdit === undefined) {
             provinceEdit = province
@@ -112,11 +107,9 @@ class UserProfilePage extends React.Component {
             last_name: lastNameEdit,
             birth_date: moment(birthDateEdit).format("YYYY-MM-DD"),
             gender: genderEdit,
-            // email: emailEdit,
             province: provinceEdit,
             city: cityEdit,
             address_detail: addressDetailEdit,
-            // verified
         }, this.props.userDetail.ud_id)
     }
 
@@ -181,16 +174,7 @@ class UserProfilePage extends React.Component {
                                     <div />
                             }
                         </p>
-                        {/* <TextField
-                            label="Email"
-                            placeholder={this.props.userDetail.email}
-                            type='email'
-                            value={this.props.editProfileInputs.emailEdit}
-                            onChange={(e) => this.props.onChangeEditEmail(e.target.value)}
-                            variant="outlined"
-                            size="small"
-                            style={{ maxWidth: 400, marginBottom: 10 }}
-                        /> */}
+
                         <h5 style={{ borderBottom: 'solid 3px black', width: '600px' }}>Address</h5>
                         <p>Country : Indonesia</p>
                         <Autocomplete
@@ -200,7 +184,6 @@ class UserProfilePage extends React.Component {
                             style={{ maxWidth: 400, marginBottom: 10 }}
                             renderInput={params =>
                                 <TextField
-                                    // placeholder={this.props.userDetail.province}
                                     {...params}
                                     label="Province"
                                     variant="outlined"
@@ -214,7 +197,6 @@ class UserProfilePage extends React.Component {
                             renderInput={params =>
                                 <TextField
                                     {...params}
-                                    // placeholder={this.props.use/rDetail.city}
                                     label="City"
                                     variant="outlined"
                                 />}
@@ -277,40 +259,97 @@ class UserProfilePage extends React.Component {
                 </div>
             )
         }
+    }
 
+    renderTransaction = () => {
+        return this.props.history.map((val, index) => {
+            return (
+                <TransactionTable
+                    index={index}
+                    delivery={val.delivery_status}
+                    confirmation={val.admin_confirmation}
+                    payment={val.total_price}
+                    date={val.transaction_date}
+                />
+            )
+        })
     }
 
     render() {
-        return (
-            <div className="user-profile-page-wrapper">
-                <div className="left-nav-wrapper">
-                    NAV HERE
+        if (this.state.openEditProfile) {
+            return (
+                <div className="user-profile-page-wrapper">
+                    <div className="left-nav-wrapper">
+                        Menu
+                        <button onClick={() => this.setState({ openEditProfile: true, openEditAccount: false, openTransaction: false })}>Profile</button>
+                        <button onClick={() => this.setState({ openEditProfile: false, openEditAccount: true, openTransaction: false })}>Account Settings</button>
+                        <button onClick={() => this.setState({ openEditProfile: false, openEditAccount: false, openTransaction: true })}>Transaction History</button>
                     </div>
-                <h3 className="edit-profile-header">
-                    <i className="fas fa-user" style={{ marginRight: 10 }}></i>
-                    {this.props.user.username}</h3>
-                <div className="edit-profile-wrapper">
-                    <div className="edit-image-wrapper">
-                        <img
-                            src={API_URL_1 + this.props.userDetail.profilepic}
-                            alt="profile pic"
-                            width="100%"
-                            height="auto"
-                            style={{ maxWidth: '300px' }} />
-                        <form action="/profile" method="post" encType="multipart/form-data" style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
-                            <input type="file" name="avatar" onChange={(e) => this.props.storeImage(e.target.files[0])} />
-                            <input type="button" value="Upload" onClick={this.onClickUploadImage} />
-                        </form>
+                    <h3 className="edit-profile-header">
+                        <i className="fas fa-user" style={{ marginRight: 10 }}></i>
+                        {this.props.user.username}</h3>
+                    <div className="edit-profile-wrapper">
+                        <div className="edit-image-wrapper">
+                            <img
+                                src={API_URL_1 + this.props.userDetail.profilepic}
+                                alt="profile pic"
+                                width="100%"
+                                height="auto"
+                                style={{ maxWidth: '300px' }} />
+                            <form action="/profile" method="post" encType="multipart/form-data" style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
+                                <input type="file" name="avatar" onChange={(e) => this.props.storeImage(e.target.files[0])} />
+                                <input type="button" value="Upload" onClick={this.onClickUploadImage} />
+                            </form>
+                        </div>
+                        {this.renderEditProfile()}
                     </div>
-                    {this.renderEditProfile()}
                 </div>
-            </div>
-        )
+            )
+        } else if (this.state.openTransaction) {
+            return (
+                <div className="user-profile-page-wrapper">
+                    <div className="left-nav-wrapper">
+                        Menu
+                        <button onClick={() => this.setState({ openEditProfile: true, openEditAccount: false, openTransaction: false })}>Profile</button>
+                        <button onClick={() => this.setState({ openEditProfile: false, openEditAccount: true, openTransaction: false })}>Account Settings</button>
+                        <button onClick={() => this.setState({ openEditProfile: false, openEditAccount: false, openTransaction: true })}>Transaction History</button>
+                    </div>
+                    <div className="transaction-history-wrapper">
+                        <table>
+                            <tr>
+                                <th>No</th>
+                                <th>Delivery Status</th>
+                                <th>Admin Confirmation</th>
+                                <th>Total Payment</th>
+                                <th>Transaction Date</th>
+                            </tr>
+                            {this.renderTransaction()}
+                        </table>
+
+                    </div>
+                </div>
+            )
+        } else if (this.state.openEditAccount) {
+            return (
+                <div className="user-profile-page-wrapper">
+                    <div className="left-nav-wrapper">
+                        Menu
+                        <button onClick={() => this.setState({ openEditProfile: true, openEditAccount: false, openTransaction: false })}>Profile</button>
+                        <button onClick={() => this.setState({ openEditProfile: false, openEditAccount: true, openTransaction: false })}>Account Settings</button>
+                        <button onClick={() => this.setState({ openEditProfile: false, openEditAccount: false, openTransaction: true })}>Transaction History</button>
+                    </div>
+                    <div className="transaction-history-wrapper">
+                        UNDER CONSTRUCTION
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
-const mapStateToProps = ({ user, editProfileInputs }) => {
+const mapStateToProps = ({ user, editProfileInputs, transaction }) => {
     return {
+        history: transaction.transactionHistory,
         user,
         userDetail: user.userDetail,
         editProfileInputs
@@ -330,8 +369,9 @@ export default connect(mapStateToProps, {
     getCityLists,
     onChangeEditProvince,
     onChangeEditCity,
-    // onChangeEditEmail,
     onChangeEditAddressDetail,
     onBtnSaveEdit,
-    onBtnCancelEdit
+    onBtnCancelEdit,
+    getTransaction
 })(UserProfilePage);
+

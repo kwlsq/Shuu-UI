@@ -17,13 +17,13 @@ export default function CardCheckout(props) {
                 style={{ display: 'flex', width: '20%', justifyContent: 'center' }}
             />
             <div style={{ display: 'flex', width: '30%', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                <div>{props.name}</div>
+                <div>{props.name} Size {props.size}</div>
                 <div>Rp {new Intl.NumberFormat(['ban', 'id']).format(props.price)} /pcs</div>
                 <div>Total Weight : {props.weight} gr</div>
             </div>
             <div style={{ display: 'flex', width: '45%', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                 <div>
-                    <div>Shipment to: {props.city}</div>
+                    <div>Shipment from: {props.city}</div>
                     <div>
                         <FormControl style={{ minWidth: 120 }}>
                             <select

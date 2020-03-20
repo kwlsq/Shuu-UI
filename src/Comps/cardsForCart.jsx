@@ -17,7 +17,7 @@ export default function CartCard(props) {
                 height="auto"
                 style={{ maxWidth: '150px' }} />
             <div className="cart-3rd-column">
-                <div>{props.name}</div>
+                <div>{props.name} Size {props.size}</div>
                 <div>Rp {new Intl.NumberFormat(['ban', 'id']).format(props.price)}</div>
             </div>
             <div>

@@ -9,8 +9,10 @@
 }
 .edit-profile-header{
     grid-row: 1/3;
+    display: flex;
+    font-size: 40px;
     grid-column: 3/13;
-    padding: 10px;
+    padding: 10px 0 0 10px;
     width: 100%;
     background-color: white;
 }
@@ -20,6 +22,8 @@
     grid-column: 1/3;
     width: 100%;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .edit-profile-wrapper{
@@ -33,6 +37,30 @@
 .profile-detail-wrapper,.edit-image-wrapper{
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 0 10px 0 10px;
     padding-bottom: 40px;
+}
+
+.transaction-history-wrapper{
+    grid-row: 1/auto;
+    grid-column: 3/13;
+    width: 100%;
+    background-color: white;
+    display: flex;
+}
+
+.transaction-history-wrapper{
+    flex-direction: column;
+}
+.transaction-history-header,.transaction-history-wrapper,.checkout-card-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.transaction-history-header{
+    border: black 1px solid;
+}
+
+.transaction-history-wrapper th{
+    text-align: center;
 }

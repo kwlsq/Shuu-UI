@@ -65,9 +65,6 @@ class ProductDetail extends React.Component {
                 <div className="product-detail-texts">
                     <div>{this.props.products.productDetail.name}</div>
                     <div>{this.props.products.productDetail.brands}</div>
-                    {/* <div>Rating</div> */}
-                    {/* <div>Terjual Berapa</div> */}
-                    {/* <div>Views {this.props.products.productDetail.views}</div> */}
                 </div>
                 <div className="product-detail-price">
                     <div>

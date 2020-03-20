@@ -6,7 +6,8 @@ import {
     OPEN_DIALOG,
     GET_CART,
     GET_USER_ADDRESS,
-    GET_ONGKIR
+    GET_ONGKIR,
+    GET_TRANSACTION
 } from './types'
 import { API_URL_1 } from '../../Helpers/apiurl';
 
@@ -126,3 +127,25 @@ export const getOngkir = (origin, destination, weight, courier, id) => {
     }
 }
 
+export const getTransaction = () => {
+    return async (dispatch) => {
+        try {
+            const token = await localStorage.getItem('token')
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+
+            const res = await axios.get(API_URL_1 + `/transaction/history`, config)
+            console.log(res.data)
+            dispatch({
+                type: GET_TRANSACTION,
+                payload: res.data
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

@@ -31,6 +31,7 @@ class CartPage extends React.Component {
                     id={val.id}
                     image={val.image}
                     name={val.name}
+                    size={val.size}
                     price={val.price}
                     curQty={val.qty}
                     newQty={this.props.cartPage.newQty}
@@ -61,15 +62,27 @@ class CartPage extends React.Component {
                 </div>
                 <div className="checkout-wrapper">
                     <div>Total Price :Rp {new Intl.NumberFormat(['ban', 'id']).format(this.props.cartPage.totalPayment)} </div>
-                    <Link to='/checkout'>
 
-                        <Button
-                            variant="contained"
-                            color="primary"
-                        >
-                            Buy
+                    {
+                        this.props.cart.length !== 0
+                            ?
+                            <Link to='/checkout'>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    Buy
                         </Button>
-                    </Link>
+                            </Link>
+                            :
+                            <Button
+                                disabled
+                                variant="contained"
+                                color="primary"
+                            >
+                                Buy
+                        </Button>
+                    }
                 </div>
             </div>
         )

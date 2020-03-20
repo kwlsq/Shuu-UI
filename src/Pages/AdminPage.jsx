@@ -12,7 +12,12 @@ class AdminPage extends React.Component {
     render() {
         return (
             <div className="admin-page-wrapper">
-                <Drawer />
+                <div className="left-nav-wrapper">
+                    Menu
+                        <button onClick={}>Profile</button>
+                    <button onClick={}>Account Settings</button>
+                    <button onClick={}>Transaction History</button>
+                </div>
                 <TableUser>
 
                 </TableUser>

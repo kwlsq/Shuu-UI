@@ -51,6 +51,7 @@ export const ADD_TO_CART_FAIL = 'ADD_TO_CART_FAIL';
 export const GET_CART = 'GET_CART';
 export const CHANGE_QTY_CART = 'CHANGE_QTY_CART';
 export const GET_TRANSACTION = 'GET_TRANSACTION';
+export const GET_TRANSACTION_DETAIL = 'GET_TRANSACTION_DETAIL';
 
 //action types cartPageInputReducer.js 
 export const CHANGE_QTY = 'CHANGE_QTY';
@@ -65,6 +66,13 @@ export const GET_ONGKIR = 'GET_ONGKIR';
 export const OPEN_PAYMENT_DIALOG = 'OPEN_PAYMENT_DIALOG';
 export const CLOSE_PAYMENT_DIALOG = 'CLOSE_PAYMENT_DIALOG';
 export const STORE_PAYMENT_RECEIPT = 'STORE_PAYMENT_RECEIPT';
+
+//action types transactionHistoryReducer.js
+export const CLOSE_TRANSACTION_DETAIL = 'CLOSE_TRANSACTION_DETAIL';
+
+//action types adminPageReducer.js
+export const OPEN_TABLE_USER = 'OPEN_TABLE_USER';
+export const OPEN_TABLE_TRANSACTION = 'OPEN_TABLE_TRANSACTION';
 
 
 

@@ -1,8 +1,11 @@
 import React from 'react';
-import Drawer from '../Comps/drawerAdmin';
 import TableUser from '../Comps/tableUser';
 import { connect } from 'react-redux';
-import { getUsersData } from '../Redux/Actions';
+import {
+    getUsersData,
+    openTableUser,
+    openTableTransaction
+} from '../Redux/Actions';
 import '../CSS/adminpage.css';
 
 class AdminPage extends React.Component {
@@ -14,19 +17,39 @@ class AdminPage extends React.Component {
             <div className="admin-page-wrapper">
                 <div className="left-nav-wrapper">
                     Menu
-                        <button onClick={}>Profile</button>
-                    <button onClick={}>Account Settings</button>
-                    <button onClick={}>Transaction History</button>
+                    <button onClick={this.props.openTableUser}>Table Users</button>
+                    <button onClick={this.props.openTableTransaction}>Transaction History</button>
                 </div>
-                <TableUser>
+                <div className="table-user-wrapper">
+                    {
+                        this.props.adminPage.openTableUser
+                            ?
+                            <TableUser />
+                            :
+                            <div />
+                    }
+                    {
+                        this.props.adminPage.openTableTransaction
+                            ?
+                            <div>TableTransacion</div>
+                            :
+                            <div />
+                    }
+                </div>
 
-                </TableUser>
 
             </div>
         )
     }
 }
 
+const mapStateToProps = ({ adminPage }) => {
+    return { adminPage }
+}
 
 
-export default connect(null, { getUsersData })(AdminPage);
+export default connect(mapStateToProps, {
+    getUsersData,
+    openTableUser,
+    openTableTransaction
+})(AdminPage);

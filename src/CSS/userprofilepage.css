@@ -64,3 +64,10 @@
 .transaction-history-wrapper th{
     text-align: center;
 }
+
+.dialog-history-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}

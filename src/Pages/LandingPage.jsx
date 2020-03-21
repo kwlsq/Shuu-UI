@@ -25,11 +25,11 @@ class LandingPage extends React.Component {
                 <Fade bottom distance="50px" duration={1000}>
                     <div className="carousel-wrapper"><CarouselComp /></div>
                 </Fade>
-                <Fade bottom distance="50px" duration={1000}>
+                {/* <Fade bottom distance="50px" duration={1000}>
                     <div className="card-promo">
                         <div className="card-header">Promo</div>
                     </div>
-                </Fade>
+                </Fade> */}
                 <Fade bottom distance="50px" duration={1000}>
                     <div className="official-brands">
                         <div className="card-header">Official Stores</div>

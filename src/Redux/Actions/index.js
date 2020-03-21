@@ -7,3 +7,4 @@ export * from './editProfileActions';
 export * from './transactionActions';
 export * from './cartPageActions';
 export * from './checkoutPageActions';
+export * from './adminPageActions';

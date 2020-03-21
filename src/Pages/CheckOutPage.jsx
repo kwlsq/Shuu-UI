@@ -9,8 +9,8 @@ import {
     onClickButtonPayment,
     closeDialogPayment,
     storePaymentReceipt,
-    uploadReceipt
-
+    uploadReceipt,
+    updateStocks
 } from '../Redux/Actions';
 import CardCheckout from '../Comps/cardsForCheckout';
 import DialogPayment from '../Comps/dialogPayment';
@@ -45,6 +45,13 @@ class CheckOutPage extends React.Component {
         })
     }
 
+    updateStocks = () => {
+        for (var i = 0;i < this.props.cart.length;i++) {
+            this.props.updateStocks(this.props.cart[i].qty, this.props.cart[i].product_id, this.props.cart[i].size)
+            console.log(this.props.cart[i].qty, this.props.cart[i].product_id, this.props.cart[i].size)
+        }
+
+    }
 
     render() {
         return (
@@ -58,13 +65,6 @@ class CheckOutPage extends React.Component {
                             <div>Detail : {this.props.address.address_detail}</div>
                         </div>
                         <div >
-                            <Button
-                                variant="contained"
-                                color="secondary"
-                                style={{ maxWidth: '300px' }}
-                            >
-                                Change Delivery Address
-                        </Button>
                         </div>
                     </div>
                     {this.renderCardCheckout()}
@@ -94,6 +94,7 @@ class CheckOutPage extends React.Component {
                             uploadReceipt={this.props.uploadReceipt}
                             receipt={this.props.checkoutPage.paymentReceipt}
                             payment={this.props.ongkir + this.props.cartPage.totalPayment}
+                            updateStocks={this.updateStocks}
                         />
                         :
                         <div />
@@ -122,5 +123,6 @@ export default connect(mapStateToProps, {
     onClickButtonPayment,
     closeDialogPayment,
     storePaymentReceipt,
-    uploadReceipt
+    uploadReceipt,
+    updateStocks
 })(CheckOutPage);

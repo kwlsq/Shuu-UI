@@ -29,8 +29,8 @@ class TableUser extends React.Component {
     }
     render() {
         return (
-            <div className="table-user">
-                <table>
+            <div >
+                <table  >
                     <tr>
                         <th>No.</th>
                         <th>Username</th>
@@ -41,7 +41,7 @@ class TableUser extends React.Component {
                     </tr>
                     {this.renderTableUser()}
                 </table>
-            </div>
+            </div >
         )
     }
 }

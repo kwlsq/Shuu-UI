@@ -16,7 +16,7 @@
 .official-brands{
     border: solid 1px black;
     margin-top: 10px;
-    grid-row: 7/auto;
+    grid-row: 5/7;
     grid-column: 1/13;
     justify-content: centers;
     background-color: white;
@@ -27,6 +27,6 @@
 
 .showcase-wrapper{
     margin-top: 10px;
-    grid-row: 9/15;
+    grid-row: 7/auto;
     grid-column: 1/13;
 }

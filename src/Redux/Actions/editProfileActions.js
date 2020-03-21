@@ -15,7 +15,8 @@ import {
     EDIT_CITY,
     EDIT_ADDRESS_DETAIL,
     CLOSE_EDIT_PROFILE,
-    EDIT_PROFILE_SUCCESS
+    EDIT_PROFILE_SUCCESS,
+    CLOSE_TRANSACTION_DETAIL
 } from '../Actions/types'
 
 export const storeImage = (image) => {
@@ -182,4 +183,8 @@ export const onBtnSaveEdit = (detail, ud_id) => {
 
 export const onBtnCancelEdit = () => {
     return { type: CLOSE_EDIT_PROFILE }
+}
+
+export const closeDialogTransactionDetail = () => {
+    return { type: CLOSE_TRANSACTION_DETAIL }
 }

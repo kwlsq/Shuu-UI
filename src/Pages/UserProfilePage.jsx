@@ -20,12 +20,14 @@ import {
     onChangeEditAddressDetail,
     onBtnSaveEdit,
     onBtnCancelEdit,
-    getTransaction
+    getTransaction,
+    getTransactionDetail,
+    closeDialogTransactionDetail
 } from '../Redux/Actions';
 import { API_URL_1 } from '../Helpers/apiurl';
 import TransactionTable from '../Comps/tableForTransactionHistory';
+import DialogTransactionDetail from '../Comps/dialogTransactionDetail';
 import '../CSS/userprofilepage.css';
-import { getNodeText } from '@testing-library/react';
 
 class UserProfilePage extends React.Component {
     state = {
@@ -265,11 +267,14 @@ class UserProfilePage extends React.Component {
         return this.props.history.map((val, index) => {
             return (
                 <TransactionTable
+                    key={index}
                     index={index}
+                    id={val.id}
                     delivery={val.delivery_status}
                     confirmation={val.admin_confirmation}
                     payment={val.total_price}
                     date={val.transaction_date}
+                    getTransactionDetail={this.props.getTransactionDetail}
                 />
             )
         })
@@ -316,17 +321,34 @@ class UserProfilePage extends React.Component {
                     </div>
                     <div className="transaction-history-wrapper">
                         <table>
-                            <tr>
-                                <th>No</th>
-                                <th>Delivery Status</th>
-                                <th>Admin Confirmation</th>
-                                <th>Total Payment</th>
-                                <th>Transaction Date</th>
-                            </tr>
-                            {this.renderTransaction()}
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Delivery Status</th>
+                                    <th>Admin Confirmation</th>
+                                    <th>Total Payment</th>
+                                    <th>Transaction Date</th>
+                                    <th>Transaction Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderTransaction()}
+                            </tbody>
                         </table>
 
                     </div>
+                    {
+                        this.props.transactionDetail.openDialogTransactionDetail
+                            ?
+                            <DialogTransactionDetail
+                                open={this.props.transactionDetail.openDialogTransactionDetail}
+                                close={this.props.closeDialogTransactionDetail}
+                                detail={this.props.detail}
+                            />
+                            :
+                            <div />
+
+                    }
                 </div>
             )
         } else if (this.state.openEditAccount) {
@@ -344,15 +366,18 @@ class UserProfilePage extends React.Component {
                 </div>
             )
         }
+
     }
 }
 
-const mapStateToProps = ({ user, editProfileInputs, transaction }) => {
+const mapStateToProps = ({ user, editProfileInputs, transaction, transactionDetail }) => {
     return {
         history: transaction.transactionHistory,
+        detail: transaction.transactionDetail,
         user,
         userDetail: user.userDetail,
-        editProfileInputs
+        editProfileInputs,
+        transactionDetail
     }
 }
 
@@ -372,6 +397,8 @@ export default connect(mapStateToProps, {
     onChangeEditAddressDetail,
     onBtnSaveEdit,
     onBtnCancelEdit,
-    getTransaction
+    getTransaction,
+    getTransactionDetail,
+    closeDialogTransactionDetail
 })(UserProfilePage);
 

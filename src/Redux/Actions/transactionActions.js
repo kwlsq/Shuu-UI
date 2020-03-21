@@ -7,7 +7,8 @@ import {
     GET_CART,
     GET_USER_ADDRESS,
     GET_ONGKIR,
-    GET_TRANSACTION
+    GET_TRANSACTION,
+    GET_TRANSACTION_DETAIL
 } from './types'
 import { API_URL_1 } from '../../Helpers/apiurl';
 
@@ -83,6 +84,28 @@ export const getCart = () => {
         }
     }
 }
+export const getTransactionDetail = (t_id) => {
+    return async (dispatch) => {
+        try {
+            console.log(t_id)
+            const token = await localStorage.getItem('token')
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+
+            const res = await axios.post(API_URL_1 + `/transaction/detail`, { t_id }, config)
+            console.log(res.data)
+            dispatch({
+                type: GET_TRANSACTION_DETAIL,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
 
 export const getAddresses = () => {
     return async (dispatch) => {
@@ -146,6 +169,24 @@ export const getTransaction = () => {
 
         } catch (error) {
             console.log(error)
+        }
+    }
+}
+
+export const updateStocks = (qty, p_id, size) => {
+    return async (dispatch) => {
+        try {
+            const token = await localStorage.getItem('token')
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+
+            const res = await axios.put(API_URL_1 + `/transaction/stock`, { qty, p_id, size }, config)
+            console.log(res)
+        } catch (err) {
+            console.log(err)
         }
     }
 }

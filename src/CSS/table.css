@@ -3,13 +3,14 @@ table, tr, td, th{
 
 }
 
-.table-user{
-    /* border: solid 1px black; */
-    margin-top: 10px;
+.table-user-wrapper{
     grid-row: 1/auto;
-    grid-column: 4/13;
-}
-
-table td{
+    grid-column: 3/13;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     text-align: center;
 }
+

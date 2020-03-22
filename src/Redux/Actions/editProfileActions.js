@@ -116,6 +116,7 @@ export const getProvinceLists = () => {
 }
 
 export const onChangeEditProvince = (val) => {
+    console.log(val)
     return {
         type: EDIT_PROVINCE,
         payload: val

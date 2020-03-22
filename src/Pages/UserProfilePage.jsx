@@ -44,6 +44,7 @@ class UserProfilePage extends React.Component {
         if (this.props.editProfileInputs.image) {
             this.props.uploadImage(this.props.editProfileInputs, this.props.userDetail.ud_id)
             console.log(this.props.editProfileInputs.image)
+            console.log(this.props.userDetail)
         } else {
             alert('Please Choose a File')
         }
@@ -70,9 +71,10 @@ class UserProfilePage extends React.Component {
             genderEdit,
             provinceEdit,
             cityEdit,
-            addressDetailEdit
+            addressDetailEdit,
         } = this.props.editProfileInputs
 
+        console.log(this.props.editProfileInputs.provinceEdit.province_id, 'inisek')
         let {
             first_name,
             last_name,
@@ -109,8 +111,10 @@ class UserProfilePage extends React.Component {
             last_name: lastNameEdit,
             birth_date: moment(birthDateEdit).format("YYYY-MM-DD"),
             gender: genderEdit,
+            province_id: this.props.editProfileInputs.provinceEdit.province_id,
             province: provinceEdit,
             city: cityEdit,
+            city_id: this.props.editProfileInputs.cityEdit.city_id,
             address_detail: addressDetailEdit,
         }, this.props.userDetail.ud_id)
     }

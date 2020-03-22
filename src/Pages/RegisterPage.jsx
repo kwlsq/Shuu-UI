@@ -61,7 +61,6 @@ class RegisterPage extends React.Component {
     }
 
     render() {
-        console.log(this.props.user.redirectVerify)
         if (this.props.user.redirectVerify) {
             return (
                 <Redirect to='login' />

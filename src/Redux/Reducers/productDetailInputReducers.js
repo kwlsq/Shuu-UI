@@ -26,7 +26,7 @@ export default (state = INITIAL_STATE, action) => {
         case OPEN_DIALOG:
             return { ...state, popDialog: true }
         case CLOSE_DIALOG:
-            return INITIAL_STATE
+            return { ...state, popDialog: false }
         case REDIRECT_TO_CART:
             return { INITIAL_STATE, redirectToCart: true }
         case STOP_REDIRECT_TO_CART:

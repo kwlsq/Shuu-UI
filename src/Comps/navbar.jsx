@@ -41,9 +41,9 @@ const NavbarComp = (props) => {
                         </Link>
                     </div>
                     <div className="button-login">
-                        <Link to='/cart'>
+                        <a href='/cart'>
                             <i className="fas fa-shopping-bag"></i>
-                        </Link>
+                        </a>
                     </div>
                     <div className="button-register">
                         <Link to='/' onClick={props.logout}>

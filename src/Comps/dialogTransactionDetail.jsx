@@ -24,9 +24,7 @@ export default function AlertDialogSlide(props) {
                         <img
                             src={API_URL_1 + `${val.image}`}
                             alt="profile pic"
-                            width="30%"
-                            height="auto"
-                            style={{ display: 'flex', width: '10%' }}
+                            style={{ display: 'flex', width: '150px' }}
                         />
                         <DialogContentText>
                             {val.name} size {val.size}
@@ -35,15 +33,15 @@ export default function AlertDialogSlide(props) {
                             {val.brands}
                         </DialogContentText>
                     </DialogContent>
-                    <DialogContent style={{ width: '5%' }}>
-                        <DialogContentText style={{ display: 'flex' }}>
+                    <DialogContent style={{ display: 'flex' }} >
+                        <DialogContentText>
                             {val.qty} product
                     </DialogContentText>
                         <DialogContentText style={{ display: 'flex' }}>
-                            Price Rp {new Intl.NumberFormat(['ban', 'id']).format(val.price)}
+                            | Price Rp {new Intl.NumberFormat(['ban', 'id']).format(val.price)}
                         </DialogContentText>
                         <DialogContentText style={{ display: 'flex' }}>
-                            Total Price Rp {new Intl.NumberFormat(['ban', 'id']).format(val.total_price)}
+                            | Total Price Rp {new Intl.NumberFormat(['ban', 'id']).format(val.total_price)}
                         </DialogContentText>
 
                     </DialogContent>

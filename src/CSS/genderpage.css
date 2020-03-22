@@ -1,0 +1,18 @@
+.gender-wrapper{
+    margin: 0 11em;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(80px, auto);
+}
+
+.gender-showcase{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    color: black !important;
+    margin-top: 10px;
+    grid-row: 1/auto;
+    grid-column: 1/13;  
+}

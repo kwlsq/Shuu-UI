@@ -1,16 +1,19 @@
 import React from 'react';
 import TableUser from '../Comps/tableUser';
+import TableTransaction from '../Comps/tableAdminTransaction';
 import { connect } from 'react-redux';
 import {
     getUsersData,
     openTableUser,
-    openTableTransaction
+    openTableTransaction,
+    getAllTransactions
 } from '../Redux/Actions';
 import '../CSS/adminpage.css';
 
 class AdminPage extends React.Component {
     componentDidMount() {
         this.props.getUsersData()
+        this.props.getAllTransactions()
     }
     render() {
         return (
@@ -31,7 +34,7 @@ class AdminPage extends React.Component {
                     {
                         this.props.adminPage.openTableTransaction
                             ?
-                            <div>TableTransacion</div>
+                            <TableTransaction />
                             :
                             <div />
                     }
@@ -51,5 +54,6 @@ const mapStateToProps = ({ adminPage }) => {
 export default connect(mapStateToProps, {
     getUsersData,
     openTableUser,
-    openTableTransaction
+    openTableTransaction,
+    getAllTransactions
 })(AdminPage);

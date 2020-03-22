@@ -1,4 +1,6 @@
 .feature-wrapper{
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
     grid-column: 1/5;
     grid-row: 1/5;
     display: inherit;
@@ -6,9 +8,14 @@
 }
 
 .feature-bar{
+    color: #4571b9 ;
+    text-shadow: 3px 3px 1px rgba(162,184,220,0.75);
+    padding: 8px;
     border-radius: 10px;
     background: linear-gradient(145deg, #f7f7f7, #dadada);
     box-shadow: 3px 3px 8px #22385c , 
             -3px -3px 8px #ffffff;
-
+    background-image: url(../img/background.jpg) ;
+    background-size: 500px 350px;
+    background-repeat: no-repeat;
 }

@@ -10,9 +10,8 @@ export const CarouselBrands = (props) => {
     const renderCardCarousel = () => {
         return props.brands.map((item, index) => {
             return (
-                <div>
+                <div key={index}>
                     <img
-                        key={index}
                         alt='brands'
                         src={API_URL_1 + item.profilepic}
                         width='auto'
@@ -25,7 +24,7 @@ export const CarouselBrands = (props) => {
         })
     }
     return (
-        <div style={{ padding: `0 0px` }}>
+        <div style={{ padding: `10px 0px`, borderRadius: '10px' }}>
             <ItemsCarousel
                 infiniteLoop
                 requestToChangeActive={setActiveItemIndex}

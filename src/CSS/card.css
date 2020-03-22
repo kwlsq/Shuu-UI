@@ -3,11 +3,28 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    
+    color: black !important;
 }
 
 .showcase-card{
     width: 18%;
     margin: 1%;
+    background: linear-gradient(145deg, #f7f7f7, #dadada);
+    box-shadow: 2px 2px 6px #22385c , 
+            -2px -2px 6px #ffffff;
     background-color: #f7f7f7 !important;
     border-radius: 0 0 20px 20px !important;
+}
+
+.cardbody{
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: black;
+    color: #4571b9 ;
+}
+
+.cardbody a:hover{
+    text-decoration: none;
 }

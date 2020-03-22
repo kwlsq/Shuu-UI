@@ -6,11 +6,18 @@ import {
     CardTitle, CardSubtitle
 } from 'reactstrap';
 import { API_URL_1 } from '../Helpers/apiurl';
-import { showProductDetail } from '../Redux/Actions'
+import {
+    showProductDetail,
+    getWomenProducts
+} from '../Redux/Actions'
 import Fade from 'react-reveal/Fade';
-import '../CSS/card.css';
+import '../CSS/genderpage.css';
 
-class CardComp extends React.Component {
+
+class WomenPageCardComp extends React.Component {
+    componentDidMount() {
+        this.props.getWomenProducts()
+    }
     renderCardShowcase = () => {
         return this.props.products.map((item, index) => {
             return (
@@ -31,7 +38,7 @@ class CardComp extends React.Component {
     }
     render() {
         return (
-            <div className="showcase" >
+            <div className="gender-showcase" >
                 {this.renderCardShowcase()}
             </div>
         );
@@ -45,4 +52,7 @@ const mapStateToProps = ({ products }) => {
     return { products: products.showcase, detail: products.productDetail }
 }
 
-export default connect(mapStateToProps, { showProductDetail })(CardComp);
+export default connect(mapStateToProps, {
+    showProductDetail,
+    getWomenProducts
+})(WomenPageCardComp);

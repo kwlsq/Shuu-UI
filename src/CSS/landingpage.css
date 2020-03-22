@@ -14,13 +14,20 @@
 }
 
 .official-brands{
-    border: solid 1px black;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: #4571b9 ;
+    text-shadow: 3px 3px 1px rgba(162,184,220,0.75);
+    border-radius: 10px;
     margin-top: 10px;
     grid-row: 5/7;
     grid-column: 1/13;
     justify-content: centers;
     background-color: white;
     vertical-align: middle;
+    box-shadow: 3px 3px 8px #22385c , 
+            -3px -3px 8px #ffffff;
+    
     /* align-items: center; */
 }
 
@@ -29,4 +36,10 @@
     margin-top: 10px;
     grid-row: 7/auto;
     grid-column: 1/13;
+}
+
+.carousel-brands-wrapper{
+    background: white;
+    border-radius: 10px;
+    
 }

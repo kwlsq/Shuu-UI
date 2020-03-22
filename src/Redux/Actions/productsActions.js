@@ -9,7 +9,9 @@ import {
     CLOSE_DIALOG,
     REDIRECT_TO_CART,
     OPEN_DIALOG,
-    STOP_REDIRECT_TO_CART
+    STOP_REDIRECT_TO_CART,
+    GET_MEN_PRODUCTS,
+    GET_WOMEN_PRODUCTS
 } from '../Actions/types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -114,4 +116,31 @@ export const openDialog = () => {
 }
 export const stopRedirectToCart = () => {
     return { type: STOP_REDIRECT_TO_CART }
+}
+
+export const getMenProducts = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(API_URL_1 + `/products/men`)
+            dispatch({
+                type: GET_MEN_PRODUCTS,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+export const getWomenProducts = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(API_URL_1 + `/products/women`)
+            dispatch({
+                type: GET_WOMEN_PRODUCTS,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }

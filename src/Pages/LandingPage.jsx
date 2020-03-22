@@ -19,21 +19,15 @@ class LandingPage extends React.Component {
 
     render() {
         return (
-
             <div className="landingpage-grid">
                 <FeatureBar />
                 <Fade bottom distance="50px" duration={1000}>
                     <div className="carousel-wrapper"><CarouselComp /></div>
                 </Fade>
-                {/* <Fade bottom distance="50px" duration={1000}>
-                    <div className="card-promo">
-                        <div className="card-header">Promo</div>
-                    </div>
-                </Fade> */}
                 <Fade bottom distance="50px" duration={1000}>
                     <div className="official-brands">
                         <div className="card-header">Official Stores</div>
-                        <div >
+                        <div className="carousel-brands-wrapper">
                             <CarouselBrands />
                         </div>
                     </div>

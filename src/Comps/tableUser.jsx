@@ -6,8 +6,6 @@ import '../CSS/table.css'
 
 class TableUser extends React.Component {
     renderTableUser = () => {
-        var x = this.props.tableAdmin
-        console.log('ini table', x)
         return this.props.tableAdmin.map((item, index) => {
             return (
                 <tr key={index}>
@@ -31,15 +29,20 @@ class TableUser extends React.Component {
         return (
             <div >
                 <table  >
-                    <tr>
-                        <th>No.</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Verified</th>
-                        <th>Created At</th>
-                        <th>Role</th>
-                    </tr>
-                    {this.renderTableUser()}
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Verified</th>
+                            <th>Created At</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderTableUser()}
+
+                    </tbody>
                 </table>
             </div >
         )

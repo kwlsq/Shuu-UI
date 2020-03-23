@@ -112,10 +112,22 @@ class ProductDetail extends React.Component {
                         </select>
                     </FormControl>
                 </div>
-                <div className="product-detail-button-wrapper">
-                    <button className="button-buy" onClick={this.onClickBuy}>Buy</button>
-                    <button className="button-add-to-cart" onClick={this.onClickAddToCart}>Add to Cart</button>
-                </div>
+
+                {
+                    localStorage.getItem('token')
+                        ?
+                        <div className="product-detail-button-wrapper">
+                            <button className="button-buy" onClick={this.onClickBuy}>Buy</button>
+                            <button className="button-add-to-cart" onClick={this.onClickAddToCart}>Add to Cart</button>
+                        </div>
+                        :
+                        <div className="product-detail-button-wrapper">
+                            <button className="button-buy" onClick={() => alert('Please Login First')}>Buy</button>
+                            <button className="button-add-to-cart" onClick={() => alert('Please Login First')}>Add to Cart</button>
+                        </div>
+
+                }
+
                 {
                     this.props.productDetail.popDialog
                         ?

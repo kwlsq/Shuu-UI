@@ -32,8 +32,10 @@ export default (state = INITIAL_STATE, action) => {
         case GET_MEN_PRODUCTS:
             return { ...state, showcase: action.payload }
         case GET_WOMEN_PRODUCTS:
+            console.log(action.payload)
             return { ...state, showcase: action.payload }
         case LOAD_MORE_PRODUCTS:
+            console.log(state.showcase)
             return { ...state, showcase: [...state.showcase, ...action.payload] }
         case HIDE_LOAD_MORE:
             return { ...state, hideButton: true }

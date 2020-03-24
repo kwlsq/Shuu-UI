@@ -8,7 +8,8 @@ import {
 import { API_URL_1 } from '../Helpers/apiurl';
 import {
     showProductDetail,
-    getMenProducts
+    getMenProducts,
+    loadMore
 } from '../Redux/Actions'
 import Fade from 'react-reveal/Fade';
 import '../CSS/genderpage.css';
@@ -39,6 +40,13 @@ class MenPageCardComp extends React.Component {
         return (
             <div className="gender-showcase" >
                 {this.renderCardShowcase()}
+                {
+                    this.props.hideButton
+                        ?
+                        <div />
+                        :
+                        <button onClick={() => this.props.loadMore(this.props.products.length)}>Load More</button>
+                }
             </div>
         );
 
@@ -48,10 +56,15 @@ class MenPageCardComp extends React.Component {
 
 
 const mapStateToProps = ({ products }) => {
-    return { products: products.showcase, detail: products.productDetail }
+    return {
+        products: products.showcase,
+        hideButton: products.hideButton,
+        detail: products.productDetail
+    }
 }
 
 export default connect(mapStateToProps, {
     showProductDetail,
-    getMenProducts
+    getMenProducts,
+    loadMore
 })(MenPageCardComp);

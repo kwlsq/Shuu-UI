@@ -4,7 +4,8 @@ import {
 } from '../Actions/types';
 
 const INITIAL_STATE = {
-    openDialogTransactionDetail: false
+    openDialogTransactionDetail: false,
+    lastTransaction: null
 }
 
 export default (state = INITIAL_STATE, action) => {

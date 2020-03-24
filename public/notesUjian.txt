@@ -1,0 +1,36 @@
+FINAL PRESENTATION PURWADHIKA
+
+QUESTIONS/TASKS/BUGS:
+1. tanggal transaksi terakhir dari baron (user yang ter login)
+2. Search
+3. filter
+4. alamat bisa diubah di checkout
+5.
+6.
+7.
+8.
+9.
+10.
+
+INPUTS/NOTES:
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+
+
+FUTURE IMPROVEMENT FOR APPS:
+1. Search page/filter feature
+2. Brands on carousel are clickable
+3. Cart notification using socket.io
+4. Chat with store/customer service using socket.io
+5. Feed for store to post image vertically (like insta)
+6. Courier restriction if empty, currently still manual
+7. Previous profile pic not deleted
+8. Resend email verification
+9. Getting important data from users, getting which products is most liked, most viewed, best seller, etc
+10. Styling and user interface
+11. Code writing needs to be better, since it become spaghetti codes

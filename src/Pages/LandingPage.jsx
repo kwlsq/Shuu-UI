@@ -9,7 +9,8 @@ import CardComp from '../Comps/cards';
 import CarouselBrands from '../Comps/carouselOfficialBrands';
 import {
     getAllBrands,
-    showShowcaseProducts
+    showShowcaseProducts,
+    loadMore
 } from '../Redux/Actions'
 class LandingPage extends React.Component {
     componentDidMount() {
@@ -34,7 +35,16 @@ class LandingPage extends React.Component {
                 </Fade>
                 <div className="showcase-wrapper">
                     <CardComp />
+
+                    {
+                        this.props.products.hideButton
+                            ?
+                            <div />
+                            :
+                            <button onClick={() => this.props.loadMore(this.props.products.showcase.length)}>Load More</button>
+                    }
                 </div>
+
 
             </div>
         );
@@ -46,4 +56,8 @@ const mapStateToProps = ({ products }) => {
     return { products }
 }
 
-export default connect(mapStateToProps, { getAllBrands, showShowcaseProducts })(LandingPage);
+export default connect(mapStateToProps, {
+    getAllBrands,
+    showShowcaseProducts,
+    loadMore
+})(LandingPage);

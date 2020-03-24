@@ -5,13 +5,16 @@ import {
     SHOW_PRODUCT_SIZE,
     PRODUCT_BY_SIZE,
     GET_WOMEN_PRODUCTS,
-    GET_MEN_PRODUCTS
+    GET_MEN_PRODUCTS,
+    LOAD_MORE_PRODUCTS,
+    HIDE_LOAD_MORE
 } from '../Actions/types'
 const INITIAL_STATE = {
     showcase: [],
     productDetail: [],
     availColor: [],
-    availSize: []
+    availSize: [],
+    hideButton: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -30,6 +33,10 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, showcase: action.payload }
         case GET_WOMEN_PRODUCTS:
             return { ...state, showcase: action.payload }
+        case LOAD_MORE_PRODUCTS:
+            return { ...state, showcase: [...state.showcase, ...action.payload] }
+        case HIDE_LOAD_MORE:
+            return { ...state, hideButton: true }
         default:
             return state
     }

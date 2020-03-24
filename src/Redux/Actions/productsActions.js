@@ -11,7 +11,9 @@ import {
     OPEN_DIALOG,
     STOP_REDIRECT_TO_CART,
     GET_MEN_PRODUCTS,
-    GET_WOMEN_PRODUCTS
+    GET_WOMEN_PRODUCTS,
+    LOAD_MORE_PRODUCTS,
+    HIDE_LOAD_MORE
 } from '../Actions/types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -20,6 +22,7 @@ export const showShowcaseProducts = () => {
     return async (dispatch) => {
         try {
             const res = await axios.get(API_URL_1 + `/products/showcase`)
+            console.log(res.data)
             dispatch({
                 type: SHOW_SHOWCASE_PRODUCTS,
                 payload: res.data
@@ -88,7 +91,6 @@ export const onChangeSize = (size, id) => {
                 type: PRODUCT_BY_SIZE,
                 payload: res.data
             })
-
         } catch (err) {
             console.log(err)
         }
@@ -139,6 +141,29 @@ export const getWomenProducts = () => {
                 type: GET_WOMEN_PRODUCTS,
                 payload: res.data
             })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+export const loadMore = (length) => {
+    return async (dispatch) => {
+        try {
+            console.log(length, 'lenghththth')
+            const res = await axios.put(API_URL_1 + `/products/more`, { length })
+            console.log(res.data)
+            console.log(res.data.length)
+            if (res.data.length === 0) {
+                dispatch({ type: HIDE_LOAD_MORE })
+            } else {
+                dispatch({
+                    type: LOAD_MORE_PRODUCTS,
+                    payload: res.data
+                })
+
+            }
+
         } catch (err) {
             console.log(err)
         }

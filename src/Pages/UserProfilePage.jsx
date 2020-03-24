@@ -22,7 +22,7 @@ import {
     onBtnCancelEdit,
     getTransaction,
     getTransactionDetail,
-    closeDialogTransactionDetail
+    closeDialogTransactionDetail,
 } from '../Redux/Actions';
 import { API_URL_1 } from '../Helpers/apiurl';
 import TransactionTable from '../Comps/tableForTransactionHistory';
@@ -403,6 +403,6 @@ export default connect(mapStateToProps, {
     onBtnCancelEdit,
     getTransaction,
     getTransactionDetail,
-    closeDialogTransactionDetail
+    closeDialogTransactionDetail,
 })(UserProfilePage);
 

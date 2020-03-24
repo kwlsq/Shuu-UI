@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, keepLogin } from '../Redux/Actions';
+
 import '../CSS/navbar.css';
 
 const NavbarComp = (props) => {
     props.keepLogin()
+
     if (props.role_id === 3) {
         console.log('ini user')
         return (
@@ -50,6 +52,7 @@ const NavbarComp = (props) => {
                             Log Out
                     </Link>
                     </div>
+
                 </div>
             </div>
         )
@@ -183,10 +186,11 @@ const NavbarComp = (props) => {
     }
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ user, transaction }) => {
     return {
         username: user.username,
-        role_id: user.role_id
+        role_id: user.role_id,
+        history: transaction.transactionHistory
     }
 }
 

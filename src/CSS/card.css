@@ -17,6 +17,11 @@
     border-radius: 0 0 20px 20px !important;
 }
 
+.showcase-card:hover{
+    box-shadow: 5px 5px 8px #22385c , 
+            -5px -5px 8px #ffffff;
+}
+
 .cardbody{
     font-family: 'Raleway', sans-serif;
     font-size: 16px;

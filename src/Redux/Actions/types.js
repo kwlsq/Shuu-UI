@@ -19,6 +19,8 @@ export const SHOW_PRODUCT_COLOR = 'SHOW_PRODUCT_COLOR';
 export const SHOW_PRODUCT_SIZE = 'SHOW_PRODUCT_SIZE';
 export const GET_WOMEN_PRODUCTS = 'GET_WOMEN_PRODUCTS';
 export const GET_MEN_PRODUCTS = 'GET_MEN_PRODUCTS';
+export const LOAD_MORE_PRODUCTS = 'LOAD_MORE_PRODUCTS';
+export const HIDE_LOAD_MORE = 'HIDE_LOAD_MORE';
 
 //acton types productDetailInputReducers.js
 export const ONCHANGE_SIZE = 'ONCHANGE_SIZE';

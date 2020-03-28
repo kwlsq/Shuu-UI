@@ -1,4 +1,4 @@
-.gender-wrapper{
+.search-wrapper{
     margin: 0 11em;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -6,7 +6,7 @@
     grid-auto-rows: minmax(80px, auto);
 }
 
-.gender-showcase{
+.search-showcase{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -16,10 +16,14 @@
     grid-row: 1/auto;
     grid-column: 3/13;  
 }
-
-.gender-filter-wrapper{
+.filter-wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    color: black !important;
     margin-top: 20px;
-    background-color: white;
     grid-row: 1/auto;
-    grid-column: 1/3;
+    grid-column: 1/3;  
+    background-color: white;
 }

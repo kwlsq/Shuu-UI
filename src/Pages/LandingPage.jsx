@@ -33,6 +33,9 @@ class LandingPage extends React.Component {
                         </div>
                     </div>
                 </Fade>
+                <div className="showcase-filter-wrapper">
+                    filter
+                </div>
                 <div className="showcase-wrapper">
                     <CardComp />
 

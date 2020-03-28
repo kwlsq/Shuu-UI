@@ -21,6 +21,7 @@ export const GET_WOMEN_PRODUCTS = 'GET_WOMEN_PRODUCTS';
 export const GET_MEN_PRODUCTS = 'GET_MEN_PRODUCTS';
 export const LOAD_MORE_PRODUCTS = 'LOAD_MORE_PRODUCTS';
 export const HIDE_LOAD_MORE = 'HIDE_LOAD_MORE';
+export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
 
 //acton types productDetailInputReducers.js
 export const ONCHANGE_SIZE = 'ONCHANGE_SIZE';

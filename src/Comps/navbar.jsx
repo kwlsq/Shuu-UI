@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout, keepLogin } from '../Redux/Actions';
+import {
+    logout,
+    keepLogin
+} from '../Redux/Actions';
 
 import '../CSS/navbar.css';
 
 class NavbarComp extends React.Component {
+    state = {
+        searchBar: ''
+    }
     componentDidMount() {
         this.props.keepLogin()
-
+        console.log(this.state.searchBar)
     }
     render() {
         if (this.props.role_id === 3) {
@@ -19,7 +25,7 @@ class NavbarComp extends React.Component {
                         <div className="logo">
                             <Link to='/'>
                                 Shuu
-                    </Link>
+                        </Link>
                         </div>
                         <div className="button">
                             <Link to='/men'>
@@ -37,8 +43,10 @@ class NavbarComp extends React.Component {
                         </Link>
                         </div>
                         <div className="searchbar">
-                            <input type="text" placeholder="search"></input>
-                            <button><i className="fas fa-search"></i></button>
+                            <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
+                            <a href={`/search?${this.state.searchBar}`}>
+                                <button><i className="fas fa-search"></i></button>
+                            </a>
                         </div>
                         <div className="button-login">
                             <Link to='/profile'>
@@ -85,8 +93,10 @@ class NavbarComp extends React.Component {
                         </Link>
                         </div>
                         <div className="searchbar">
-                            <input type="text" placeholder="search"></input>
-                            <button><i className="fas fa-search"></i></button>
+                            <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
+                            <a href={`/search?${this.state.searchBar}`}>
+                                <button><i className="fas fa-search"></i></button>
+                            </a>
                         </div>
 
                         <div className="button-login">
@@ -128,8 +138,10 @@ class NavbarComp extends React.Component {
                         </Link>
                         </div>
                         <div className="searchbar">
-                            <input type="text" placeholder="search"></input>
-                            <button><i className="fas fa-search"></i></button>
+                            <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
+                            <a href={`/search?${this.state.searchBar}`}>
+                                <button><i className="fas fa-search"></i></button>
+                            </a>
                         </div>
                         <div className="button-login">
                             <Link to='/admin'>
@@ -170,8 +182,10 @@ class NavbarComp extends React.Component {
                         </Link>
                         </div>
                         <div className="searchbar">
-                            <input type="text" placeholder="search"></input>
-                            <button><i className="fas fa-search"></i></button>
+                            <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
+                            <a href={`/search?${this.state.searchBar}`}>
+                                <button><i className="fas fa-search"></i></button>
+                            </a>
                         </div>
                         <div className="button-login">
                             <Link to='/login'>
@@ -184,7 +198,7 @@ class NavbarComp extends React.Component {
                         </Link>
                         </div>
                     </div>
-                </div>
+                </div >
             )
         }
 
@@ -200,4 +214,7 @@ const mapStateToProps = ({ user, transaction }) => {
     }
 }
 
-export default connect(mapStateToProps, { logout, keepLogin })(NavbarComp)
+export default connect(mapStateToProps, {
+    logout,
+    keepLogin
+})(NavbarComp)

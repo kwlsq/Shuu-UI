@@ -19,6 +19,7 @@ import CartPage from './Pages/CartPage';
 import UserProfilePage from './Pages/UserProfilePage';
 import CheckOutPage from './Pages/CheckOutPage';
 import PaymentPage from './Pages/PaymentPage';
+import SearchPage from './Pages/SearchPage';
 
 
 class App extends React.Component {
@@ -44,6 +45,7 @@ class App extends React.Component {
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/cart" component={CartPage} />
+            <Route path="/search" component={SearchPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
@@ -65,6 +67,7 @@ class App extends React.Component {
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/cart" component={CartPage} />
+            <Route path="/search" component={SearchPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
@@ -87,6 +90,7 @@ class App extends React.Component {
             <Route path="/cart" component={CartPage} />
             <Route path="/checkout" component={CheckOutPage} />
             <Route path="/payment" component={PaymentPage} />
+            <Route path="/search" component={SearchPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
@@ -105,6 +109,7 @@ class App extends React.Component {
             <Route path="/brands" component={BrandsPage} />
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
+            <Route path="/search" component={SearchPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>

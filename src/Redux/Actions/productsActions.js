@@ -13,7 +13,8 @@ import {
     GET_MEN_PRODUCTS,
     GET_WOMEN_PRODUCTS,
     LOAD_MORE_PRODUCTS,
-    HIDE_LOAD_MORE
+    HIDE_LOAD_MORE,
+    SEARCH_PRODUCT
 } from '../Actions/types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -164,6 +165,21 @@ export const loadMore = (length) => {
 
             }
 
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+export const searchProduct = (search) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.put(API_URL_1 + `/products/search`, { search })
+            console.log(res.data)
+            dispatch({
+                type: SEARCH_PRODUCT,
+                payload: res.data
+            })
         } catch (err) {
             console.log(err)
         }

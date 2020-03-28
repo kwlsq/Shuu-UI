@@ -7,7 +7,8 @@ import {
     GET_WOMEN_PRODUCTS,
     GET_MEN_PRODUCTS,
     LOAD_MORE_PRODUCTS,
-    HIDE_LOAD_MORE
+    HIDE_LOAD_MORE,
+    SEARCH_PRODUCT
 } from '../Actions/types'
 const INITIAL_STATE = {
     showcase: [],
@@ -39,6 +40,9 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, showcase: [...state.showcase, ...action.payload] }
         case HIDE_LOAD_MORE:
             return { ...state, hideButton: true }
+        case SEARCH_PRODUCT:
+            console.log(action.payload)
+            return { ...state, showcase: action.payload }
         default:
             return state
     }

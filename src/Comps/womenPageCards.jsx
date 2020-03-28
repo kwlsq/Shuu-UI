@@ -18,8 +18,8 @@ import '../CSS/genderpage.css';
 class WomenPageCardComp extends React.Component {
     componentDidMount() {
         this.props.getWomenProducts()
-
     }
+
     renderCardShowcase = () => {
         return this.props.products.map((item, index) => {
             return (

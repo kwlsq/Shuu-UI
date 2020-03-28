@@ -6,6 +6,9 @@ class WomenPage extends React.Component {
     render() {
         return (
             <div className="gender-wrapper">
+                <div className="gender-filter-wrapper">
+                    filter
+                </div>
                 <WomenPageCard />
             </div>
         );

@@ -59,7 +59,11 @@ class UserProfilePage extends React.Component {
     onChangeProvince = (val) => {
         console.log(val)
         this.props.onChangeEditProvince(val)
-        this.props.getCityLists(val.province_id)
+        if (val) {
+            return this.props.getCityLists(val.province_id)
+        }
+        this.props.getCityLists()
+
 
     }
 

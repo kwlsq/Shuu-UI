@@ -1,7 +1,12 @@
 import {
     OPEN_PAYMENT_DIALOG,
     CLOSE_PAYMENT_DIALOG,
-    STORE_PAYMENT_RECEIPT
+    STORE_PAYMENT_RECEIPT,
+    EDIT_ADDRESS,
+    SAVE_ADDRESS,
+    EDIT_DELIVERY_PROVINCE,
+    EDIT_DELIVERY_CITY,
+    EDIT_DELIVERY_ADDRESS
 } from './types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -21,10 +26,11 @@ export const storePaymentReceipt = (image) => {
     }
 }
 
-export const uploadReceipt = (image, payment) => {
+export const uploadReceipt = (image, payment, province, city, address) => {
     return async (dispatch) => {
         try {
             console.log('masuk action upload image', image)
+            console.log(image, payment, province, city, address, 'action')
             const token = await localStorage.getItem('token')
             const options = {
                 headers: {
@@ -37,11 +43,43 @@ export const uploadReceipt = (image, payment) => {
             const formData = await new FormData();
             formData.append('image', image)
             formData.append('total_price', payment)
+            formData.append('province', province)
+            formData.append('city', city)
+            formData.append('address', address)
 
             const res = await axios.post(API_URL_1 + '/transaction/receipt', formData, options)
             console.log(res.data)
         } catch (err) {
             console.log(err)
         }
+    }
+}
+
+export const editAddress = () => {
+    return { type: EDIT_ADDRESS }
+}
+export const saveAddress = () => {
+    return { type: SAVE_ADDRESS }
+}
+
+export const onChangeDeliveryProvince = (val) => {
+    console.log(val, 'provinceeeee')
+    return {
+        type: EDIT_DELIVERY_PROVINCE,
+        payload: val
+    }
+}
+export const onChangeDeliveryCity = (val) => {
+    console.log(val, 'cityyyyyy')
+    return {
+        type: EDIT_DELIVERY_CITY,
+        payload: val
+    }
+}
+export const onChangeDeliveryAddress = (val) => {
+    console.log(val, 'addresssss')
+    return {
+        type: EDIT_DELIVERY_ADDRESS,
+        payload: val
     }
 }

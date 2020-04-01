@@ -10,8 +10,17 @@ import {
     closeDialogPayment,
     storePaymentReceipt,
     uploadReceipt,
-    updateStocks
+    updateStocks,
+    editAddress,
+    saveAddress,
+    getProvinceLists,
+    getCityLists,
+    onChangeDeliveryProvince,
+    onChangeDeliveryCity,
+    onChangeDeliveryAddress
 } from '../Redux/Actions';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 import CardCheckout from '../Comps/cardsForCheckout';
 import DialogPayment from '../Comps/dialogPayment';
 import '../CSS/checkoutpage.css';
@@ -20,6 +29,20 @@ class CheckOutPage extends React.Component {
         this.props.getTotalPayment()
         this.props.getAddresses()
         this.props.getCart()
+    }
+
+    onClickEditAddress = () => {
+        this.props.getProvinceLists()
+        this.props.getCityLists()
+        this.props.editAddress()
+    }
+
+    onChangeDeliveryProvince = (val) => {
+        this.props.onChangeDeliveryProvince(val)
+        if (val) {
+            return this.props.getCityLists(val.province_id)
+        }
+        this.props.getCityLists()
     }
 
     renderCardCheckout = () => {
@@ -35,14 +58,94 @@ class CheckOutPage extends React.Component {
                     city={val.city}
                     image={val.image}
                     weight={val.total_weight}
-                    origin={val.city_id}
-                    destination={this.props.address.city_id}
+                    origin={`${val.city_id}`}
+                    destination={
+                        this.props.checkoutPage.editCityId === 0
+                            ?
+                            this.props.address.city_id
+                            :
+                            this.props.checkoutPage.editCityId
+                    }
                     chooseCourier={this.props.getOngkir}
                     ongkir={this.props.ongkir}
                     courier={this.props.courier}
                 />
             )
         })
+    }
+
+    renderEditAddress = () => {
+        if (this.props.checkoutPage.openEditAddress) {
+            return (
+                <div className="checkout-header-wrapper">
+                    <div>Shipment Address</div>
+                    <div>
+                        <Autocomplete
+                            options={this.props.editProfileInputs.provinceList}
+                            onChange={(event, value) => this.onChangeDeliveryProvince(value)}
+                            getOptionLabel={option => option.province}
+                            style={{ maxWidth: 400, marginBottom: 10 }}
+                            renderInput={params =>
+                                <TextField
+                                    {...params}
+                                    label="Province"
+                                    variant="outlined"
+                                />}
+                        />
+                        <Autocomplete
+                            options={this.props.editProfileInputs.cityList}
+                            getOptionLabel={option => `${option.type} ${option.city_name}`}
+                            onChange={(event, value) => this.props.onChangeDeliveryCity(value)}
+                            style={{ maxWidth: 400, marginBottom: 10 }}
+                            renderInput={params =>
+                                <TextField
+                                    {...params}
+                                    label="City"
+                                    variant="outlined"
+                                />}
+                        />
+                        <TextField
+                            label="Address Detail"
+                            multiline
+                            placeholder={this.props.address.address_detail}
+                            rows="4"
+                            value={this.props.checkoutPage.editAddress}
+                            style={{ maxWidth: 400, marginBottom: 10 }}
+                            variant="outlined"
+                            onChange={(e) => this.props.onChangeDeliveryAddress(e.target.value)}
+                        />
+                    </div>
+                    <div >
+                        <button onClick={this.props.saveAddress}>Save Address</button>
+                    </div>
+                </div>
+            )
+        }
+        return (
+            <div className="checkout-header-wrapper">
+                <div>Shipment Address</div>
+                {
+                    this.props.checkoutPage.editProvince === ''
+                        ?
+                        <div>
+
+                            <div>Province : {this.props.address.province}</div>
+                            <div>City : {this.props.address.city}</div>
+                            <div>Detail : {this.props.address.address_detail}</div>
+                        </div>
+                        :
+                        <div>
+                            <div>Province : {this.props.checkoutPage.editProvince}</div>
+                            <div>City : {this.props.checkoutPage.editCity}</div>
+                            <div>Detail : {this.props.checkoutPage.editAddress}</div>
+                        </div>
+                }
+
+                <div >
+                    <button onClick={this.onClickEditAddress}>Change Delivery Address</button>
+                </div>
+            </div >
+        )
     }
 
     updateStocks = () => {
@@ -57,16 +160,7 @@ class CheckOutPage extends React.Component {
         return (
             <div className="checkout-page-wrapper" >
                 <div className="checkout-detail">
-                    <div className="checkout-header-wrapper">
-                        <div>Shipment Address</div>
-                        <div>
-                            <div>Province : {this.props.address.province}</div>
-                            <div>City : {this.props.address.city}</div>
-                            <div>Detail : {this.props.address.address_detail}</div>
-                        </div>
-                        <div >
-                        </div>
-                    </div>
+                    {this.renderEditAddress()}
                     {this.renderCardCheckout()}
                 </div>
                 <div className="checkout-payment-wrapper">
@@ -95,6 +189,15 @@ class CheckOutPage extends React.Component {
                             receipt={this.props.checkoutPage.paymentReceipt}
                             payment={this.props.ongkir + this.props.cartPage.totalPayment}
                             updateStocks={this.updateStocks}
+                            destination={
+                                this.props.checkoutPage.editCity ? this.props.checkoutPage.editCity : this.props.address.city
+                            }
+                            province={
+                                this.props.checkoutPage.editProvince ? this.props.checkoutPage.editProvince : this.props.address.province
+                            }
+                            address={
+                                this.props.checkoutPage.editAddress ? this.props.checkoutPage.editAddress : this.props.address.address_detail
+                            }
                         />
                         :
                         <div />
@@ -104,14 +207,15 @@ class CheckOutPage extends React.Component {
     }
 }
 
-const mapStateToProps = ({ transaction, cartPage, checkoutPage }) => {
+const mapStateToProps = ({ transaction, cartPage, checkoutPage, editProfileInputs }) => {
     return {
         cart: transaction.cart,
         address: transaction.address,
         ongkir: transaction.total_ongkir,
         courier: transaction.courier,
         cartPage,
-        checkoutPage
+        checkoutPage,
+        editProfileInputs
     }
 }
 
@@ -124,5 +228,12 @@ export default connect(mapStateToProps, {
     closeDialogPayment,
     storePaymentReceipt,
     uploadReceipt,
-    updateStocks
+    updateStocks,
+    editAddress,
+    saveAddress,
+    getProvinceLists,
+    getCityLists,
+    onChangeDeliveryProvince,
+    onChangeDeliveryCity,
+    onChangeDeliveryAddress
 })(CheckOutPage);

@@ -92,12 +92,6 @@ export const onChangeGender = (val) => {
     }
 }
 
-// export const onChangeEditEmail = (val) => {
-//     return {
-//         type: EDIT_EMAIL,
-//         payload: val
-//     }
-// }
 
 export const getProvinceLists = () => {
     return async (dispatch) => {

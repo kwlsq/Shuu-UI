@@ -15,7 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide(props) {
     const onClickUploadReceipt = () => {
-        props.uploadReceipt(props.receipt, props.payment)
+        props.uploadReceipt(props.receipt, props.payment, props.province, props.destination, props.address)
         props.updateStocks()
     }
 

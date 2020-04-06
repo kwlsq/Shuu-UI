@@ -39,10 +39,11 @@
 }
 
 .showcase-filter-wrapper{
-    margin-top: 20px;
-    background-color: white;
+    margin-top: 10px;
     grid-row: 7/auto;
     grid-column: 1/3;
+    background: white;
+
 }
 
 .carousel-brands-wrapper{

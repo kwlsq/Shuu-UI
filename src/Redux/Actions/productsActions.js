@@ -14,7 +14,8 @@ import {
     GET_WOMEN_PRODUCTS,
     LOAD_MORE_PRODUCTS,
     HIDE_LOAD_MORE,
-    SEARCH_PRODUCT
+    SEARCH_PRODUCT,
+    FILTER_PRICE
 } from '../Actions/types';
 import axios from 'axios';
 import { API_URL_1 } from '../../Helpers/apiurl';
@@ -174,6 +175,11 @@ export const loadMore = (length) => {
 export const searchProduct = (search) => {
     return async (dispatch) => {
         try {
+            console.log(search, 'search')
+            if (search === undefined) {
+                search = ''
+            }
+            console.log(search)
             const res = await axios.put(API_URL_1 + `/products/search`, { search })
             console.log(res.data)
             dispatch({
@@ -183,5 +189,16 @@ export const searchProduct = (search) => {
         } catch (err) {
             console.log(err)
         }
+    }
+}
+
+export const priceFilter = (min, max) => {
+    return async (dispatch) => {
+        const res = await axios.put(API_URL_1 + '/products/filterprice', { min, max })
+        console.log(res)
+        dispatch({
+            type: FILTER_PRICE,
+            payload: res.data
+        })
     }
 }

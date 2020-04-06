@@ -8,7 +8,8 @@ import {
     GET_MEN_PRODUCTS,
     LOAD_MORE_PRODUCTS,
     HIDE_LOAD_MORE,
-    SEARCH_PRODUCT
+    SEARCH_PRODUCT,
+    FILTER_PRICE
 } from '../Actions/types'
 const INITIAL_STATE = {
     showcase: [],
@@ -41,6 +42,9 @@ export default (state = INITIAL_STATE, action) => {
         case HIDE_LOAD_MORE:
             return { ...state, hideButton: true }
         case SEARCH_PRODUCT:
+            console.log(action.payload)
+            return { ...state, showcase: action.payload }
+        case FILTER_PRICE:
             console.log(action.payload)
             return { ...state, showcase: action.payload }
         default:

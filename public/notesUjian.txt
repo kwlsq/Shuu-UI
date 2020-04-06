@@ -5,11 +5,11 @@ QUESTIONS/TASKS/BUGS:
 2. Search
 3. filter
 4. alamat bisa diubah di checkout
-5.
-6.
-7.
-8.
-9.
+5. filter brands
+6. filter available size
+7. filter location
+8. crud shop
+9. filter price
 10.
 
 INPUTS/NOTES:

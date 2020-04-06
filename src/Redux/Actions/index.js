@@ -8,3 +8,4 @@ export * from './transactionActions';
 export * from './cartPageActions';
 export * from './checkoutPageActions';
 export * from './adminPageActions';
+export * from './filterPageActions';

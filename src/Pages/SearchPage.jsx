@@ -10,9 +10,13 @@ import {
     showProductDetail,
     getWomenProducts,
     loadMore,
-    searchProduct
+    searchProduct,
+    minPriceFilter,
+    maxPriceFilter,
+    priceFilter
 } from '../Redux/Actions'
 import Fade from 'react-reveal/Fade';
+import FilterBar from '../Comps/filterBar';
 import '../CSS/searchpage.css';
 
 
@@ -20,7 +24,6 @@ class SearchPage extends React.Component {
     componentDidMount() {
         const search = this.props.location.search.split('?')[1];
         console.log(search)
-        // this.props.getWomenProducts()
         this.props.searchProduct(search)
     }
 
@@ -46,7 +49,13 @@ class SearchPage extends React.Component {
         return (
             <div className="search-wrapper">
                 <div className="filter-wrapper">
-                    filter
+                    <FilterBar
+                        filterMinPrice={this.props.minPriceFilter}
+                        filterMaxPrice={this.props.maxPriceFilter}
+                        filterPrice={this.props.priceFilter}
+                        min={this.props.filter.min}
+                        max={this.props.filter.max}
+                    />
                 </div>
                 <div className="search-showcase" >
                     {
@@ -72,11 +81,12 @@ class SearchPage extends React.Component {
 
 
 
-const mapStateToProps = ({ products }) => {
+const mapStateToProps = ({ products, filter }) => {
     return {
         products: products.showcase,
         hideButton: products.hideButton,
-        detail: products.productDetail
+        detail: products.productDetail,
+        filter
     }
 }
 
@@ -84,5 +94,8 @@ export default connect(mapStateToProps, {
     showProductDetail,
     getWomenProducts,
     loadMore,
-    searchProduct
+    searchProduct,
+    minPriceFilter,
+    maxPriceFilter,
+    priceFilter
 })(SearchPage);

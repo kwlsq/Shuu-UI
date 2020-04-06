@@ -7,10 +7,14 @@ import CarouselComp from '../Comps/carousel';
 import FeatureBar from '../Comps/featureBar';
 import CardComp from '../Comps/cards';
 import CarouselBrands from '../Comps/carouselOfficialBrands';
+import FilterBar from '../Comps/filterBar';
 import {
     getAllBrands,
     showShowcaseProducts,
-    loadMore
+    loadMore,
+    minPriceFilter,
+    maxPriceFilter,
+    priceFilter
 } from '../Redux/Actions'
 class LandingPage extends React.Component {
     componentDidMount() {
@@ -34,7 +38,13 @@ class LandingPage extends React.Component {
                     </div>
                 </Fade>
                 <div className="showcase-filter-wrapper">
-                    filter
+                    <FilterBar
+                        filterMinPrice={this.props.minPriceFilter}
+                        filterMaxPrice={this.props.maxPriceFilter}
+                        filterPrice={this.props.priceFilter}
+                        min={this.props.filter.min}
+                        max={this.props.filter.max}
+                    />
                 </div>
                 <div className="showcase-wrapper">
                     <CardComp />
@@ -55,12 +65,18 @@ class LandingPage extends React.Component {
 }
 
 
-const mapStateToProps = ({ products }) => {
-    return { products }
+const mapStateToProps = ({ products, filter }) => {
+    return {
+        products,
+        filter
+    }
 }
 
 export default connect(mapStateToProps, {
     getAllBrands,
     showShowcaseProducts,
-    loadMore
+    loadMore,
+    minPriceFilter,
+    maxPriceFilter,
+    priceFilter
 })(LandingPage);

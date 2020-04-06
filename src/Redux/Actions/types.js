@@ -22,6 +22,7 @@ export const GET_MEN_PRODUCTS = 'GET_MEN_PRODUCTS';
 export const LOAD_MORE_PRODUCTS = 'LOAD_MORE_PRODUCTS';
 export const HIDE_LOAD_MORE = 'HIDE_LOAD_MORE';
 export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
+export const FILTER_PRICE = 'FILTER_PRICE';
 
 //acton types productDetailInputReducers.js
 export const ONCHANGE_SIZE = 'ONCHANGE_SIZE';
@@ -85,6 +86,10 @@ export const OPEN_TABLE_USER = 'OPEN_TABLE_USER';
 export const OPEN_TABLE_TRANSACTION = 'OPEN_TABLE_TRANSACTION';
 export const GET_ALL_TRANSACTION = 'GET_ALL_TRANSACTION';
 export const ADMIN_CONFIRMATION = 'ADMIN_CONFIRMATION';
+
+//action types filterPageReducer.js
+export const MIN_PRICE_FILTER = 'MIN_PRICE_FILTER';
+export const MAX_PRICE_FILTER = 'MAX_PRICE_FILTER';
 
 
 

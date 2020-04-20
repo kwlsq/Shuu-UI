@@ -1,6 +1,6 @@
 import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
-import { API_URL_1 } from '../Helpers/apiurl';
+import { API_URL_HEROKU } from '../Helpers/apiurl';
 import '../CSS/checkoutpage.css';
 
 export default function CardCheckout(props) {
@@ -10,7 +10,7 @@ export default function CardCheckout(props) {
                 {props.index + 1}
             </div>
             <img
-                src={API_URL_1 + `${props.image}`}
+                src={API_URL_HEROKU + `${props.image}`}
                 alt="profile pic"
                 width="100%"
                 height="auto"

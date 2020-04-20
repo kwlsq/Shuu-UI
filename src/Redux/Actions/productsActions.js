@@ -18,12 +18,12 @@ import {
     FILTER_PRICE
 } from '../Actions/types';
 import axios from 'axios';
-import { API_URL_1 } from '../../Helpers/apiurl';
+import { API_URL_HEROKU } from '../../Helpers/apiurl';
 
 export const showShowcaseProducts = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API_URL_1 + `/products/showcase`)
+            const res = await axios.get(API_URL_HEROKU + `/products/showcase`)
             console.log(res.data)
             dispatch({
                 type: SHOW_SHOWCASE_PRODUCTS,
@@ -39,7 +39,7 @@ export const showProductDetail = (id) => {
     return async (dispatch) => {
         try {
             console.log(id)
-            const res = await axios.post(API_URL_1 + `/products/detailproduct`, { id })
+            const res = await axios.post(API_URL_HEROKU + `/products/detailproduct`, { id })
             console.log(res.data, 'showproductdetail')
             dispatch({
                 type: SHOW_PRODUCT_DETAIL,
@@ -54,7 +54,7 @@ export const showProductDetail = (id) => {
 export const showAvailableColor = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.post(API_URL_1 + `/products/availcolor`, { id })
+            const res = await axios.post(API_URL_HEROKU + `/products/availcolor`, { id })
             dispatch({
                 type: SHOW_PRODUCT_COLOR,
                 payload: res.data
@@ -68,7 +68,7 @@ export const showAvailableColor = (id) => {
 export const showAvailableSize = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.post(API_URL_1 + `/products/availsize`, { id })
+            const res = await axios.post(API_URL_HEROKU + `/products/availsize`, { id })
             dispatch({
                 type: SHOW_PRODUCT_SIZE,
                 payload: res.data
@@ -87,7 +87,7 @@ export const onChangeSize = (size, id) => {
                 payload: size
             })
             console.log(size, id, 'actionnyaaaaaa')
-            const res = await axios.post(API_URL_1 + `/products/detailproductbysize`, { size, id })
+            const res = await axios.post(API_URL_HEROKU + `/products/detailproductbysize`, { size, id })
             console.log(res.data, 'isinya')
             dispatch({
                 type: PRODUCT_BY_SIZE,
@@ -125,7 +125,7 @@ export const stopRedirectToCart = () => {
 export const getMenProducts = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API_URL_1 + `/products/men`)
+            const res = await axios.get(API_URL_HEROKU + `/products/men`)
             dispatch({
                 type: GET_MEN_PRODUCTS,
                 payload: res.data
@@ -138,7 +138,7 @@ export const getMenProducts = () => {
 export const getWomenProducts = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API_URL_1 + `/products/women`)
+            const res = await axios.get(API_URL_HEROKU + `/products/women`)
             dispatch({
                 type: GET_WOMEN_PRODUCTS,
                 payload: res.data
@@ -153,7 +153,7 @@ export const loadMore = (length) => {
     return async (dispatch) => {
         try {
             console.log(length, 'lenghththth')
-            const res = await axios.put(API_URL_1 + `/products/more`, { length })
+            const res = await axios.put(API_URL_HEROKU + `/products/more`, { length })
             console.log(res.data)
             console.log(res.data.length)
             if (res.data.length === 0) {
@@ -180,7 +180,7 @@ export const searchProduct = (search) => {
                 search = ''
             }
             console.log(search)
-            const res = await axios.put(API_URL_1 + `/products/search`, { search })
+            const res = await axios.put(API_URL_HEROKU + `/products/search`, { search })
             console.log(res.data)
             dispatch({
                 type: SEARCH_PRODUCT,
@@ -194,7 +194,7 @@ export const searchProduct = (search) => {
 
 export const priceFilter = (min, max) => {
     return async (dispatch) => {
-        const res = await axios.put(API_URL_1 + '/products/filterprice', { min, max })
+        const res = await axios.put(API_URL_HEROKU + '/products/filterprice', { min, max })
         console.log(res)
         dispatch({
             type: FILTER_PRICE,

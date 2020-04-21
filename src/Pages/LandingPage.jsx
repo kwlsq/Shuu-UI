@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import '../CSS/landingpage.css';
 import '../CSS/card.css';
 import Fade from 'react-reveal/Fade';
+import Button from '@material-ui/core/Button';
 import CarouselComp from '../Comps/carousel';
 import FeatureBar from '../Comps/featureBar';
 import CardComp from '../Comps/cards';
 import CarouselBrands from '../Comps/carouselOfficialBrands';
-import FilterBar from '../Comps/filterBar';
 import {
     getAllBrands,
     showShowcaseProducts,
@@ -37,27 +37,18 @@ class LandingPage extends React.Component {
                         </div>
                     </div>
                 </Fade>
-                <div className="showcase-filter-wrapper">
-                    <FilterBar
-                        filterMinPrice={this.props.minPriceFilter}
-                        filterMaxPrice={this.props.maxPriceFilter}
-                        filterPrice={this.props.priceFilter}
-                        min={this.props.filter.min}
-                        max={this.props.filter.max}
-                    />
-                </div>
                 <div className="showcase-wrapper">
                     <CardComp />
-
+                </div>
+                <div className="button-load-more-wrapper">
                     {
                         this.props.products.hideButton
                             ?
                             <div />
                             :
-                            <button onClick={() => this.props.loadMore(this.props.products.showcase.length)}>Load More</button>
+                            <Button variant="contained" onClick={() => this.props.loadMore(this.props.products.showcase.length)}>Load More</Button>
                     }
                 </div>
-
 
             </div>
         );

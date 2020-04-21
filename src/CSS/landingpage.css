@@ -35,15 +35,17 @@
 .showcase-wrapper{
     margin-top: 10px;
     grid-row: 7/auto;
-    grid-column: 3/13;
+    grid-column: 1/13;
+    
 }
 
-.showcase-filter-wrapper{
+.button-load-more-wrapper{
     margin-top: 10px;
-    grid-row: 7/auto;
-    grid-column: 1/3;
-    background: white;
-
+    grid-row: auto/auto;
+    grid-column: 6/auto;
+}
+.button-load-more-wrapper Button{
+    width: 225px;
 }
 
 .carousel-brands-wrapper{

@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-import { API_URL_HEROKU } from '../Helpers/apiurl';
+import { API_URL_1 } from '../Helpers/apiurl';
 import '../CSS/userprofilepage.css';
 
 
@@ -22,7 +22,7 @@ export default function AlertDialogSlide(props) {
 
                     <DialogContent>
                         <img
-                            src={API_URL_HEROKU + `${val.image}`}
+                            src={API_URL_1 + `${val.image}`}
                             alt="profile pic"
                             style={{ display: 'flex', width: '150px' }}
                         />

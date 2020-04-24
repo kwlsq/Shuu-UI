@@ -5,7 +5,7 @@ import {
     ADMIN_CONFIRMATION
 } from './types';
 import axios from 'axios';
-import { API_URL_HEROKU } from '../../Helpers/apiurl';
+import { API_URL_1 } from '../../Helpers/apiurl';
 
 export const openTableUser = () => {
     return { type: OPEN_TABLE_USER }
@@ -18,7 +18,7 @@ export const openTableTransaction = () => {
 export const getAllTransactions = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API_URL_HEROKU + '/transaction')
+            const res = await axios.get(API_URL_1 + '/transaction')
             console.log(res.data)
             dispatch({
                 type: GET_ALL_TRANSACTION,
@@ -33,7 +33,7 @@ export const getAllTransactions = () => {
 export const adminConfirmation = (t_id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.put(API_URL_HEROKU + '/transaction/confirmation', { t_id })
+            const res = await axios.put(API_URL_1 + '/transaction/confirmation', { t_id })
             console.log(res.data)
             dispatch({
                 type: ADMIN_CONFIRMATION,

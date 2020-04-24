@@ -9,22 +9,25 @@ import { API_URL_HEROKU } from '../Helpers/apiurl';
 import {
     showProductDetail,
     getWomenProducts,
-    loadMore,
     searchProduct,
     minPriceFilter,
     maxPriceFilter,
     priceFilter
 } from '../Redux/Actions'
 import Fade from 'react-reveal/Fade';
+import Pagination from '@material-ui/lab/Pagination';
 import FilterBar from '../Comps/filterBar';
 import '../CSS/searchpage.css';
 
 
 class SearchPage extends React.Component {
     componentDidMount() {
-        const search = this.props.location.search.split('?')[1];
-        console.log(search)
-        this.props.searchProduct(search)
+        const params = this.props.location.search.split('?')[1].split('&')
+        const productName = params[0].split('=')[1];
+        const page = params;
+
+        console.log(page, 'itui')
+        this.props.searchProduct(productName)
     }
 
     renderCardShowcase = () => {
@@ -45,6 +48,12 @@ class SearchPage extends React.Component {
 
         })
     }
+
+    onChangePagination = (val) => {
+        this.props.history.push(`/search?p=${this.props.location.search.split('?')[1].split('&')[0].split('=')[1]}&page=${val}`)
+
+    }
+
     render() {
         return (
             <div className="search-wrapper">
@@ -65,13 +74,14 @@ class SearchPage extends React.Component {
                             :
                             <div>Couldn't find the product you're looking for</div>
                     }
-                    {/* {
-                        this.props.hideButton
-                            ?
-                            <div />
-                            :
-                            <button onClick={() => this.props.loadMore(this.props.products.length)}>Load More</button>
-                    } */}
+                    <Pagination
+                        count={Math.ceil(this.props.products.length / 5)}
+                        onChange={(e, val) => this.onChangePagination(val)}
+                        showFirstButton showLastButton
+                    />
+                </div>
+                <div>
+
                 </div>
             </div>
         );
@@ -93,7 +103,6 @@ const mapStateToProps = ({ products, filter }) => {
 export default connect(mapStateToProps, {
     showProductDetail,
     getWomenProducts,
-    loadMore,
     searchProduct,
     minPriceFilter,
     maxPriceFilter,

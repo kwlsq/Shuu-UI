@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL_HEROKU } from '../../Helpers/apiurl';
+import { API_URL_1 } from '../../Helpers/apiurl';
 import {
     LOGIN_SUCCESS,
     LOGOUT,
@@ -10,10 +10,10 @@ import {
 } from '../Actions/types'
 export const register = (obj) => {
     return (dispatch) => {
-        axios.get(API_URL_HEROKU + `/users/${obj.username}`)
+        axios.get(API_URL_1 + `/users/${obj.username}`)
             .then((res) => {
                 if (res.data.length === 0) {
-                    axios.post(API_URL_HEROKU + '/users/register', obj)
+                    axios.post(API_URL_1 + '/users/register', obj)
                         .then((res) => {
                             console.log(res.data.id)
                             console.log(res.data.token)
@@ -42,7 +42,7 @@ export const register = (obj) => {
 
 export const login = (username, password) => {
     return (dispatch) => {
-        axios.post(API_URL_HEROKU + '/users/login', { username, password })
+        axios.post(API_URL_1 + '/users/login', { username, password })
             .then((res) => {
                 localStorage.setItem('token', res.data.token)
                 dispatch({
@@ -68,7 +68,7 @@ export const keepLogin = () => {
                 'Authorization': `Bearer ${token}`
             }
         }
-        axios.get(API_URL_HEROKU + '/users/keeplogin', headers)
+        axios.get(API_URL_1 + '/users/keeplogin', headers)
             .then((res) => {
                 dispatch({
                     type: LOGIN_SUCCESS,
@@ -94,7 +94,7 @@ export const logout = () => {
 
 export const verify = (username, password) => {
     return (dispatch) => {
-        axios.post(API_URL_HEROKU + '/users/verify', { username, password })
+        axios.post(API_URL_1 + '/users/verify', { username, password })
             .then((res) => {
                 console.log(res.data)
                 dispatch({
@@ -113,7 +113,7 @@ export const getUsersData = () => {
     return (dispatch) => {
         var token = localStorage.getItem('token')
         console.log('masuk ke usersdata')
-        axios.get(API_URL_HEROKU + '/users', {
+        axios.get(API_URL_1 + '/users', {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -139,7 +139,7 @@ export const getUserDetail = () => {
                     "Authorization": `Bearer ${token}`
                 }
             }
-            const res = await axios.put(API_URL_HEROKU + '/users/profile', {}, options)
+            const res = await axios.put(API_URL_1 + '/users/profile', {}, options)
             console.log(res.data, 'getuserdetail')
             dispatch({
                 type: SHOW_USER_DETAIL,

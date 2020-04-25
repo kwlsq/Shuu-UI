@@ -172,15 +172,17 @@ export const loadMore = (length) => {
     }
 }
 
-export const searchProduct = (productName) => {
+export const searchProduct = (productName, page) => {
     return async (dispatch) => {
         try {
             console.log(productName, 'search')
             if (productName === '%20') {
                 productName = ''
             }
-            console.log(productName)
-            const res = await axios.put(API_URL_1 + `/products/search`, { productName })
+            console.log(page, 'xxx')
+            page = page - 1
+            console.log(productName, 'yyy')
+            const res = await axios.put(API_URL_1 + `/products/search`, { productName, page })
             console.log(res.data)
             dispatch({
                 type: SEARCH_PRODUCT,

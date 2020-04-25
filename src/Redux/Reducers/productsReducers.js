@@ -13,6 +13,7 @@ import {
 } from '../Actions/types'
 const INITIAL_STATE = {
     showcase: [],
+    allProduct: [],
     productDetail: [],
     availColor: [],
     availSize: [],
@@ -43,7 +44,7 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, hideButton: true }
         case SEARCH_PRODUCT:
             console.log(action.payload)
-            return { ...state, showcase: action.payload }
+            return { ...state, showcase: action.payload.results2, allProduct: action.payload.results }
         case FILTER_PRICE:
             console.log(action.payload)
             return { ...state, showcase: action.payload }

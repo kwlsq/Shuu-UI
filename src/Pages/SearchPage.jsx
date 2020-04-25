@@ -21,13 +21,16 @@ import '../CSS/searchpage.css';
 
 
 class SearchPage extends React.Component {
+    state = {
+        productName: '',
+        page: 1
+    }
+
     componentDidMount() {
         const params = this.props.location.search.split('?')[1].split('&')
-        const productName = params[0].split('=')[1];
-        const page = params;
-
-        console.log(page, 'itui')
-        this.props.searchProduct(productName)
+        this.props.searchProduct(params[0].split('=')[1], 1)
+        this.setState({ productName: params[0].split('=')[1] })
+        console.log(this.state.productName)
     }
 
     renderCardShowcase = () => {
@@ -51,7 +54,8 @@ class SearchPage extends React.Component {
 
     onChangePagination = (val) => {
         this.props.history.push(`/search?p=${this.props.location.search.split('?')[1].split('&')[0].split('=')[1]}&page=${val}`)
-
+        this.setState({ page: val })
+        this.props.searchProduct(this.state.productName, val)
     }
 
     render() {
@@ -75,7 +79,7 @@ class SearchPage extends React.Component {
                             <div>Couldn't find the product you're looking for</div>
                     }
                     <Pagination
-                        count={Math.ceil(this.props.products.length / 5)}
+                        count={Math.ceil(this.props.all.length / 5)}
                         onChange={(e, val) => this.onChangePagination(val)}
                         showFirstButton showLastButton
                     />
@@ -96,7 +100,8 @@ const mapStateToProps = ({ products, filter }) => {
         products: products.showcase,
         hideButton: products.hideButton,
         detail: products.productDetail,
-        filter
+        filter,
+        all: products.allProduct
     }
 }
 

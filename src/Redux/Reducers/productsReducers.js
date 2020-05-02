@@ -9,7 +9,8 @@ import {
     LOAD_MORE_PRODUCTS,
     HIDE_LOAD_MORE,
     SEARCH_PRODUCT,
-    FILTER_PRICE
+    FILTER_PRICE,
+    LOADING_PRODUCTS
 } from '../Actions/types'
 const INITIAL_STATE = {
     showcase: [],
@@ -17,13 +18,15 @@ const INITIAL_STATE = {
     productDetail: [],
     availColor: [],
     availSize: [],
-    hideButton: false
+    hideButton: false,
+    loading: false
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SHOW_SHOWCASE_PRODUCTS:
-            return { ...state, showcase: action.payload }
+            console.log('udah ga loading')
+            return { ...state, showcase: action.payload, loading: false }
         case SHOW_PRODUCT_DETAIL:
             return { ...state, productDetail: action.payload }
         case SHOW_PRODUCT_COLOR:
@@ -48,6 +51,9 @@ export default (state = INITIAL_STATE, action) => {
         case FILTER_PRICE:
             console.log(action.payload)
             return { ...state, showcase: action.payload }
+        case LOADING_PRODUCTS:
+            console.log('LOADINGGGGGGGG')
+            return { ...state, loading: true }
         default:
             return state
     }

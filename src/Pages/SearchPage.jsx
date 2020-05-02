@@ -27,9 +27,14 @@ class SearchPage extends React.Component {
     }
 
     componentDidMount() {
-        const params = this.props.location.search.split('?')[1].split('&')
-        this.props.searchProduct(params[0].split('=')[1], 1)
-        this.setState({ productName: params[0].split('=')[1] })
+        console.log(this.props.location.search)
+        console.log(window.location.search)
+        console.log(window.location.search.split('?')[1])
+        if (window.location.search.split('?')[1] === undefined) {
+            this.props.searchProduct('%20', 1)
+        }
+        this.props.searchProduct(this.props.location.search.split('?')[1].split('&')[0].split('=')[1], 1)
+        this.setState({ productName: this.props.location.search.split('?')[1].split('&')[0].split('=')[1] })
         console.log(this.state.productName)
     }
 

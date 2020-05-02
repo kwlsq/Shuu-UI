@@ -145,12 +145,23 @@ class NavbarComp extends React.Component {
                                 Feed
                         </Link>
                         </div>
-                        <div className="searchbar">
-                            <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
-                            <a href={`/search?${this.state.searchBar}`}>
-                                <button><i className="fas fa-search"></i></button>
-                            </a>
-                        </div>
+                        {
+                            this.state.searchBar === ''
+                                ?
+                                <div className="searchbar">
+                                    <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
+                                    <a href={`/search?p=%20`}>
+                                        <button><i className="fas fa-search"></i></button>
+                                    </a>
+                                </div>
+                                :
+                                <div className="searchbar">
+                                    <input type="text" placeholder="search" onChange={(e) => this.setState({ searchBar: e.target.value })}></input>
+                                    <a href={`/search?${this.state.searchBar}`}>
+                                        <button><i className="fas fa-search"></i></button>
+                                    </a>
+                                </div>
+                        }
                         <div className="button-login">
                             <Link to='/admin'>
                                 {this.props.username}

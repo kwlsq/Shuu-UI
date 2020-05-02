@@ -24,7 +24,7 @@ import {
     getTransactionDetail,
     closeDialogTransactionDetail,
 } from '../Redux/Actions';
-import { API_URL_1 } from '../Helpers/apiurl';
+import { API_URL_HEROKU } from '../Helpers/apiurl';
 import TransactionTable from '../Comps/tableForTransactionHistory';
 import DialogTransactionDetail from '../Comps/dialogTransactionDetail';
 import '../CSS/userprofilepage.css';
@@ -304,7 +304,7 @@ class UserProfilePage extends React.Component {
                     <div className="edit-profile-wrapper">
                         <div className="edit-image-wrapper">
                             <img
-                                src={API_URL_1 + this.props.userDetail.profilepic}
+                                src={API_URL_HEROKU + this.props.userDetail.profilepic}
                                 alt="profile pic"
                                 width="100%"
                                 height="auto"

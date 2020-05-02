@@ -36,7 +36,8 @@
     margin-top: 10px;
     grid-row: 7/auto;
     grid-column: 1/13;
-    
+    display: flex;
+    justify-content: center;
 }
 
 .button-load-more-wrapper{

@@ -9,7 +9,7 @@ import {
     EDIT_DELIVERY_ADDRESS
 } from './types';
 import axios from 'axios';
-import { API_URL_1 } from '../../Helpers/apiurl';
+import { API_URL_HEROKU } from '../../Helpers/apiurl';
 
 export const onClickButtonPayment = () => {
     return { type: OPEN_PAYMENT_DIALOG }
@@ -47,7 +47,7 @@ export const uploadReceipt = (image, payment, province, city, address) => {
             formData.append('city', city)
             formData.append('address', address)
 
-            const res = await axios.post(API_URL_1 + '/transaction/receipt', formData, options)
+            const res = await axios.post(API_URL_HEROKU + '/transaction/receipt', formData, options)
             console.log(res.data)
         } catch (err) {
             console.log(err)

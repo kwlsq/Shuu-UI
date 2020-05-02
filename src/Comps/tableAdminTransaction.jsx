@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { API_URL_1 } from '../Helpers/apiurl';
+import { API_URL_HEROKU } from '../Helpers/apiurl';
 import { adminConfirmation } from '../Redux/Actions';
 
 class TableTransaction extends React.Component {
@@ -30,7 +30,7 @@ class TableTransaction extends React.Component {
                     <td>Rp {new Intl.NumberFormat(['ban', 'id']).format(item.total_price)}</td>
                     <td>
                         <img
-                            src={API_URL_1 + `${item.payment_receipt}`}
+                            src={API_URL_HEROKU + `${item.payment_receipt}`}
                             alt="payment receipt"
                             width="100%"
                             height="auto"

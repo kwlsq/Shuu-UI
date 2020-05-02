@@ -16,6 +16,11 @@
     align-items: center;
     flex-wrap: wrap;
     font-size: 24px;
+    background: linear-gradient(145deg, #f7f7f7, #dadada);
+    box-shadow: 2px 2px 6px #22385c , 
+            -2px -2px 6px #ffffff;
+    background-color: #f7f7f7 !important;
+    border-radius: 5px;
 }
 
 .cart-content-wrapper{

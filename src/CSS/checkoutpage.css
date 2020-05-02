@@ -9,11 +9,18 @@
 
 .checkout-detail{
    background-color: white;
-   border: solid 1px black;
    margin-top: 10px;
    grid-row: 1/auto;
    grid-column: 1/9;
 }
+.checkout-detail,.checkout-payment-wrapper{
+    background: linear-gradient(145deg, #f7f7f7, #dadada);
+        box-shadow: 2px 2px 6px #22385c , 
+                -2px -2px 6px #ffffff;
+        background-color: #f7f7f7 !important;
+        border-radius: 5px;
+}
+
 
 .checkout-header-wrapper{
     display: flex;

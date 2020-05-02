@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { API_URL_1 } from '../Helpers/apiurl'
+import { API_URL_HEROKU } from '../Helpers/apiurl'
 import ItemsCarousel from 'react-items-carousel';
 
 export const CarouselBrands = (props) => {
@@ -13,7 +13,7 @@ export const CarouselBrands = (props) => {
                 <div key={index}>
                     <img
                         alt='brands'
-                        src={API_URL_1 + item.profilepic}
+                        src={API_URL_HEROKU + item.profilepic}
                         width='auto'
                         style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '20px' }}
                         height='200px'

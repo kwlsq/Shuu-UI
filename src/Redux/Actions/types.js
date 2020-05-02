@@ -23,6 +23,7 @@ export const LOAD_MORE_PRODUCTS = 'LOAD_MORE_PRODUCTS';
 export const HIDE_LOAD_MORE = 'HIDE_LOAD_MORE';
 export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
 export const FILTER_PRICE = 'FILTER_PRICE';
+export const LOADING_PRODUCTS = 'LOADING_PRODUCTS';
 
 //acton types productDetailInputReducers.js
 export const ONCHANGE_SIZE = 'ONCHANGE_SIZE';

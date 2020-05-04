@@ -10,7 +10,7 @@ import {
     GET_TRANSACTION,
     GET_TRANSACTION_DETAIL
 } from './types'
-import { API_URL_HEROKU } from '../../Helpers/apiurl';
+import { API_URL_1 } from '../../Helpers/apiurl';
 
 export const addToCart = (qty, id) => {
     return async (dispatch) => {
@@ -22,7 +22,7 @@ export const addToCart = (qty, id) => {
                 }
             }
 
-            const res = await axios.post(API_URL_HEROKU + `/transaction/addtocart`, { qty, id }, config)
+            const res = await axios.post(API_URL_1 + `/transaction/addtocart`, { qty, id }, config)
             console.log(res.data, 'action transact2')
             dispatch({
                 type: ADD_TO_CART_SUCCESS,
@@ -48,7 +48,7 @@ export const addToCartViaBuy = (qty, id) => {
                 }
             }
 
-            const res = await axios.post(API_URL_HEROKU + `/transaction/addtocart`, { qty, id }, config)
+            const res = await axios.post(API_URL_1 + `/transaction/addtocart`, { qty, id }, config)
             console.log(res.data, 'action transact2')
             dispatch({
                 type: ADD_TO_CART_SUCCESS,
@@ -73,7 +73,7 @@ export const getCart = () => {
                 }
             }
 
-            const res = await axios.get(API_URL_HEROKU + `/transaction/cart`, config)
+            const res = await axios.get(API_URL_1 + `/transaction/cart`, config)
             console.log(res.data)
             dispatch({
                 type: GET_CART,
@@ -95,7 +95,7 @@ export const getTransactionDetail = (t_id) => {
                 }
             }
 
-            const res = await axios.post(API_URL_HEROKU + `/transaction/detail`, { t_id }, config)
+            const res = await axios.post(API_URL_1 + `/transaction/detail`, { t_id }, config)
             console.log(res.data)
             dispatch({
                 type: GET_TRANSACTION_DETAIL,
@@ -116,7 +116,7 @@ export const getAddresses = () => {
                     "Authorization": `Bearer ${token}`
                 }
             }
-            const res = await axios.post(API_URL_HEROKU + `/users/address`, {}, config)
+            const res = await axios.post(API_URL_1 + `/users/address`, {}, config)
             console.log(res.data)
             dispatch({
                 type: GET_USER_ADDRESS,
@@ -131,7 +131,7 @@ export const getAddresses = () => {
 export const getOngkir = (origin, destination, weight, courier, id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.post(API_URL_HEROKU + `/rajaongkir/ongkir`, {
+            const res = await axios.post(API_URL_1 + `/rajaongkir/ongkir`, {
                 origin,
                 destination,
                 weight,
@@ -160,7 +160,7 @@ export const getTransaction = () => {
                 }
             }
 
-            const res = await axios.get(API_URL_HEROKU + `/transaction/history`, config)
+            const res = await axios.get(API_URL_1 + `/transaction/history`, config)
             console.log(res.data)
             dispatch({
                 type: GET_TRANSACTION,
@@ -183,7 +183,7 @@ export const updateStocks = (qty, p_id, size) => {
                 }
             }
 
-            const res = await axios.put(API_URL_HEROKU + `/transaction/stock`, { qty, p_id, size }, config)
+            const res = await axios.put(API_URL_1 + `/transaction/stock`, { qty, p_id, size }, config)
             console.log(res)
         } catch (err) {
             console.log(err)

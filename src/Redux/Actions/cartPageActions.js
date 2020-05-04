@@ -6,7 +6,7 @@ import {
     UPDATE_TOTAL_PAYMENT
 } from './types';
 import axios from 'axios';
-import { API_URL_HEROKU } from '../../Helpers/apiurl';
+import { API_URL_1 } from '../../Helpers/apiurl';
 
 
 export const changeCartItemQty = (newQty, p_id, price) => {
@@ -19,7 +19,7 @@ export const changeCartItemQty = (newQty, p_id, price) => {
                     "Authorization": `Bearer ${token}`
                 }
             }
-            const res = await axios.put(API_URL_HEROKU + '/transaction/changeqty', { newQty, p_id, price }, config)
+            const res = await axios.put(API_URL_1 + '/transaction/changeqty', { newQty, p_id, price }, config)
             dispatch({
                 type: CHANGE_QTY_CART,
                 payload: res.data.results2
@@ -49,7 +49,7 @@ export const getTotalPayment = () => {
                 "Authorization": `Bearer ${token}`
             }
         }
-        const res = await axios.get(API_URL_HEROKU + '/transaction/gettotalpayment', config)
+        const res = await axios.get(API_URL_1 + '/transaction/gettotalpayment', config)
         console.log(res.data.total_payment, 'eksyen')
         dispatch({
             type: GET_TOTAL_PAYMENT,
@@ -67,7 +67,7 @@ export const deleteAll = () => {
                     "Authorization": `Bearer ${token}`
                 }
             }
-            const res = await axios.get(API_URL_HEROKU + '/transaction/deleteall', config)
+            const res = await axios.get(API_URL_1 + '/transaction/deleteall', config)
             console.log(res)
             dispatch({
                 type: DELETE_ALL_SUCCESS,
@@ -88,7 +88,7 @@ export const deleteItem = (p_id) => {
                     "Authorization": `Bearer ${token}`
                 }
             }
-            const res = await axios.put(API_URL_HEROKU + '/transaction/deleteproduct', { p_id }, config)
+            const res = await axios.put(API_URL_1 + '/transaction/deleteproduct', { p_id }, config)
             console.log(res.data, 'ini yang dicek')
             dispatch({
                 type: DELETE_ITEM_SUCCESS,

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL_HEROKU } from '../../Helpers/apiurl';
+import { API_URL_1 } from '../../Helpers/apiurl';
 import {
     ADD_PROFILE_PICTURE,
     UPLOAD_PROFPIC_SUCCESS,
@@ -44,7 +44,7 @@ export const uploadImage = ({ image }, ud_id) => {
             formData.append('ud_id', ud_id)
 
 
-            const res = await axios.post(API_URL_HEROKU + '/editprofile/addprofpic', formData, options)
+            const res = await axios.post(API_URL_1 + '/editprofile/addprofpic', formData, options)
             console.log(res.data)
 
             dispatch({
@@ -96,7 +96,7 @@ export const onChangeGender = (val) => {
 export const getProvinceLists = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API_URL_HEROKU + '/rajaongkir/province')
+            const res = await axios.get(API_URL_1 + '/rajaongkir/province')
             console.log('asik dah')
             dispatch({
                 type: GET_PROVINCE,
@@ -122,13 +122,13 @@ export const getCityLists = (id) => {
     return async (dispatch) => {
         try {
             if (id) {
-                const res = await axios.get(API_URL_HEROKU + `/rajaongkir/city/${id}`)
+                const res = await axios.get(API_URL_1 + `/rajaongkir/city/${id}`)
                 dispatch({
                     type: GET_CITY,
                     payload: res.data
                 })
             } else {
-                const res = await axios.get(API_URL_HEROKU + `/rajaongkir/city`)
+                const res = await axios.get(API_URL_1 + `/rajaongkir/city`)
                 dispatch({
                     type: GET_CITY,
                     payload: res.data
@@ -164,7 +164,7 @@ export const onBtnSaveEdit = (detail, ud_id) => {
                     "Authorization": `Bearer ${token}`
                 }
             }
-            const res = await axios.post(API_URL_HEROKU + `/editprofile/updateprofile/${ud_id}`, detail, config)
+            const res = await axios.post(API_URL_1 + `/editprofile/updateprofile/${ud_id}`, detail, config)
             console.log(res.data)
             dispatch({
                 type: EDIT_PROFILE_SUCCESS,

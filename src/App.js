@@ -1,8 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { keepLogin } from './Redux/Actions';
-import NavbarComp from './Comps/navbar';
+import {
+  logout,
+  keepLogin
+} from './Redux/Actions';
+// import NavbarComp from './Comps/navbar';
 import LandingPage from './Pages/LandingPage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
@@ -20,19 +23,22 @@ import UserProfilePage from './Pages/UserProfilePage';
 import CheckOutPage from './Pages/CheckOutPage';
 import PaymentPage from './Pages/PaymentPage';
 import SearchPage from './Pages/SearchPage';
+import TestPage from './Pages/test'
 
 
 class App extends React.Component {
   componentDidMount() {
     this.props.keepLogin()
-    console.log(this.props.user.id)
+    console.log(this.props.user)
   }
   render() {
     //SuperAdmmin
     if (this.props.user.role_id === 1) {
       return (
         <div>
-          <NavbarComp />
+          {/* <NavbarComp /> */}
+          <TestPage role="admin" username={this.props.user.username} logout={this.props.logout} />
+
           <Switch>
             <Route path="/" component={LandingPage} exact />
             <Route path="/login" component={LoginPage} />
@@ -46,6 +52,8 @@ class App extends React.Component {
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/cart" component={CartPage} />
             <Route path="/search" component={SearchPage} />
+            <Route path="/test" component={TestPage} />
+
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
@@ -54,7 +62,9 @@ class App extends React.Component {
       //Store
       return (
         <div>
-          <NavbarComp />
+          {/* <NavbarComp /> */}
+          <TestPage role="store" username={this.props.user.username} logout={this.props.logout} />
+
           <Switch>
             <Route path="/" component={LandingPage} exact />
             <Route path="/login" component={LoginPage} />
@@ -68,6 +78,8 @@ class App extends React.Component {
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/cart" component={CartPage} />
             <Route path="/search" component={SearchPage} />
+            <Route path="/test" component={TestPage} />
+
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
@@ -75,7 +87,8 @@ class App extends React.Component {
     } else if (this.props.user.role_id === 3) {
       return (
         <div>
-          <NavbarComp />
+          {/* <NavbarComp /> */}
+          <TestPage role="profile" username={this.props.user.username} logout={this.props.logout} />
           <Switch>
             <Route path="/" component={LandingPage} exact />
             <Route path="/login" component={LoginPage} />
@@ -91,6 +104,8 @@ class App extends React.Component {
             <Route path="/checkout" component={CheckOutPage} />
             <Route path="/payment" component={PaymentPage} />
             <Route path="/search" component={SearchPage} />
+            <Route path="/test" component={TestPage} />
+
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
@@ -98,7 +113,9 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <NavbarComp />
+          <TestPage />
+
+          {/* <NavbarComp /> */}
           <Switch>
             <Route path="/" component={LandingPage} exact />
             <Route path="/login" component={LoginPage} />
@@ -110,8 +127,10 @@ class App extends React.Component {
             <Route path="/verified" component={VerificationPage} />
             <Route path="/detail" component={ProductDetailPage} />
             <Route path="/search" component={SearchPage} />
+            <Route path="/test" component={TestPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
+
         </div>
       )
     }
@@ -123,4 +142,4 @@ const mapStateToProps = ({ user }) => {
   return { user }
 }
 
-export default connect(mapStateToProps, { keepLogin })(App);
+export default connect(mapStateToProps, { keepLogin, logout })(App);

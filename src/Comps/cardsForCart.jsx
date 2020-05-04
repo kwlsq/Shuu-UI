@@ -2,7 +2,7 @@ import React from 'react';
 import '../CSS/cartpage.css';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { API_URL_HEROKU } from '../Helpers/apiurl';
+import { API_URL_1 } from '../Helpers/apiurl';
 
 export default function CartCard(props) {
     return (
@@ -11,7 +11,7 @@ export default function CartCard(props) {
                 {props.index + 1}
             </div>
             <img
-                src={API_URL_HEROKU + `${props.image}`}
+                src={API_URL_1 + `${props.image}`}
                 alt="profile pic"
                 width="100%"
                 height="auto"

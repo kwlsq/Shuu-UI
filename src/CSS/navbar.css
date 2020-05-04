@@ -3,17 +3,17 @@
 }
 
 .logo a,.button a,.button-login a,.button-register a{
-    transition: 1s;
-    color: #4571b9 ;
+    transition: 0.5s;
+    color: #4571b9 !important;
 }
 
 .logo{
     font-family: 'Fredoka One', cursive;
-    font-size: 38px;
+    font-size: 36px !important;
 }
 
 .logo,.button:hover,.button-login:hover,.button-register:hover,.button a:hover,.button-login a:hover,.button-register a:hover{
-    color: #22385c;
+    color: #22385c !important;
 }
 
 .logo a:hover,.logo a:active,.button a,.button-login a,.button-register a{
@@ -29,9 +29,9 @@
 }
 
 .nav-items{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 8em;
+    /* display: flex !important; */
+    /* justify-content: space-around ; */
+    /* padding: 0 8em !important; */
 }
 
 .button, .searchbar,.button-login,.button-register{
@@ -41,11 +41,11 @@
 .navbar-wrapper{
     background-color: #f7f7f7  ;
     font-family: 'Raleway', sans-serif;
-    font-size: 22px;
+    font-size: 22px !important;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.589);
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    position: sticky !important;
+    top: 0 !important   ;
+    z-index: 1 !important;
 }
 
 .searchbar input, .searchbar button{

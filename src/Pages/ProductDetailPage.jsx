@@ -12,7 +12,7 @@ import {
     openDialog,
     addToCartViaBuy
 } from '../Redux/Actions';
-import { API_URL_HEROKU } from '../Helpers/apiurl';
+import { API_URL_1 } from '../Helpers/apiurl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import '../CSS/productdetail.css';
@@ -61,7 +61,7 @@ class ProductDetail extends React.Component {
         }
         return (
             <div className="product-detail-wrapper">
-                <img src={API_URL_HEROKU + this.props.products.productDetail.image} alt="product detail" />
+                <img src={API_URL_1 + this.props.products.productDetail.image} alt="product detail" />
                 <div className="product-detail-texts">
                     <div>{this.props.products.productDetail.name}</div>
                     <div>{this.props.products.productDetail.brands}</div>

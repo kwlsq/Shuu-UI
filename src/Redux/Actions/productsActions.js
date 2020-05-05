@@ -132,6 +132,7 @@ export const getMenProducts = () => {
                 type: GET_MEN_PRODUCTS,
                 payload: res.data
             })
+            console.log(res.data, 'mens')
         } catch (err) {
             console.log(err)
         }

@@ -44,8 +44,13 @@ const Example = (props) => {
                             props.username
                                 ?
                                 <NavItem className="d-flex">
-                                    <NavItem className="button-login pr-5">
+                                    <NavItem className="button-login pr-3">
                                         <NavLink href={`/${props.role}`}>{props.username}</NavLink>
+                                    </NavItem>
+                                    <NavItem className="button-login pr-3">
+                                        <NavLink href='/cart'>
+                                            <i className="fas fa-shopping-bag"></i>
+                                        </NavLink>
                                     </NavItem>
                                     <NavItem className="button-register pr-5">
                                         <NavLink href='/' onClick={props.logout}>Log out</NavLink>
@@ -57,12 +62,10 @@ const Example = (props) => {
                                         <NavLink href='/login'>Login</NavLink>
                                     </NavItem>
                                     <NavItem className="button-register pr-5">
-                                        <NavLink href='/logout'>Register</NavLink>
+                                        <NavLink href='/register'>Register</NavLink>
                                     </NavItem>
                                 </NavItem>
                         }
-
-
                     </Nav>
                 </Collapse>
             </Navbar>

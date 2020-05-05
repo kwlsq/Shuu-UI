@@ -43,7 +43,7 @@ class LandingPage extends React.Component {
             )
         } else {
             return (
-                <div className="landingpage-grid">
+                <div className="landingpage-grid container">
                     <FeatureBar />
                     <Fade bottom distance="50px" duration={1000}>
                         <div className="carousel-wrapper"><CarouselComp /></div>
